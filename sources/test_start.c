@@ -10,125 +10,125 @@
 #include "test.h"
 #include "test_mem.h"
 
-/* Адреса областей тестирования ОЗУ */
+/* РђРґСЂРµСЃР° РѕР±Р»Р°СЃС‚РµР№ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РћР—РЈ */
 #define TEST_RAM_START      0x10001000
 #define TEST_RAM_END        0x1000C000
 #define TEST_SRAM_START     0x20000000
 #define TEST_SRAM_END       0x20020000
 
-/* Информационные сообщения */
+/* РРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ */
 static LOADER_CONST const char_t test_str_test_sram[] =
-    "\r\nТест внутреннего ОЗУ (SRAM)           ";
+    "\r\nРўРµСЃС‚ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РћР—РЈ (SRAM)           ";
 static LOADER_CONST const char_t test_str_test_ccmram[] =
-    "\r\nТест внутреннего ОЗУ (CCM)            ";
+    "\r\nРўРµСЃС‚ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РћР—РЈ (CCM)            ";
 static LOADER_CONST const char_t test_str_test_cpu[] =
-    "\r\nТест ЦПУ                              ";
+    "\r\nРўРµСЃС‚ Р¦РџРЈ                              ";
 static LOADER_CONST const char_t test_str_test_wdt[] =
-    "\r\nТест WDT                              ";
+    "\r\nРўРµСЃС‚ WDT                              ";
 static LOADER_CONST const char_t test_str_test_srom[] =
-    "\r\nТест ПЗУ программы нач. инициализации ";
+    "\r\nРўРµСЃС‚ РџР—РЈ РїСЂРѕРіСЂР°РјРјС‹ РЅР°С‡. РёРЅРёС†РёР°Р»РёР·Р°С†РёРё ";
 static LOADER_CONST const char_t test_str_test_urom[] =
-    "\r\nТест ПЗУ пользователя                 ";
+    "\r\nРўРµСЃС‚ РџР—РЈ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ                 ";
 static LOADER_CONST const char_t test_str_test_adc[] =
-    "\r\nТест АЦП                              ";
+    "\r\nРўРµСЃС‚ РђР¦Рџ                              ";
 static LOADER_CONST const char_t test_str_err[] =
-    "Отказ";
+    "РћС‚РєР°Р·";
 static LOADER_CONST const char_t test_str_ok[] =
-    "Успех";
+    "РЈСЃРїРµС…";
 static LOADER_CONST const char_t test_str_skip[] =
-    "Пропущен";
+    "РџСЂРѕРїСѓС‰РµРЅ";
 static LOADER_CONST const char_t test_str_enter[] =
     "\r\n";
 static LOADER_CONST const char_t test_str_cerr[] =
-    "\r\n\r\nОбнаружены прочие ошибки в работе загрузчика";
+    "\r\n\r\nРћР±РЅР°СЂСѓР¶РµРЅС‹ РїСЂРѕС‡РёРµ РѕС€РёР±РєРё РІ СЂР°Р±РѕС‚Рµ Р·Р°РіСЂСѓР·С‡РёРєР°";
 static LOADER_CONST const char_t reset[] =
-    "\r\n\r\n=======Новый цикл========\r\n\r\n";
+    "\r\n\r\n=======РќРѕРІС‹Р№ С†РёРєР»========\r\n\r\n";
 
-/* Подпрограмма контроля ОЗУ
- * (in) mode - режим:
- *             TEST_MODE_START - стартовый контроль
- *             TEST_MODE_FULL  - полный контроль
- * Примечание:
- *  1. В стартовых тестах и в технологическом режиме тестируется как 
- *     SRAM, так и CCM микроконтроллера;
- *  2. Тестируемая область:
- *     SRAM - 0x20000000 - 0x20020000 ( 128 кБ );
- *     CCM  - 0x10001000 - 0x1000C000 ( 44 кБ )
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ РћР—РЈ
+ * (in) mode - СЂРµР¶РёРј:
+ *             TEST_MODE_START - СЃС‚Р°СЂС‚РѕРІС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
+ *             TEST_MODE_FULL  - РїРѕР»РЅС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
+ * РџСЂРёРјРµС‡Р°РЅРёРµ:
+ *  1. Р’ СЃС‚Р°СЂС‚РѕРІС‹С… С‚РµСЃС‚Р°С… Рё РІ С‚РµС…РЅРѕР»РѕРіРёС‡РµСЃРєРѕРј СЂРµР¶РёРјРµ С‚РµСЃС‚РёСЂСѓРµС‚СЃСЏ РєР°Рє 
+ *     SRAM, С‚Р°Рє Рё CCM РјРёРєСЂРѕРєРѕРЅС‚СЂРѕР»Р»РµСЂР°;
+ *  2. РўРµСЃС‚РёСЂСѓРµРјР°СЏ РѕР±Р»Р°СЃС‚СЊ:
+ *     SRAM - 0x20000000 - 0x20020000 ( 128 РєР‘ );
+ *     CCM  - 0x10001000 - 0x1000C000 ( 44 РєР‘ )
  */
 void test_start_ram(
     uint_t mode )
 {
     uint32_t        test_result;
 
-    /* Контроль SRAM
-       Первоначальный загрузчик не использует данную область памяти */
+    /* РљРѕРЅС‚СЂРѕР»СЊ SRAM
+       РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅС‹Р№ Р·Р°РіСЂСѓР·С‡РёРє РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚ РґР°РЅРЅСѓСЋ РѕР±Р»Р°СЃС‚СЊ РїР°РјСЏС‚Рё */
     
-    rs232_str_out( test_str_test_sram, ( sizeof( test_str_test_sram ) - 1U ) );        // "\r\nТест внутреннего ОЗУ (SRAM)
+    rs232_str_out( test_str_test_sram, ( sizeof( test_str_test_sram ) - 1U ) );        // "\r\nРўРµСЃС‚ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РћР—РЈ (SRAM)
     test_result = MPM_LOADER_OUT_PTR->test_result;
     if (   ( TEST_MODE_START == mode )
         && ( 0U != ( test_result & ( ~ ( uint32_t ) TEST_RESULT_ERR_OTHER ) ) )
     ) {
-        /* Режим стартового контроля. Обнаружены ошибки */
-        rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );              // "Пропущен"
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
+        rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );              // "РџСЂРѕРїСѓС‰РµРЅ"
     } else {
-        /* Режим полного контроля */
-        /* Режим стартового контроля. Ошибок не обнаружено */
+        /* Р РµР¶РёРј РїРѕР»РЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћС€РёР±РѕРє РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ */
         if ( NO_ERROR != test_ram( TEST_SRAM_START, TEST_SRAM_END )
         ) {
-            /* Обнаружены ошибки */
+            /* РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
             MPM_LOADER_OUT_PTR->test_result |= TEST_RESULT_ERR_SRAM;
-            rs232_str_out( test_str_err, ( sizeof( test_str_err ) - 1U ) );            // "Отказ"
+            rs232_str_out( test_str_err, ( sizeof( test_str_err ) - 1U ) );            // "РћС‚РєР°Р·"
         } else {
-            rs232_str_out( test_str_ok, ( sizeof( test_str_ok ) - 1U ) );              // "Успех"
+            rs232_str_out( test_str_ok, ( sizeof( test_str_ok ) - 1U ) );              // "РЈСЃРїРµС…"
         }
     }
 
-    /* Контроль CCM */
-    /* В CCM RAM находятся данные и стек первоначального загрузчика */
+    /* РљРѕРЅС‚СЂРѕР»СЊ CCM */
+    /* Р’ CCM RAM РЅР°С…РѕРґСЏС‚СЃСЏ РґР°РЅРЅС‹Рµ Рё СЃС‚РµРє РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРіРѕ Р·Р°РіСЂСѓР·С‡РёРєР° */
     
-    rs232_str_out( test_str_test_ccmram,                                               // "\r\nТест внутреннего ОЗУ (CCM)
+    rs232_str_out( test_str_test_ccmram,                                               // "\r\nРўРµСЃС‚ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РћР—РЈ (CCM)
                   ( sizeof( test_str_test_ccmram ) - 1U ) );
     test_result = MPM_LOADER_OUT_PTR->test_result;
     if (   ( TEST_MODE_START == mode )
         && ( 0U != ( test_result & ( ~ ( uint32_t ) TEST_RESULT_ERR_OTHER ) ) )
     ) {
-        /* Режим стартового контроля. Обнаружены ошибки */
-        rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );              // "Пропущен"
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
+        rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );              // "РџСЂРѕРїСѓС‰РµРЅ"
     } else {
-        /* Режим полного контроля */
-        /* Режим стартового контроля. Ошибок не обнаружено */
+        /* Р РµР¶РёРј РїРѕР»РЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћС€РёР±РѕРє РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ */
         if ( NO_ERROR != test_ram( TEST_RAM_START, TEST_RAM_END )
         ) {
-            /* Обнаружены ошибки */
+            /* РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
             MPM_LOADER_OUT_PTR->test_result |= TEST_RESULT_ERR_CCM;
-            rs232_str_out( test_str_err, ( sizeof( test_str_err ) - 1U ) );            // "Отказ"
+            rs232_str_out( test_str_err, ( sizeof( test_str_err ) - 1U ) );            // "РћС‚РєР°Р·"
         } else {
-            rs232_str_out( test_str_ok, ( sizeof( test_str_ok ) - 1U ) );              // "Успех"
+            rs232_str_out( test_str_ok, ( sizeof( test_str_ok ) - 1U ) );              // "РЈСЃРїРµС…"
         }
     }
 }
 
-/* Подпрограмма контроля ПЗУ
- * (in) mode - режим:
- *             TEST_MODE_START - стартовый контроль
- *             TEST_MODE_FULL  - полный контроль
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ РџР—РЈ
+ * (in) mode - СЂРµР¶РёРј:
+ *             TEST_MODE_START - СЃС‚Р°СЂС‚РѕРІС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
+ *             TEST_MODE_FULL  - РїРѕР»РЅС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
  */
 void test_start_rom(
     uint_t mode )
 {
     uint32_t        test_result;
 
-    /* Конроль ПЗУ (область первоначального загрузчика) */
-    rs232_str_out( test_str_test_srom, ( sizeof( test_str_test_srom ) - 1U ) );         /* "\r\nТест ПЗУ LOADER */
+    /* РљРѕРЅСЂРѕР»СЊ РџР—РЈ (РѕР±Р»Р°СЃС‚СЊ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРіРѕ Р·Р°РіСЂСѓР·С‡РёРєР°) */
+    rs232_str_out( test_str_test_srom, ( sizeof( test_str_test_srom ) - 1U ) );         /* "\r\nРўРµСЃС‚ РџР—РЈ LOADER */
     test_result = MPM_LOADER_OUT_PTR->test_result;                                     
     if (   ( TEST_MODE_START == mode )
         && ( 0U != ( test_result & ( ~ ( uint32_t ) TEST_RESULT_ERR_OTHER ) ) )
     ) {
-        /* Режим стартового контроля. Обнаружены ошибки */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
         rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );
     } else {
-        /* Режим полного контроля */
-        /* Режим стартового контроля. Ошибок не обнаружено */
+        /* Р РµР¶РёРј РїРѕР»РЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћС€РёР±РѕРє РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ */
         if ( NO_ERROR != test_rom( SROM_MEM_ARR ) ) {
             MPM_LOADER_OUT_PTR->test_result |= TEST_RESULT_ERR_SROM;
             rs232_str_out( test_str_err, ( sizeof( test_str_err ) - 1U ) );
@@ -137,17 +137,17 @@ void test_start_rom(
         }
     }
 
-    /* Конроль ПЗУ (область пользователя) */
+    /* РљРѕРЅСЂРѕР»СЊ РџР—РЈ (РѕР±Р»Р°СЃС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ) */
     rs232_str_out( test_str_test_urom, ( sizeof( test_str_test_urom ) - 1U ) );
     test_result = MPM_LOADER_OUT_PTR->test_result;
     if (   ( TEST_MODE_START == mode )
         && ( 0U != ( test_result & ( ~ ( uint32_t ) TEST_RESULT_ERR_OTHER ) ) )
     ) {
-        /* Режим стартового контроля. Обнаружены ошибки */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
         rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );
     } else {
-        /* Режим полного контроля */
-        /* Режим стартового контроля. Ошибок не обнаружено */
+        /* Р РµР¶РёРј РїРѕР»РЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћС€РёР±РѕРє РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ */
         if ( NO_ERROR != test_rom( UROM_MEM_ARR ) ) {
             MPM_LOADER_OUT_PTR->test_result |= TEST_RESULT_ERR_UROM;
             rs232_str_out( test_str_err, ( sizeof( test_str_err ) - 1U ) );
@@ -157,26 +157,26 @@ void test_start_rom(
     }
  }
 
-/* Подпрограмма контроля ЦПУ
- * (in) mode - режим:
- *             TEST_MODE_START - стартовый контроль
- *             TEST_MODE_FULL  - полный контроль
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ Р¦РџРЈ
+ * (in) mode - СЂРµР¶РёРј:
+ *             TEST_MODE_START - СЃС‚Р°СЂС‚РѕРІС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
+ *             TEST_MODE_FULL  - РїРѕР»РЅС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
  */
 void test_start_cpu(
     uint_t mode )
 {
     uint32_t        test_result;
 
-    rs232_str_out( test_str_test_cpu, ( sizeof( test_str_test_cpu ) - 1U ) );       /* "\r\nТест ЦПУ */
+    rs232_str_out( test_str_test_cpu, ( sizeof( test_str_test_cpu ) - 1U ) );       /* "\r\nРўРµСЃС‚ Р¦РџРЈ */
     test_result = MPM_LOADER_OUT_PTR->test_result;
     if (   ( TEST_MODE_START == mode )
         && ( 0U != ( test_result & ( ~ ( uint32_t ) TEST_RESULT_ERR_OTHER ) ) )
     ) {
-        /* Режим стартового контроля. Обнаружены ошибки */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
         rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );
     } else {
-        /* Режим полного контроля */
-        /* Режим стартового контроля. Ошибок не обнаружено */
+        /* Р РµР¶РёРј РїРѕР»РЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћС€РёР±РѕРє РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ */
         if ( NO_ERROR != test_cpu() ) {
             MPM_LOADER_OUT_PTR->test_result |= TEST_RESULT_ERR_CPU;
             rs232_str_out( test_str_err, ( sizeof( test_str_err ) - 1U ) );
@@ -186,27 +186,27 @@ void test_start_cpu(
     }
 }
 
-/* Подпрограмма контроля АЦП
- * (in) mode - режим:
- *             TEST_MODE_START - стартовый контроль
- *             TEST_MODE_FULL  - полный контроль
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ РђР¦Рџ
+ * (in) mode - СЂРµР¶РёРј:
+ *             TEST_MODE_START - СЃС‚Р°СЂС‚РѕРІС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
+ *             TEST_MODE_FULL  - РїРѕР»РЅС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
  */
 void test_start_adc(
     uint_t mode )
 {
     uint32_t        test_result;
 
-    /* Конроль ПЗУ (область первоначального загрузчика) */
-    rs232_str_out( test_str_test_adc, ( sizeof( test_str_test_adc ) - 1U ) );        /* "\r\nТест ПЗУ LOADER */
+    /* РљРѕРЅСЂРѕР»СЊ РџР—РЈ (РѕР±Р»Р°СЃС‚СЊ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРіРѕ Р·Р°РіСЂСѓР·С‡РёРєР°) */
+    rs232_str_out( test_str_test_adc, ( sizeof( test_str_test_adc ) - 1U ) );        /* "\r\nРўРµСЃС‚ РџР—РЈ LOADER */
     test_result = MPM_LOADER_OUT_PTR->test_result;
     if (   ( TEST_MODE_START == mode )
         && ( 0U != ( test_result & ( ~ ( uint32_t ) TEST_RESULT_ERR_OTHER ) ) )
     ) {
-        /* Режим стартового контроля. Обнаружены ошибки */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
         rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );
     } else {
-        /* Режим полного контроля */
-        /* Режим стартового контроля. Ошибок не обнаружено */
+        /* Р РµР¶РёРј РїРѕР»РЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћС€РёР±РѕРє РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ */
         
         if ( NO_ERROR != test_adc() ) {
             MPM_LOADER_OUT_PTR->test_result |= TEST_RESULT_ERR_ADC;
@@ -217,19 +217,19 @@ void test_start_adc(
     }
  }
 
-/* Подпрограмма контроля WDT
- * (in) mode - режим:
- *             TEST_MODE_START - стартовый контроль
- *             TEST_MODE_FULL  - полный контроль
- * Результат:
- *  NO_ERROR        - Успешное выполнение
- *  ERROR           - Ошибка
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ WDT
+ * (in) mode - СЂРµР¶РёРј:
+ *             TEST_MODE_START - СЃС‚Р°СЂС‚РѕРІС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
+ *             TEST_MODE_FULL  - РїРѕР»РЅС‹Р№ РєРѕРЅС‚СЂРѕР»СЊ
+ * Р РµР·СѓР»СЊС‚Р°С‚:
+ *  NO_ERROR        - РЈСЃРїРµС€РЅРѕРµ РІС‹РїРѕР»РЅРµРЅРёРµ
+ *  ERROR           - РћС€РёР±РєР°
  */
 error_t test_start_wdt(
     uint_t mode )
 {
 
-    volatile uint32_t flag_wdt_timeout;  /* Флаг истечения лимита времени контроля WDT */
+    volatile uint32_t flag_wdt_timeout;  /* Р¤Р»Р°Рі РёСЃС‚РµС‡РµРЅРёСЏ Р»РёРјРёС‚Р° РІСЂРµРјРµРЅРё РєРѕРЅС‚СЂРѕР»СЏ WDT */
     uint32_t        test_result;
     error_t         err;
     uint32_t        i;
@@ -239,43 +239,43 @@ error_t test_start_wdt(
     if (   ( TEST_MODE_START == mode ) 
         && (( 0U != ( test_result & ( ~ ( uint32_t ) TEST_RESULT_ERR_OTHER ) ) ))
     ) {
-        /* Режим стартового контроля. Обнаружены ошибки */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё */
         rs232_str_out( test_str_skip, ( sizeof( test_str_skip ) - 1U ) );
         rs232_str_out( test_str_enter, ( sizeof( test_str_enter ) - 1U ) );
         err = NO_ACTION;
 
     } else {
-        /* Режим полного контроля */
-        /* Режим стартового контроля. Ошибок не обнаружено */
+        /* Р РµР¶РёРј РїРѕР»РЅРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ */
+        /* Р РµР¶РёРј СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РєРѕРЅС‚СЂРѕР»СЏ. РћС€РёР±РѕРє РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ */
         
         for ( i = 0; i < 1000000U; i++ ) {
-            /* Пауза перед завершением работы RS-232 */
+            /* РџР°СѓР·Р° РїРµСЂРµРґ Р·Р°РІРµСЂС€РµРЅРёРµРј СЂР°Р±РѕС‚С‹ RS-232 */
             ;
         }
         rs232_close();
-        /* Остановка таймера */
+        /* РћСЃС‚Р°РЅРѕРІРєР° С‚Р°Р№РјРµСЂР° */
         for ( i = 0; i < 1000000U; i++ ) {
-            /* Пауза после завершения работы RS-232 */
+            /* РџР°СѓР·Р° РїРѕСЃР»Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ СЂР°Р±РѕС‚С‹ RS-232 */
             ;
         }
         timer_close();
-        /* Cброс признака окончания контроля сторожевого таймера */
+        /* CР±СЂРѕСЃ РїСЂРёР·РЅР°РєР° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅС‚СЂРѕР»СЏ СЃС‚РѕСЂРѕР¶РµРІРѕРіРѕ С‚Р°Р№РјРµСЂР° */
         flag_wdt_timeout = 0U;
-        /* Настройка и пуск таймера на период срабатывания 200 мс,
-           без выдачи сигнала сброс в сторожевой таймер */
+        /* РќР°СЃС‚СЂРѕР№РєР° Рё РїСѓСЃРє С‚Р°Р№РјРµСЂР° РЅР° РїРµСЂРёРѕРґ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ 200 РјСЃ,
+           Р±РµР· РІС‹РґР°С‡Рё СЃРёРіРЅР°Р»Р° СЃР±СЂРѕСЃ РІ СЃС‚РѕСЂРѕР¶РµРІРѕР№ С‚Р°Р№РјРµСЂ */
         timer_init( TIME_STEP_200, TIMER_TEST_WDT, &flag_wdt_timeout );
-        /* Ожидание признака окончания контроля сторожевого таймера */
+        /* РћР¶РёРґР°РЅРёРµ РїСЂРёР·РЅР°РєР° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅС‚СЂРѕР»СЏ СЃС‚РѕСЂРѕР¶РµРІРѕРіРѕ С‚Р°Р№РјРµСЂР° */
         while ( flag_wdt_timeout != 1U ) {
             ;
         }
-        /* Микропроцессор не был сброшен за 200 мс - отказ WDT */
+        /* РњРёРєСЂРѕРїСЂРѕС†РµСЃСЃРѕСЂ РЅРµ Р±С‹Р» СЃР±СЂРѕС€РµРЅ Р·Р° 200 РјСЃ - РѕС‚РєР°Р· WDT */
         MPM_LOADER_OUT_PTR->test_result |= TEST_RESULT_ERR_WDT;
         err = ERROR;
 
-        /* Обнаружены ошибки
-         * Сторожевой таймер не пересбросил микропроцессор, поэтому необходимо
-         * снова открыть канал RS-232, выдать сообщение об ошибке и закрыть
-         * канал */
+        /* РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё
+         * РЎС‚РѕСЂРѕР¶РµРІРѕР№ С‚Р°Р№РјРµСЂ РЅРµ РїРµСЂРµСЃР±СЂРѕСЃРёР» РјРёРєСЂРѕРїСЂРѕС†РµСЃСЃРѕСЂ, РїРѕСЌС‚РѕРјСѓ РЅРµРѕР±С…РѕРґРёРјРѕ
+         * СЃРЅРѕРІР° РѕС‚РєСЂС‹С‚СЊ РєР°РЅР°Р» RS-232, РІС‹РґР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ Рё Р·Р°РєСЂС‹С‚СЊ
+         * РєР°РЅР°Р» */
         ( void ) rs232_init( 115200U, RS232_PARITY_NO, RS232_SB_1,
                              RS232_BITS_8, RS232_CTS_RTS_NOUSE );
         rs232_str_out( test_str_err, sizeof( test_str_err ) - 1U );
@@ -283,12 +283,12 @@ error_t test_start_wdt(
     }
     
     if ( 0U != ( MPM_LOADER_OUT_PTR->test_result & TEST_RESULT_ERR_OTHER ) ) {
-    /* Обнаружены прочие ошибки */
-        rs232_str_out( test_str_cerr, sizeof( test_str_cerr ) - 1U );           /*  "\r\nОбнаружены ошибки в работе загрузчика"  */
+    /* РћР±РЅР°СЂСѓР¶РµРЅС‹ РїСЂРѕС‡РёРµ РѕС€РёР±РєРё */
+        rs232_str_out( test_str_cerr, sizeof( test_str_cerr ) - 1U );           /*  "\r\nРћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё РІ СЂР°Р±РѕС‚Рµ Р·Р°РіСЂСѓР·С‡РёРєР°"  */
     }
     
     for ( i = 0; i < 1000000U; i++ ) {
-    /* Пауза перед завершением работы RS-232 */
+    /* РџР°СѓР·Р° РїРµСЂРµРґ Р·Р°РІРµСЂС€РµРЅРёРµРј СЂР°Р±РѕС‚С‹ RS-232 */
         ;
     }
     
@@ -302,5 +302,5 @@ error_t test_start_wdt(
 
 void test_start_wdt_end( void )
 {
-    rs232_str_out( test_str_ok, ( sizeof( test_str_ok ) - 1U ) );               // "Успех"
+    rs232_str_out( test_str_ok, ( sizeof( test_str_ok ) - 1U ) );               // "РЈСЃРїРµС…"
 }
