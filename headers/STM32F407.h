@@ -1,8 +1,8 @@
 #define IN_REG(reg) ( reg )
 #define OUT_REG(reg,value) ( reg = value )
 
-/* Примечания:
-   Соглашения EABI об использовании регистров:
+/* РџСЂРёРјРµС‡Р°РЅРёСЏ:
+   РЎРѕРіР»Р°С€РµРЅРёСЏ EABI РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё СЂРµРіРёСЃС‚СЂРѕРІ:
     r0 -r1  Argument / result / scratch registers
     r2 -r3  Argument / scratch registers
     r4 -r8  Variable-registers
@@ -21,7 +21,7 @@
     d16-d31 Scratch registers
    (q8 -q15)
 
-   Стек должен быть выравнен на 8 байт.
+   РЎС‚РµРє РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІС‹СЂР°РІРЅРµРЅ РЅР° 8 Р±Р°Р№С‚.
 */
 
 #ifndef __STM32F407_H__
@@ -37,11 +37,11 @@ extern "C" {
 
 
 /* ----------------------------------------------------------------------------
- * Регистры ядра Cortex-M
+ * Р РµРіРёСЃС‚СЂС‹ СЏРґСЂР° Cortex-M
  * ----------------------------------------------------------------------------
  */
 
-/* Биты регистра APSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° APSR */
 #define MCU_APSR_BITS                         ( 0xF80F0000U )
 #define MCU_APSR_N                            ( 0x80000000U )
 #define MCU_APSR_Z                            ( 0x40000000U )
@@ -50,16 +50,16 @@ extern "C" {
 #define MCU_APSR_Q                            ( 0x8000000U ) 
 #define MCU_ASPR_GE                           ( 0xF0000U )
 
-/* Биты регистра IPSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° IPSR */
 #define MCU_ISR_BITS                          ( 0x1FFU )
 #define MCU_ISR_NUMBER                        ( 0x1FFU )
 
-/* Биты регистра EPSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EPSR */
 #define MCU_EPSR_BITS                         ( 0x700FC00U ) 
 #define MCU_EPSR_ICI_IT                       ( 0x600FC00U )  
 #define MCU_EPSR_T                            ( 0x1000000U )
 
-/* Биты регистра PSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PSR */
 #define MCU_PSR_BITS                          ( 0xF80FFDFFU ) 
 #define MCU_PSR_N                             ( 0x80000000U )
 #define MCU_PSR_Z                             ( 0x40000000U )
@@ -70,26 +70,26 @@ extern "C" {
 #define MCU_PSR_ICI_IT                        ( 0xFC00U )  
 #define MCU_PSR_ISR_NUMBER                    ( 0x1FFU )
 
-/* Биты регистра PRIMASK */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PRIMASK */
 #define MCU_PRIMASK_MASK                      ( 0x1U )
 #define MCU_PRIMASK_PRIMASK                   ( 0x1U )
 
-/* Биты регистра FAULTMASK */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° FAULTMASK */
 #define MCU_FAULTMASK_BITS                    ( 0x1U )
 #define MCU_FAULTMASK_FAULTMASK               ( 0x1U )
 
-/* Биты регистра BASEPRI */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BASEPRI */
 #define MCU_BASEPRI_BITS                      ( 0xF0U )
 #define MCU_BASEPRI_BASEPRI                   ( 0xF0U )
 
-/* Биты регистра CONTROL */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CONTROL */
 #define MCU_CONTROL_BITS                      ( 0x7U )
 #define MCU_CONTROL_FPCA                      ( 0x4U )
 #define MCU_CONTROL_SPSEL                     ( 0x2U )
 #define MCU_CONTROL_nPRIV                     ( 0x1U )
 
 
-/* Базовые адреса регистров микропроцессора */  
+/* Р‘Р°Р·РѕРІС‹Рµ Р°РґСЂРµСЃР° СЂРµРіРёСЃС‚СЂРѕРІ РјРёРєСЂРѕРїСЂРѕС†РµСЃСЃРѕСЂР° */  
 /* Includes the Auxiliary Control register */
 #define CORE_MPU_BASE                         ( 0xE000ED90U )
 #define CORE_ACTLR_BASE                       ( 0xE000E008U )
@@ -117,29 +117,29 @@ typedef volatile struct tag_stm32f407_mpu {
 
 #define STM32F407_MPU_PTR                     ( ( stm32f407_mpu_t * ) CORE_MPU )
 
-/* Биты регистра TYPER */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TYPER */
 #define CORE_MPU_TYPER_BITS                   ( 0xFFFF01U )
 #define CORE_MPU_TYPER_IREGION_MASK           ( 0xFF0000U )
 #define CORE_MPU_TYPER_DREGION_MASK           ( 0xFF00U )
 #define CORE_MPU_TYPER_SEPARATE               ( 0x1U )
 
-/* Биты регистра CTRL */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CTRL */
 #define CORE_MPU_CTRL_BITS                    ( 0x7U )
 #define CORE_MPU_CTRL_PRIVDEFENA              ( 0x4U )
 #define CORE_MPU_CTRL_HFNMIENA                ( 0x2U )
 #define CORE_MPU_CTRL_ENABLE                  ( 0x1U )
 
-/* Биты регистра RNR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RNR */
 #define CORE_MPU_RNR_BITS                     ( 0xFFU )
 #define CORE_MPU_RNR_REGION_MASK              ( 0xFFU )
 
-/* Биты регистра RBAR */ //(?)
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RBAR */ //(?)
 #define CORE_MPU_RBAR_BITS                    ( 0xFFFFFFFFU )
 #define CORE_MPU_RBAR_ADDR_MASK               ( 0xFFFFFFEU )
 #define CORE_MPU_RBAR_VALID                   ( 0x10U )
 #define CORE_MPU_RBAR_REGION_MASK             ( 0xFU )
 
-/* Биты регистра RASR */ 
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RASR */ 
 #define CORE_MPU_RASR_BITS                    ( 0x173FFF3FU )
 #define CORE_MPU_RASR_XN                      ( 0x10000000U )
 #define CORE_MPU_RASR_AP_MASK                 ( 0x7000000U )
@@ -151,13 +151,13 @@ typedef volatile struct tag_stm32f407_mpu {
 #define CORE_MPU_RASR_SIZE                    ( 0x3EU )
 #define CORE_MPU_RASR_ENABLE                  ( 0x1U )
 
-/* Биты регистра RBAR_A1 */ 
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RBAR_A1 */ 
 #define CORE_MPU_RBAR_A1_BITS                 ( 0xFFFFFFFFU )
 #define CORE_MPU_RBAR_A1_ADDR_MASK            ( 0xFFFFFFEU )
 #define CORE_MPU_RBAR_A1_VALID                ( 0x10U )
 #define CORE_MPU_RBAR_A1_REGION_MASK          ( 0xFU )
 
-/* Биты регистра RASR_A1 */ 
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RASR_A1 */ 
 #define CORE_MPU_RASR_A1_BITS                 ( 0x173FFF3FU )
 #define CORE_MPU_RASR_A1_XN                   ( 0x10000000U )
 #define CORE_MPU_RASR_A1_AP_MASK              ( 0x7000000U )
@@ -169,13 +169,13 @@ typedef volatile struct tag_stm32f407_mpu {
 #define CORE_MPU_RASR_A1_SIZE                 ( 0x3EU )
 #define CORE_MPU_RASR_A1_ENABLE               ( 0x1U )
 
-/* Биты регистра RBAR_A2 */ 
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RBAR_A2 */ 
 #define CORE_MPU_RBAR_A2_BITS                 ( 0xFFFFFFFFU )
 #define CORE_MPU_RBAR_A2_ADDR_MASK            ( 0xFFFFFFEU )
 #define CORE_MPU_RBAR_A2_VALID                ( 0x10U )
 #define CORE_MPU_RBAR_A2_REGION_MASK          ( 0xFU )
 
-/* Биты регистра RASR_A2 */ 
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RASR_A2 */ 
 #define CORE_MPU_RASR_A2_BITS                 ( 0x173FFF3FU )
 #define CORE_MPU_RASR_A2_XN                   ( 0x10000000U )
 #define CORE_MPU_RASR_A2_AP_MASK              ( 0x7000000U )
@@ -187,13 +187,13 @@ typedef volatile struct tag_stm32f407_mpu {
 #define CORE_MPU_RASR_A2_SIZE                 ( 0x3EU )
 #define CORE_MPU_RASR_A2_ENABLE               ( 0x1U )
 
-/* Биты регистра RBAR_A3 */ 
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RBAR_A3 */ 
 #define CORE_MPU_RBAR_A3_BITS                 ( 0xFFFFFFFFU )
 #define CORE_MPU_RBAR_A3_ADDR_MASK            ( 0xFFFFFFEU )
 #define CORE_MPU_RBAR_A3_VALID                ( 0x10U )
 #define CORE_MPU_RBAR_A3_REGION_MASK          ( 0xFU )
 
-/* Биты регистра RASR_A3 */ 
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RASR_A3 */ 
 #define CORE_MPU_RASR_A3_BITS                 ( 0x173FFF3FU )
 #define CORE_MPU_RASR_A3_XN                   ( 0x10000000U )
 #define CORE_MPU_RASR_A3_AP_MASK              ( 0x7000000U )
@@ -214,7 +214,7 @@ typedef volatile struct tag_stm32f407_actlr {
 
 #define STM32F407_ACTLR_PTR                   ( ( stm32f407_systick_t * ) CORE_ACTLR )
 
-/* Биты регистра ACTLR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ACTLR */
 #define CORE_SCB_ACTLR_BITS                   ( 0x307U )
 #define CORE_SCB_ACTLR_DISOOFP                ( 0x200U )
 #define CORE_SCB_ACTLR_DISFPCA                ( 0x100U )
@@ -222,7 +222,7 @@ typedef volatile struct tag_stm32f407_actlr {
 #define CORE_SCB_ACTLR_DISDEFWBUF             ( 0x2U )
 #define CORE_SCB_ACTLR_DISMCYCINT             ( 0x1U )
 
-/* ----- SysT (SysTick) ----- */      // управление системным таймером
+/* ----- SysT (SysTick) ----- */      // СѓРїСЂР°РІР»РµРЅРёРµ СЃРёСЃС‚РµРјРЅС‹Рј С‚Р°Р№РјРµСЂРѕРј
 #define CORE_SYST                             ( ( volatile uint8_t * ) CORE_SYST_BASE )
 
 typedef volatile struct tag_stm32f407_systick {
@@ -234,22 +234,22 @@ typedef volatile struct tag_stm32f407_systick {
 
 #define STM32F407_SYSTICK_PTR                 ( ( stm32f407_systick_t * ) CORE_SYST )
 
-/* Биты регистра CTRL */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CTRL */
 #define CORE_SYSTICK_CTRL_BITS                ( 0x10007U )
 #define CORE_SYSTICK_CTRL_COUNTFLAG           ( 0x10000U )
 #define CORE_SYSTICK_CTRL_CLKSOURCE           ( 0x4U )
 #define CORE_SYSTICK_CTRL_TICKINT             ( 0x2U )
 #define CORE_SYSTICK_CTRL_ENABLE              ( 0x1U )
 
-/* Биты регистра LOAD */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° LOAD */
 #define CORE_SYSTICK_LOAD_BITS                ( 0XFFFFFFU)
 #define CORE_SYSTICK_LOAD_RELOAD_MASK         ( 0xFFFFFFU )
 
-/* Биты регистра VAL */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° VAL */
 #define CORE_SYSTICK_VAL_BITS                 ( 0xFFFFFFU )
 #define CORE_SYSTICK_VAL_CURRENT_MASK         ( 0xFFFFFFU )
 
-/* Биты регистра CALIB */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CALIB */
 #define CORE_SYSTICK_CALIB_BITS               ( 0xC0FFFFFFU )
 #define CORE_SYSTICK_CALIB_NOREF              ( 0x80000000U )
 #define CORE_SYSTICK_CALIB_SKEW               ( 0x40000000U )
@@ -277,7 +277,7 @@ typedef volatile struct tag_stm32f407_nvic {
 
 #define STM32F407_NVIC_PTR                    ( ( stm32f407_nvic_t * ) CORE_NVIC )
 
-/* Биты регистра ISER */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ISER */
 #define CORE_NVIC_ISER_WWDG                   ( 0x1U )
 #define CORE_NVIC_ISER_PVD                    ( 0x2U )
 #define CORE_NVIC_ISER_TAMP_STAMP             ( 0x4U )
@@ -364,7 +364,7 @@ typedef volatile struct tag_stm32f407_nvic {
 #define CORE_NVIC_ISER_FPU                    ( 0x20000U )
 
 
-/* Биты регистра ICER */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ICER */
 #define CORE_NVIC_ICER_WWDG                 CORE_NVIC_ISER_WWDG
 #define CORE_NVIC_ICER_PVD                  CORE_NVIC_ISER_PVD
 #define CORE_NVIC_ICER_TAMP_STAMP           CORE_NVIC_ISER_TAMP_STAMP
@@ -451,7 +451,7 @@ typedef volatile struct tag_stm32f407_nvic {
 #define CORE_NVIC_ICER_FPU                  CORE_NVIC_ISER_FPU
 
 
-/* Биты регистра ISPR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ISPR */
 #define CORE_NVIC_ISPR_WWDG                 CORE_NVIC_ISER_WWDG
 #define CORE_NVIC_ISPR_PVD                  CORE_NVIC_ISER_PVD
 #define CORE_NVIC_ISPR_TAMP_STAMP           CORE_NVIC_ISER_TAMP_STAMP
@@ -537,7 +537,7 @@ typedef volatile struct tag_stm32f407_nvic {
 #define CORE_NVIC_ISPR_HASH_RNG             CORE_NVIC_ISER_HASH_RNG
 #define CORE_NVIC_ISPR_FPU                  CORE_NVIC_ISER_FPU
 
-/* Биты регистра ICPR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ICPR */
 #define CORE_NVIC_ICPR_WWDG                 CORE_NVIC_ISER_WWDG
 #define CORE_NVIC_ICPR_PVD                  CORE_NVIC_ISER_PVD
 #define CORE_NVIC_ICPR_TAMP_STAMP           CORE_NVIC_ISER_TAMP_STAMP
@@ -623,7 +623,7 @@ typedef volatile struct tag_stm32f407_nvic {
 #define CORE_NVIC_ICPR_HASH_RNG             CORE_NVIC_ISER_HASH_RNG
 #define CORE_NVIC_ICPR_FPU                  CORE_NVIC_ISER_FPU
 
-/* Биты регистра IPR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° IPR */
 #define CORE_NVIC_IPR_WWDG_MASK               ( 0xF0U )
 #define CORE_NVIC_IPR_PVD_MASK                ( 0xF000U )
 #define CORE_NVIC_IPR_TAMP_STAMP_MASK         ( 0xF00000U )
@@ -709,7 +709,7 @@ typedef volatile struct tag_stm32f407_nvic {
 #define CORE_NVIC_IPR_HASH_RNG_MASK           ( 0xF0U )
 #define CORE_NVIC_IPR_FPU_MASK                ( 0xF000U )
 
-/* Биты регистра STIR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° STIR */
 #define CORE_NVIC_STIR_WWDG                   ( 0x0U )
 #define CORE_NVIC_STIR_PVD                    ( 0x1U )
 #define CORE_NVIC_STIR_TAMP_STAMP             ( 0x2U )
@@ -829,7 +829,7 @@ typedef volatile struct tag_stm32f407_scb {
 
 #define STM32F407_SCB_PTR                     ( ( stm32f407_scb_t * ) CORE_SCB )
 
-/* Биты регистра CPUID */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CPUID */
 #define CORE_SCB_CPUID_BITS                   ( 0xFFFFFFFFU )
 #define CORE_SCB_CPUID_IMPLEMENTER_MASK       ( 0xFF000000U ) 
 #define CORE_SCB_CPUID_VARIANT_MASK           ( 0xF00000U ) 
@@ -837,7 +837,7 @@ typedef volatile struct tag_stm32f407_scb {
 #define CORE_SCB_CPUID_PARTNO_MASK            ( 0xFFF0U ) 
 #define CORE_SCB_CPUID_REVISION_MASK          ( 0xFU ) 
 
-/* Биты регистра ICSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ICSR */
 #define CORE_SCB_ICSR_BITS                    ( 0x9E47F9FFU )
 #define CORE_SCB_ICSR_NMIPENDSET              ( 0x80000000U )
 #define CORE_SCB_ICSR_PENDSVSET               ( 0x10000000U )
@@ -849,11 +849,11 @@ typedef volatile struct tag_stm32f407_scb {
 #define CORE_SCB_ISCR_RETOBASE                ( 0x800U ) 
 #define CORE_SCB_ICSR_VECTACTIVE_MASK         ( 0x1FFU )
 
-/* Биты регистра VTOR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° VTOR */
 #define CORE_SCB_VTOR_BITS                    ( 0x3FFFFE00U )
 #define CORE_SCB_VTOR_TABLEOFF                ( 0x3FFFFE00U )
 
-/* Биты регистра AIRCR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AIRCR */
 #define CORE_SCB_AIRCR_BITS                   ( 0xFFFF8707U )
 #define CORE_SCB_AIRCR_VECTKEY                ( 0xFFFF0000U )
 #define CORE_SCB_AIRCR_ENDIANNESS             ( 0x8000U )
@@ -862,13 +862,13 @@ typedef volatile struct tag_stm32f407_scb {
 #define CORE_SCB_AIRCR_VECTCLRACTIVE          ( 0x2U ) 
 #define CORE_SCB_AIRCR_VECTRESET              ( 0x1U ) 
 
-/* Биты регистра SCR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SCR */
 #define CORE_SCB_SCR_BITS                     ( 0x16U )
 #define CORE_SCB_SCR_SEVONPEND                ( 0x10U ) 
 #define CORE_SCB_SCR_SLEEPDEEP                ( 0x4U ) 
 #define CORE_SCB_SCR_SLEEPONEXIT              ( 0x2U ) 
 
-/* Биты регистра CCR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCR */
 #define CORE_SCB_CCR_BITS                     ( 0x31BU )
 #define CORE_SCB_CCR_STKALIGN                 ( 0x200U ) 
 #define CORE_SCB_CCR_BFHFNIGN                 ( 0x100U ) 
@@ -877,22 +877,22 @@ typedef volatile struct tag_stm32f407_scb {
 #define CORE_SCB_CCR_USERSETMPEND             ( 0x2U ) 
 #define CORE_SCB_CCR_NONBASETHRDENA           ( 0x1U ) 
 
-/* Биты регистра SHPR1 */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SHPR1 */
 #define CORE_SHPR1_BITS                       ( 0xFFFFFFU )
 #define CORE_SHPR1_PRI_6_MASK                 ( 0xFF0000U ) 
 #define CORE_SHPR1_PRI_5_MASK                 ( 0xFF00U )
 #define CORE_SHPR1_PRI_4_MASK                 ( 0xFFU )
 
-/* Биты регистра SHPR2 */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SHPR2 */
 #define CORE_SHPR2_BITS                       ( 0xFF000000U )
 #define CORE_SHPR2_PRI_11_MASK                ( 0xFF000000U ) 
 
-/* Биты регистра SHPR3 */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SHPR3 */
 #define CORE_SHPR3_BITS                       ( 0xFFFF0000U )
 #define CORE_SHPR3_PRI_15_MASK                ( 0xFF000000U ) 
 #define CORE_SHPR3_PRI_14_MASK                ( 0xFF0000U ) 
 
-/* Биты регистра SHCSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SHCSR */
 #define CORE_SHCSR_BITS                       ( 0x7FD8BU )
 #define CORE_SHCSR_USG_FAULT_ENA              ( 0x40000U )
 #define CORE_SHCSR_BUS_FAULT_ENA              ( 0x20000U )
@@ -909,32 +909,32 @@ typedef volatile struct tag_stm32f407_scb {
 #define CORE_SHCSR_BUS_FAULT_ACT              ( 0x2U )
 #define CORE_SHCSR_MEM_FAULT_ACT              ( 0x1U )
 
-/* Биты регистра CFSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CFSR */
 #define CORE_CFSR_BITS                        ( 0xFFFFFFFFU )
 #define CORE_CFSR_UFSR                        ( 0xFFFF0000U )
 #define CORE_CFSR_BFSR                        ( 0xFF00U )
 #define CORE_CFSR_MMFSR                       ( 0xFFU )
 
-/* Биты регистра HFSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° HFSR */
 #define CORE_HFSR_BITS                        ( 0xC0000002U )
 #define CORE_HFSR_DEBUG_VT                    ( 0x80000000U )
 #define CORE_HFSR_FORCED                      ( 0x40000000U )
 #define CORE_HFSR_VECTTBL                     ( 0x2U )
 
-/* Биты регистра MMFAR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° MMFAR */
 #define CORE_MMFAR_BITS                       ( 0xFFFFFFFFU )
 #define CORE_MMFAR_MMAR                       ( 0xFFFFFFFFU )
 
-/* Биты регистра BFAR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BFAR */
 #define CORE_BFAR_BITS                        ( 0xFFFFFFFFU )
 #define CORE_BFAR_BFAR                        ( 0xFFFFFFFFU )
 
-/* Биты регистра AFSR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AFSR */
 #define CORE_AFSR_BITS                        ( 0xFFFFFFFFU )
 #define CORE_AFSR_AFSR                        ( 0xFFFFFFFFU )
 
 /* ----------------------------------------------------------------------------
- * Регистры встроенной периферии микропроцессора
+ * Р РµРіРёСЃС‚СЂС‹ РІСЃС‚СЂРѕРµРЅРЅРѕР№ РїРµСЂРёС„РµСЂРёРё РјРёРєСЂРѕРїСЂРѕС†РµСЃСЃРѕСЂР°
  * ----------------------------------------------------------------------------
  */
 
@@ -964,7 +964,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define STM32F407_ADC_3_PTR                   ( ( stm32f407_adc_t * ) 0x40012200U )
 #define STM32F407_ADC_COMMON_PTR              ( ( stm32f407_adc_t * ) 0x40012300U )
 
-/* Биты регистра ADC_SR (ADC status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_SR (ADC status register) */
 #define MCU_ADC_SR_BITS                       ( 0x3FU )
 #define MCU_ADC_SR_OVR                        ( 0x20U )
 #define MCU_ADC_SR_STRT		                  ( 0x10U )
@@ -973,7 +973,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SR_EOC                        ( 0x2U )
 #define MCU_ADC_SR_AWD                        ( 0x1U )
 
-/* Биты регистра ADC_CR1 (ADC control register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_CR1 (ADC control register 1) */
 #define MCU_ADC_CR1_BITS      			      ( 0x7C0FFFFU )
 #define MCU_ADC_CR1_OVRIE       			  ( 0x4000000U )
 #define MCU_ADC_CR1_RES_6   				  ( 0x3000000U )
@@ -1021,7 +1021,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_CR1_AWDCH_0CH    		      ( 0x0U )
 #define MCU_ADC_CR1_AWDCH_MASK    		      ( 0x1FU )
 
-/* Биты регистра ADC_CR2 (ADC control register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_CR2 (ADC control register 2) */
 #define MCU_ADC_CR2_BITS      			      ( 0x7F7F0F03U )
 #define MCU_ADC_CR2_SWSTART                   ( 0x40000000U )
 #define MCU_ADC_CR2_EXTEN_RISING_FALLING	  ( 0x30000000U )
@@ -1076,7 +1076,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_CR2_CONT       			      ( 0x2U )
 #define MCU_ADC_CR2_ADON   					  ( 0x1U )
 
-/* Биты регистра ADC_SMPR1 (ADC sample time register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_SMPR1 (ADC sample time register 1) */
 #define MCU_ADC_SMPR1_BITS      			  ( 0x7FFFFFFU )
 #define MCU_ADC_SMPR1_SMP18_MASK              ( 0x7000000U )
 #define MCU_ADC_SMPR1_SMP17_MASK              ( 0xE00000U )
@@ -1089,7 +1089,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP11_MASK              ( 0x38U )
 #define MCU_ADC_SMPR1_SMP10_MASK              ( 0x7U )
 
-/* Вывод порта 480 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 480 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR1_480                     ( 0x7U )
 #define MCU_ADC_SMPR1_SMP10_480               ( ( uint32_t ) MCU_ADC_SMPR1_480 << 0U  )
 #define MCU_ADC_SMPR1_SMP11_480               ( ( uint32_t ) MCU_ADC_SMPR1_480 << 3U  )
@@ -1101,7 +1101,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP17_480               ( ( uint32_t ) MCU_ADC_SMPR1_480 << 21U  )
 #define MCU_ADC_SMPR1_SMP18_480               ( ( uint32_t ) MCU_ADC_SMPR1_480 << 24U  )
 
-/* Вывод порта 144 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 144 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR1_144                     ( 0x6U )
 #define MCU_ADC_SMPR1_SMP10_144               ( ( uint32_t ) MCU_ADC_SMPR1_144 << 0U  )
 #define MCU_ADC_SMPR1_SMP11_144               ( ( uint32_t ) MCU_ADC_SMPR1_144 << 3U  )
@@ -1113,7 +1113,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP17_144               ( ( uint32_t ) MCU_ADC_SMPR1_144 << 21U  )
 #define MCU_ADC_SMPR1_SMP18_144               ( ( uint32_t ) MCU_ADC_SMPR1_144 << 24U  )
 
-/* Вывод порта 112 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 112 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR1_112                     ( 0x5U )
 #define MCU_ADC_SMPR1_SMP10_112               ( ( uint32_t ) MCU_ADC_SMPR1_112 << 0U  )
 #define MCU_ADC_SMPR1_SMP11_112               ( ( uint32_t ) MCU_ADC_SMPR1_112 << 3U  )
@@ -1125,7 +1125,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP17_112               ( ( uint32_t ) MCU_ADC_SMPR1_112 << 21U  )
 #define MCU_ADC_SMPR1_SMP18_112               ( ( uint32_t ) MCU_ADC_SMPR1_112 << 24U  )
 
-/* Вывод порта 84 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 84 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR1_84                      ( 0x4U )
 #define MCU_ADC_SMPR1_SMP10_84                ( ( uint32_t ) MCU_ADC_SMPR1_84 << 0U  )
 #define MCU_ADC_SMPR1_SMP11_84                ( ( uint32_t ) MCU_ADC_SMPR1_84 << 3U  )
@@ -1137,7 +1137,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP17_84                ( ( uint32_t ) MCU_ADC_SMPR1_84 << 21U  )
 #define MCU_ADC_SMPR1_SMP18_84                ( ( uint32_t ) MCU_ADC_SMPR1_84 << 24U  )
 
-/* Вывод порта 56 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 56 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR1_56                      ( 0x3U )
 #define MCU_ADC_SMPR1_SMP10_56                ( ( uint32_t ) MCU_ADC_SMPR1_56 << 0U  )
 #define MCU_ADC_SMPR1_SMP11_56                ( ( uint32_t ) MCU_ADC_SMPR1_56 << 3U  )
@@ -1149,7 +1149,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP17_56                ( ( uint32_t ) MCU_ADC_SMPR1_56 << 21U  )
 #define MCU_ADC_SMPR1_SMP18_56                ( ( uint32_t ) MCU_ADC_SMPR1_56 << 24U  )
 
-/* Вывод порта 28 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 28 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR1_28                      ( 0x2U )
 #define MCU_ADC_SMPR1_SMP10_28                ( ( uint32_t ) MCU_ADC_SMPR1_28 << 0U  )
 #define MCU_ADC_SMPR1_SMP11_28                ( ( uint32_t ) MCU_ADC_SMPR1_28 << 3U  )
@@ -1161,7 +1161,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP17_28                ( ( uint32_t ) MCU_ADC_SMPR1_28 << 21U  )
 #define MCU_ADC_SMPR1_SMP18_28                ( ( uint32_t ) MCU_ADC_SMPR1_28 << 24U  )
 
-/* Вывод порта 15 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 15 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR1_15                      ( 0x1U )
 #define MCU_ADC_SMPR1_SMP10_15                ( ( uint32_t ) MCU_ADC_SMPR1_15 << 0U  )
 #define MCU_ADC_SMPR1_SMP11_15                ( ( uint32_t ) MCU_ADC_SMPR1_15 << 3U  )
@@ -1173,7 +1173,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP17_15                ( ( uint32_t ) MCU_ADC_SMPR1_15 << 21U  )
 #define MCU_ADC_SMPR1_SMP18_15                ( ( uint32_t ) MCU_ADC_SMPR1_15 << 24U  )
 
-/* Вывод порта 3 цикла */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 3 С†РёРєР»Р° */
 #define MCU_ADC_SMPR1_3                       ( 0x0U )
 #define MCU_ADC_SMPR1_SMP10_3                 ( ( uint32_t ) MCU_ADC_SMPR1_3 << 0U  )
 #define MCU_ADC_SMPR1_SMP11_3                 ( ( uint32_t ) MCU_ADC_SMPR1_3 << 3U  )
@@ -1185,7 +1185,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR1_SMP17_3                 ( ( uint32_t ) MCU_ADC_SMPR1_3 << 21U  )
 #define MCU_ADC_SMPR1_SMP18_3                 ( ( uint32_t ) MCU_ADC_SMPR1_3 << 24U  )
 
-/* Биты регистра ADC_SMPR2 (ADC sample time register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_SMPR2 (ADC sample time register 2) */
 #define MCU_ADC_SMPR2_BITS      			  ( 0x3FFFFFFFU )
 #define MCU_ADC_SMPR2_SMP9_MASK               ( 0x38000000U )
 #define MCU_ADC_SMPR2_SMP8_MASK               ( 0x7000000U )
@@ -1198,7 +1198,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP1_MASK               ( 0x38U )
 #define MCU_ADC_SMPR2_SMP0_MASK               ( 0x7U )
 
-/* Вывод порта 480 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 480 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR2_480                     ( 0x7U )
 #define MCU_ADC_SMPR2_SMP0_480                ( ( uint32_t ) MCU_ADC_SMPR2_480 << 0U  )
 #define MCU_ADC_SMPR2_SMP1_480                ( ( uint32_t ) MCU_ADC_SMPR2_480 << 3U  )
@@ -1211,7 +1211,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP8_480                ( ( uint32_t ) MCU_ADC_SMPR2_480 << 24U  )
 #define MCU_ADC_SMPR2_SMP9_480                ( ( uint32_t ) MCU_ADC_SMPR2_480 << 27U  )
 
-/* Вывод порта 144 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 144 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR2_144                     ( 0x6U )
 #define MCU_ADC_SMPR2_SMP0_144                ( ( uint32_t ) MCU_ADC_SMPR2_144 << 0U  )
 #define MCU_ADC_SMPR2_SMP1_144                ( ( uint32_t ) MCU_ADC_SMPR2_144 << 3U  )
@@ -1224,7 +1224,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP8_144                ( ( uint32_t ) MCU_ADC_SMPR2_144 << 24U  )
 #define MCU_ADC_SMPR2_SMP9_144                ( ( uint32_t ) MCU_ADC_SMPR2_144 << 27U  )
 
-/* Вывод порта 112 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 112 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR2_112                     ( 0x5U )
 #define MCU_ADC_SMPR2_SMP0_112                ( ( uint32_t ) MCU_ADC_SMPR2_12 << 0U  )
 #define MCU_ADC_SMPR2_SMP1_112                ( ( uint32_t ) MCU_ADC_SMPR2_12 << 3U  )
@@ -1237,7 +1237,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP8_112                ( ( uint32_t ) MCU_ADC_SMPR2_12 << 24U  )
 #define MCU_ADC_SMPR2_SMP9_112                ( ( uint32_t ) MCU_ADC_SMPR2_12 << 27U  )
 
-/* Вывод порта 84 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 84 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR2_84                      ( 0x4U )
 #define MCU_ADC_SMPR2_SMP0_84                 ( ( uint32_t ) MCU_ADC_SMPR2_84 << 0U  )
 #define MCU_ADC_SMPR2_SMP1_84                 ( ( uint32_t ) MCU_ADC_SMPR2_84 << 3U  )
@@ -1250,7 +1250,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP8_84                 ( ( uint32_t ) MCU_ADC_SMPR2_84 << 24U  )
 #define MCU_ADC_SMPR2_SMP9_84                 ( ( uint32_t ) MCU_ADC_SMPR2_84 << 27U  )
 
-/* Вывод порта 56 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 56 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR2_56                      ( 0x3U )
 #define MCU_ADC_SMPR2_SMP0_56                 ( ( uint32_t ) MCU_ADC_SMPR2_56 << 0U  )
 #define MCU_ADC_SMPR2_SMP1_56                 ( ( uint32_t ) MCU_ADC_SMPR2_56 << 3U  )
@@ -1263,7 +1263,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP8_56                 ( ( uint32_t ) MCU_ADC_SMPR2_56 << 24U  )
 #define MCU_ADC_SMPR2_SMP9_56                 ( ( uint32_t ) MCU_ADC_SMPR2_56 << 27U  )
 
-/* Вывод порта 28 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 28 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR2_28                      ( 0x2U )
 #define MCU_ADC_SMPR2_SMP0_28                 ( ( uint32_t ) MCU_ADC_SMPR2_28 << 0U  )
 #define MCU_ADC_SMPR2_SMP1_28                 ( ( uint32_t ) MCU_ADC_SMPR2_28 << 3U  )
@@ -1276,7 +1276,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP8_28                 ( ( uint32_t ) MCU_ADC_SMPR2_28 << 24U  )
 #define MCU_ADC_SMPR2_SMP9_28                 ( ( uint32_t ) MCU_ADC_SMPR2_28 << 27U  )
 
-/* Вывод порта 15 циклов */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 15 С†РёРєР»РѕРІ */
 #define MCU_ADC_SMPR2_15                      ( 0x1U )
 #define MCU_ADC_SMPR2_SMP0_15                 ( ( uint32_t ) MCU_ADC_SMPR2_15 << 0U  )
 #define MCU_ADC_SMPR2_SMP1_15                 ( ( uint32_t ) MCU_ADC_SMPR2_15 << 3U  )
@@ -1289,7 +1289,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP8_15                 ( ( uint32_t ) MCU_ADC_SMPR2_15 << 24U  )
 #define MCU_ADC_SMPR2_SMP9_15                 ( ( uint32_t ) MCU_ADC_SMPR2_15 << 27U  )
 
-/* Вывод порта 3 цикла */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° 3 С†РёРєР»Р° */
 #define MCU_ADC_SMPR2_3                       ( 0x0U )
 #define MCU_ADC_SMPR2_SMP0_3                  ( ( uint32_t ) MCU_ADC_SMPR2_3 << 0U  )
 #define MCU_ADC_SMPR2_SMP1_3                  ( ( uint32_t ) MCU_ADC_SMPR2_3 << 3U  )
@@ -1302,19 +1302,19 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SMPR2_SMP8_3                  ( ( uint32_t ) MCU_ADC_SMPR2_3 << 24U  )
 #define MCU_ADC_SMPR2_SMP9_3                  ( ( uint32_t ) MCU_ADC_SMPR2_3 << 27U  )
 
-/* Биты регистра ADC_JOFR (ADC injected channel data offset register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_JOFR (ADC injected channel data offset register) */
 #define MCU_ADC_JOFR_BITS      			  	  ( 0xFFFU )
 #define MCU_ADC_JOFR_JOFFSET_MASK             ( 0xFFFU )
 
-/* Биты регистра ADC_HTR (ADC watchdog higher threshold register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_HTR (ADC watchdog higher threshold register) */
 #define MCU_ADC_HTR_BITS      			  	  ( 0xFFFU )
 #define MCU_ADC_HTR_HT_MASK          	      ( 0xFFFU )
 
-/* Биты регистра ADC_LTR (ADC watchdog lower threshold register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_LTR (ADC watchdog lower threshold register) */
 #define MCU_ADC_LTR_BITS      			  	  ( 0xFFFU )
 #define MCU_ADC_LTR_LT_MASK          	      ( 0xFFFU )
 
-/* Биты регистра ADC_SQR1 (ADC regular sequence register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_SQR1 (ADC regular sequence register 1) */
 #define MCU_ADC_SQR1_BITS      			  	  ( 0xFFFFFFU )
 #define MCU_ADC_SQR1_L_16         			  ( 0xF00000U )
 #define MCU_ADC_SQR1_L_15         			  ( 0xE00000U )
@@ -1339,7 +1339,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SQR1_SQ14_MASK         		  ( 0x3E0U )
 #define MCU_ADC_SQR1_SQ13_MASK         		  ( 0x1FU )
 
-/* Биты регистра ADC_SQR2 (ADC regular sequence register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_SQR2 (ADC regular sequence register 2) */
 #define MCU_ADC_SQR2_BITS      			  	  ( 0x3FFFFFFFU )
 #define MCU_ADC_SQR2_SQ12_MASK         		  ( 0x3E000000U )
 #define MCU_ADC_SQR2_SQ11_MASK         		  ( 0x1F00000U )
@@ -1349,7 +1349,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SQR2_SQ8_MASK         		  ( 0x3E0U )
 #define MCU_ADC_SQR2_SQ7_MASK         		  ( 0x1FU )
 
-/* Биты регистра ADC_SQR3 (ADC regular sequence register 3) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_SQR3 (ADC regular sequence register 3) */
 #define MCU_ADC_SQR3_BITS      			  	  ( 0x3FFFFFFFU )
 #define MCU_ADC_SQR3_SQ6_MASK         		  ( 0x3E000000U )
 #define MCU_ADC_SQR3_SQ5_MASK         		  ( 0x1F00000U )
@@ -1359,7 +1359,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_SQR3_SQ2_MASK         		  ( 0x3E0U )
 #define MCU_ADC_SQR3_SQ1_MASK         		  ( 0x1FU )
 
-/* Биты регистра ADC_JSQR (ADC injected sequence register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_JSQR (ADC injected sequence register) */
 #define MCU_ADC_JSQR_BITS      			  	  ( 0x3FFFFFU )
 #define MCU_ADC_JSQR_JL_4         		      ( 0x300000U )
 #define MCU_ADC_JSQR_JL_3         		      ( 0x200000U )
@@ -1372,15 +1372,15 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_JSQR_JSQ2_MASK         		  ( 0x3E0U )
 #define MCU_ADC_JSQR_JSQ1_MASK         		  ( 0x1FU )
 
-/* Биты регистра ADC_JDR (ADC injected data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_JDR (ADC injected data register) */
 #define MCU_ADC_JDR_BITS      			  	  ( 0xFFFFU )
 #define MCU_ADC_JDR_JDATA_MASK          	  ( 0xFFFFU )
 
-/* Биты регистра ADC_DR (ADC regular data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_DR (ADC regular data register) */
 #define MCU_ADC_DR_BITS      			  	  ( 0xFFFFU )
 #define MCU_ADC_DR_DATA_MASK          	      ( 0xFFFFU )
 
-/* Биты регистра ADC_CSR (ADC common status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_CSR (ADC common status register) */
 #define MCU_ADC_CSR_BITS      			      ( ( uint32_t ) STM32F407_ADC_COMMON_PTR << 0U  )
 #define MCU_ADC_CSR_ADC3_OVR3 				  ( 0x200000U )
 #define MCU_ADC_CSR_ADC3_STRT3   	          ( 0x100000U )
@@ -1401,7 +1401,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_CSR_ADC1_EOC1        	      ( 0x2U )
 #define MCU_ADC_CSR_ADC1_AWD1        	      ( 0x1U )
 
-/* Биты регистра ADC_CCR (ADC common control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_CCR (ADC common control register) */
 #define MCU_ADC_CCR_BITS      			      ( ( uint32_t ) STM32F407_ADC_COMMON_PTR << 4U  )
 #define MCU_ADC_CCR_TSVREFE 				  ( 0x800000U )
 #define MCU_ADC_CCR_VBATE 				      ( 0x400000U )
@@ -1450,7 +1450,7 @@ typedef volatile struct tag_stm32f407_adc {
 #define MCU_ADC_CCR_MULTI_D_INDEP 		      ( 0x0U )
 #define MCU_ADC_CCR_MULTI_MASK 				  ( 0x1FU )
 
-/* Биты регистра ADC_CDR (ADC common regular data register for dual and triple modes) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ADC_CDR (ADC common regular data register for dual and triple modes) */
 #define MCU_ADC_CDR_BITS      			      ( ( uint32_t ) STM32F407_ADC_COMMON_PTR << 8U  )
 #define MCU_ADC_CDR_DATA2_MASK                ( 0xFFFF0000U )
 #define MCU_ADC_CDR_DATA1_MASK                ( 0xFFFFU )
@@ -1475,7 +1475,7 @@ typedef volatile struct tag_stm32f407_dac {
 
 #define STM32F407_DAC_PTR                     ( ( stm32f407_dac_t * ) 0x40007400U)
 
-/* Биты регистра DAC_CR (DAC control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_CR (DAC control register) */
 #define MCU_DAC_CR_BITS      			      ( 0x3FFF3FFFU )
 #define MCU_DAC_CR_DMAUDRIE2                  ( 0x20000000U )
 #define MCU_DAC_CR_DMAEN2         	          ( 0x10000000U )
@@ -1534,63 +1534,63 @@ typedef volatile struct tag_stm32f407_dac {
 #define MCU_DAC_CR_BOFF1         		      ( 0x2U )
 #define MCU_DAC_CR_EN1           		      ( 0x1U )
 
-/* Биты регистра DAC_SWTRIGR (DAC software trigger register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_SWTRIGR (DAC software trigger register) */
 #define MCU_DAC_SWTRIGR_BITS      	          ( 0x3U )
 #define MCU_DAC_SWTRIGR_SWTRIG2               ( 0x2U )
 #define MCU_DAC_SWTRIGR_SWTRIG1               ( 0x1U )
 
-/* Биты регистра DAC_DHR12R1 (DAC channel_1 12-bit right-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR12R1 (DAC channel_1 12-bit right-aligned data holding register) */
 #define MCU_DAC_DHR12R1_BITS      	 		  ( 0xFFFU )
 #define MCU_DAC_DHR12R1_DACC1DHR_MASK         ( 0xFFFU )
 
-/* Биты регистра DAC_DHR12L1 (DAC channel_1 12-bit left-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR12L1 (DAC channel_1 12-bit left-aligned data holding register) */
 #define MCU_DAC_DHR12L1_BITS      	 	      ( 0xFFF0U )
 #define MCU_DAC_DHR12L1_DACC1DHR_MASK         ( 0xFFF0U )
 
-/* Биты регистра DAC_DHR8R1 (DAC channel_1 8-bit right-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR8R1 (DAC channel_1 8-bit right-aligned data holding register) */
 #define MCU_DAC_DHR8R1_BITS      	 		  ( 0xFFU )
 #define MCU_DAC_DHR8R1_DACC1DHR_MASK          ( 0xFFU )
 
-/* Биты регистра DAC_DHR12R2 (DAC channel_2 12-bit right-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR12R2 (DAC channel_2 12-bit right-aligned data holding register) */
 #define MCU_DAC_DHR12R2_BITS      	 		  ( 0xFFFU )
 #define MCU_DAC_DHR12R2_DACC2DHR_MASK         ( 0xFFFU )
 
-/* Биты регистра DAC_DHR12L2 (DAC channel_2 12-bit left-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR12L2 (DAC channel_2 12-bit left-aligned data holding register) */
 #define MCU_DAC_DHR12L2_BITS      	 		  ( 0xFFF0U )
 #define MCU_DAC_DHR12L2_DACC2DHR_MASK         ( 0xFFF0U )
 
-/* Биты регистра DAC_DHR8R2 (DAC channel_2 8-bit right-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR8R2 (DAC channel_2 8-bit right-aligned data holding register) */
 #define MCU_DAC_DHR8R2_BITS      	 		  ( 0xFFU )
 #define MCU_DAC_DHR8R2_DACC2DHR_MASK          ( 0xFFU )
 
-/* Биты регистра DAC_DHR12RD (dual DAC 12-bit right-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR12RD (dual DAC 12-bit right-aligned data holding register) */
 #define MCU_DAC_DHR12RD_BITS      	 		  ( 0xFFF0FFFU )
 #define MCU_DAC_DHR12RD_DACC2DHR_MASK         ( 0xFFF0000U )
 #define MCU_DAC_DHR12RD_DACC1DHR_MASK         ( 0xFFFU )
 
-/* Биты регистра DAC_DHR12LD (dual DAC 12-bit left-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR12LD (dual DAC 12-bit left-aligned data holding register) */
 #define MCU_DAC_DHR12LD_BITS      	 	      ( 0xFFF0FFF0U )
 #define MCU_DAC_DHR12LD_DACC2DHR_MASK         ( 0xFFF00000U )
 #define MCU_DAC_DHR12LD_DACC1DHR_MASK         ( 0xFFF0U )
 
-/* Биты регистра DAC_DHR8RD (dual DAC 8-bit right-aligned data holding register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DHR8RD (dual DAC 8-bit right-aligned data holding register) */
 #define MCU_DAC_DHR8RD_BITS      	 	      ( 0xFFFFU )
 #define MCU_DAC_DHR8RD_DACC2DHR_MASK          ( 0xFF00U )
 #define MCU_DAC_DHR8RD_DACC1DHR_MASK          ( 0xFFU )
 
-/* Биты регистра DAC_DOR1 (DAC channel_1 data output register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DOR1 (DAC channel_1 data output register) */
 #define MCU_DAC_DOR1_BITS      	 			  ( 0xFFFU )
 #define MCU_DAC_DOR1_DACC1DOR_MASK            ( 0xFFFU )
 
-/* Биты регистра DAC_DOR2 (DAC channel_2 data output register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_DOR2 (DAC channel_2 data output register) */
 #define MCU_DAC_DOR2_BITS      	 			  ( 0xFFFU )
 #define MCU_DAC_DOR2_DACC2DOR_MASK            ( 0xFFFU )
 
-/* Биты регистра DAC_SR (DAC status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DAC_SR (DAC status register) */
 #define MCU_DAC_SR_BITS      	              ( 0x20002000U )
 #define MCU_DAC_SR_DMAUDR2                    ( 0x20000000U )
 #define MCU_DAC_SR_DMAUDR1                    ( 0x2000U )
-/* ----- Контроллер Flash-памяти программ (FLASH) ----- */
+/* ----- РљРѕРЅС‚СЂРѕР»Р»РµСЂ Flash-РїР°РјСЏС‚Рё РїСЂРѕРіСЂР°РјРј (FLASH) ----- */
 typedef volatile struct tag_stm32f407_flash { 
     uint32_t        acr;
     uint32_t        keyr;
@@ -1602,7 +1602,7 @@ typedef volatile struct tag_stm32f407_flash {
 
 #define STM32F407_FLASH_PTR                   ( ( stm32f407_flash_t * ) 0x40023C00U )
 
-/* Биты регистра ACR (access control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ACR (access control register) */
 #define MCU_FLASH_ACR_BITS                    ( 0x1F07U )
 #define MCU_FLASH_ACR_DCRST                   ( 0x1000U )
 #define MCU_FLASH_ACR_ICRST                   ( 0x800U )
@@ -1611,17 +1611,17 @@ typedef volatile struct tag_stm32f407_flash {
 #define MCU_FLASH_ACR_PRFTEN                  ( 0x100U )
 #define MCU_FLASH_ACR_LATENCY_MASK            ( 0x7U )
 
-/* Биты регистра KEYR (key register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° KEYR (key register) */
 #define MCU_FLASH_KEYR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_FLASH_KEYR_KEY1                   ( 0x45670123U )
 #define MCU_FLASH_KEYR_KEY2                   ( 0xCDEF89ABU )
 
-/* Биты регистра OPTKEYR (option key register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° OPTKEYR (option key register) */
 #define MCU_FLASH_OPTKEYR_BITS                ( 0xFFFFFFFFU )
 #define MCU_FLASH_OPTKEYR_KEY1                ( 0x08192A3BU )
 #define MCU_FLASH_OPTKEYR_KEY2                ( 0x4C5D6E7FU )
 
-/* Биты регистра SR (status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR (status register) */
 #define MCU_FLASH_SR_BITS                     ( 0x100F3U )
 #define MCU_FLASH_SR_BSY                      ( 0x10000U )
 #define MCU_FLASH_SR_PGSERR                   ( 0x80U )
@@ -1631,7 +1631,7 @@ typedef volatile struct tag_stm32f407_flash {
 #define MCU_FLASH_SR_OPERR                    ( 0x2U )
 #define MCU_FLASH_SR_EOP                      ( 0x1U )
 
-/* Биты регистра CR (control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR (control register) */
 #define MCU_FLASH_CR_BITS                     ( 0x8301037FU )
 #define MCU_FLASH_CR_LOCK                     ( 0x80000000U )
 #define MCU_FLASH_CR_ERRIE                    ( 0x2000000U )
@@ -1655,7 +1655,7 @@ typedef volatile struct tag_stm32f407_flash {
 #define MCU_FLASH_CR_SER                      ( 0x2U )
 #define MCU_FLASH_CR_PG                       ( 0x1U )
 
-/* Биты регистра OTPCR (option control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° OTPCR (option control register) */
 #define MCU_FLASH_OPTCR_BITS                  ( 0xFFFFFEFU )
 #define MCU_FLASH_OPTCR_NWRP                  ( 0xFFF0000U )
 #define MCU_FLASH_OPTCR_RDP                   ( 0xFF00U )
@@ -1676,15 +1676,15 @@ typedef volatile struct tag_stm32f407_crc {
 
 #define STM32F407_CRC_PTR                     ( ( stm32f407_crc_t * ) 0x40023000U )
 
-/* Биты регистра DR (data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DR (data register) */
 #define MCU_CRC_DR_BITS                       ( 0xFFFFFFFFU )
 #define MCU_CRC_DR_DR                         ( 0xFFFFFFFFU )
 
-/* Биты регистра IDR (independent data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° IDR (independent data register) */
 #define MCU_CRC_IDR_BITS                      ( 0xFFU )
 #define MCU_CRC_IDR_IDR                       ( 0xFFU )
 
-/* Биты регистра CR (control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR (control register) */
 #define MCU_CRC_CR_BITS                       ( 0x1U )
 #define MCU_CRC_CR_RESET                      ( 0x1U )
 
@@ -1697,7 +1697,7 @@ typedef volatile struct tag_stm32f407_pwr {
 
 #define STM32F407_PWR_PTR                     ( ( stm32f407_pwr_t * ) 0x40007000U )
 
-/* Биты регистра CR (control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR (control register) */
 #define MCU_PWR_CR_BITS                       ( 0x43FFU )
 #define MCU_PWR_CR_VOS                        ( 0x4000U )
 #define MCU_PWR_CR_FPDS                       ( 0x200U )
@@ -1709,7 +1709,7 @@ typedef volatile struct tag_stm32f407_pwr {
 #define MCU_PWR_CR_PDDS                       ( 0x2U )
 #define MCU_PWR_CR_LPDS                       ( 0x1U )
 
-/* Биты регистра CSR (control/status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CSR (control/status register) */
 #define MCU_PWR_CSR_BITS                      ( 0x430FU )
 #define MCU_PWR_CSR_VOSRDY                    ( 0x4000U )
 #define MCU_PWR_CSR_BRE                       ( 0x200U )
@@ -1756,7 +1756,7 @@ typedef volatile struct tag_stm32f407_rcc {
 
 #define STM32F407_RCC_PTR                     ( ( stm32f407_rcc_t * ) 0x40023800U )
 
-// Биты регистра CR (clock control register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR (clock control register)
 #define MCU_RCC_CR_BITS                       ( 0xF0FFFFBU )
 #define MCU_RCC_CR_PLLI2SRDY                  ( 0x8000000U )
 #define MCU_RCC_CR_PLLI2SON                   ( 0x4000000U )
@@ -1782,7 +1782,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_CR_HSIRDY                     ( 0x2U )
 #define MCU_RCC_CR_HSION                      ( 0x1U )
 
-// Биты регистра PLLCFGR (PLL configuration register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PLLCFGR (PLL configuration register)
 #define MCU_RCC_PLLCFGR_BITS                  ( 0xF437FFFU )
 #define MCU_RCC_PLLCFGR_PLLQ_BITS             ( 0xF000000U )
 #define MCU_RCC_PLLCFGR_PLLQ3                 ( 0x8000000U )
@@ -1811,7 +1811,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_PLLCFGR_PLLM1                 ( 0x2U )
 #define MCU_RCC_PLLCFGR_PLLM0                 ( 0x1U )
 
-// Биты регистра CFGR (clock configuration register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CFGR (clock configuration register)
 #define MCU_RCC_CFGR_BITS                     ( 0xFFFFFCFFU )
 #define MCU_RCC_CFGR_MCO2_MASK                ( 0xC0000000U )
 #define MCU_RCC_CFGR_MCO2_1                   ( 0x80000000U )
@@ -1852,7 +1852,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_CFGR_SW_1                     ( 0x2U )
 #define MCU_RCC_CFGR_SW_0                     ( 0x1U )
 
-// Биты регистра CIR (clock interrupt register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CIR (clock interrupt register)
 #define MCU_RCC_CIR_BITS                      ( 0xBF3FBFU )
 #define MCU_RCC_CIR_CSSC                      ( 0x800000U )
 #define MCU_RCC_CIR_PLLI2SRDYC                ( 0x200000U )
@@ -1875,7 +1875,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_CIR_LSERDYF                   ( 0x2U )
 #define MCU_RCC_CIR_LSIRDYF                   ( 0x1U )
 
-// Биты регистра AHB1RSTR (AHB1 peripheral reset register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB1RSTR (AHB1 peripheral reset register)
 #define MCU_RCC_AHB1RSTR_BITS                 ( 0x226011FFU )
 #define MCU_RCC_AHB1RSTR_OTGHSRST             ( 0x20000000U )
 #define MCU_RCC_AHB1RSTR_ETHMACRST            ( 0x2000000U )
@@ -1892,7 +1892,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_AHB1RSTR_GPIOBRST             ( 0x2U )
 #define MCU_RCC_AHB1RSTR_GPIOARST             ( 0x1U )
 
-// Биты регистра AHB2RSTR (AHB2 peripheral reset register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB2RSTR (AHB2 peripheral reset register)
 #define MCU_RCC_AHB2RSTR_BITS                 ( 0xF1U )
 #define MCU_RCC_AHB2RSTR_OTGFSRS              ( 0x80U )
 #define MCU_RCC_AHB2RSTR_RNGRST               ( 0x40U )
@@ -1900,11 +1900,11 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_AHB2RSTR_CRYPRST              ( 0x10U )
 #define MCU_RCC_AHB2RSTR_DCMIRST              ( 0x1U )
 
-// Биты регистра AHB3RSTR (AHB3 peripheral reset register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB3RSTR (AHB3 peripheral reset register)
 #define MCU_RCC_AHB3RSTR_BITS                 ( 0x1U )
 #define MCU_RCC_AHB3RSTR_FSMCRST              ( 0x1U )
 
-// Биты регистра APB1RSTR (APB1 peripheral reset register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° APB1RSTR (APB1 peripheral reset register)
 #define MCU_RCC_APB1RSTR_BITS                 ( 0x36FEC9FFU )
 #define MCU_RCC_APB1RSTR_DACRST               ( 0x20000000U )
 #define MCU_RCC_APB1RSTR_PWRRST               ( 0x10000000U )
@@ -1930,7 +1930,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_APB1RSTR_TIM3RST              ( 0x2U )
 #define MCU_RCC_APB1RSTR_TIM2RST              ( 0x1U )
 
-// Биты регистра APB2RSTR (APB2 peripheral reset register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° APB2RSTR (APB2 peripheral reset register)
 #define MCU_RCC_APB2RSTR_BITS                 ( 0x75933U )
 #define MCU_RCC_APB2RSTR_TIM11RST             ( 0x40000U )
 #define MCU_RCC_APB2RSTR_TIM10RST             ( 0x20000U )
@@ -1944,7 +1944,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_APB2RSTR_TIM8RST              ( 0x2U )
 #define MCU_RCC_APB2RSTR_TIM1RST              ( 0x1U )
 
-// Биты регистра AHB1ENR (AHB1 peripheral clock enable register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB1ENR (AHB1 peripheral clock enable register)
 #define MCU_RCC_AHB1ENR_BITS                  ( 0x7E7411FFU )
 #define MCU_RCC_AHB1ENR_OTGHSULPIEN           ( 0x40000000U )
 #define MCU_RCC_AHB1ENR_OTGHSEN               ( 0x20000000U )
@@ -1967,7 +1967,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_AHB1ENR_GPIOBEN               ( 0x2U )
 #define MCU_RCC_AHB1ENR_GPIOAEN               ( 0x1U )
 
-// Биты регистра AHB2ENR (AHB2 peripheral clock enable register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB2ENR (AHB2 peripheral clock enable register)
 #define MCU_RCC_AHB2ENR_BITS                  ( 0xF1U )
 #define MCU_RCC_AHB2ENR_OTGFSEN               ( 0x80U )
 #define MCU_RCC_AHB2ENR_RNGEN                 ( 0x40U )
@@ -1975,11 +1975,11 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_AHB2ENR_CRYPEN                ( 0x10U )
 #define MCU_RCC_AHB2ENR_DCMIEN                ( 0x1U )
 
-// Биты регистра AHB3ENR (AHB3 peripheral clock enable register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB3ENR (AHB3 peripheral clock enable register)
 #define MCU_RCC_AHB3ENR_BITS                  ( 0x1U )
 #define MCU_RCC_AHB3ENR_FMCEN                 ( 0x1U )
 
-// Биты регистра APB1ENR (APB1 peripheral clock enable register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° APB1ENR (APB1 peripheral clock enable register)
 #define MCU_RCC_APB1ENR_BITS                  ( 0x36FEC9FFU )
 #define MCU_RCC_APB1ENR_DACEN                 ( 0x20000000U )
 #define MCU_RCC_APB1ENR_PWREN                 ( 0x10000000U )
@@ -2005,7 +2005,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_APB1ENR_TIM3EN                ( 0x2U )
 #define MCU_RCC_APB1ENR_TIM2EN                ( 0x1U )
 
-// Биты регистра APB2ENR (APB2 peripheral clock enable register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° APB2ENR (APB2 peripheral clock enable register)
 #define MCU_RCC_APB2ENR_BITS                  ( 0x75F33U )
 #define MCU_RCC_APB2ENR_TIM11EN               ( 0x40000U )
 #define MCU_RCC_APB2ENR_TIM10EN               ( 0x20000U )
@@ -2021,7 +2021,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_APB2ENR_TIM8EN                ( 0x2U )
 #define MCU_RCC_APB2ENR_TIM1EN                ( 0x1U )
 
-// Биты регистра AHB1LPENR (AHB1  peripheral clock enable in low power mode register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB1LPENR (AHB1  peripheral clock enable in low power mode register)
 #define MCU_RCC_AHB1LPENR_BITS                ( 0x7E6791FFU )
 #define MCU_RCC_AHB1LPENR_OTGHSULPILPEN       ( 0x40000000U )
 #define MCU_RCC_AHB1LPENR_OTGHSLPEN           ( 0x20000000U )
@@ -2046,7 +2046,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_AHB1LPENR_GPIOBLPEN           ( 0x2U )
 #define MCU_RCC_AHB1LPENR_GPIOALPEN           ( 0x1U )
 
-// Биты регистра AHB2LPENR (AHB2  peripheral clock enable in low power mode register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB2LPENR (AHB2  peripheral clock enable in low power mode register)
 #define MCU_RCC_AHB2LPENR_BITS                ( 0xF1U )
 #define MCU_RCC_AHB2LPENR_OTGFSLPEN           ( 0x80U )
 #define MCU_RCC_AHB2LPENR_RNGLPEN             ( 0x40U )
@@ -2054,11 +2054,11 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_AHB2LPENR_CRYPLPEN            ( 0x10U )
 #define MCU_RCC_AHB2LPENR_DCMILPEN            ( 0x1U )
 
-// Биты регистра AHB3LPENR (AHB3  peripheral clock enable in low power mode register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AHB3LPENR (AHB3  peripheral clock enable in low power mode register)
 #define MCU_RCC_AHB3LPENR_BITS                ( 0x1U )
 #define MCU_RCC_AHB3LPENR_FSMCLPEN            ( 0x1U )
 
-// Биты регистра APB1LPENR (APB1  peripheral clock enable in low power mode register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° APB1LPENR (APB1  peripheral clock enable in low power mode register)
 #define MCU_RCC_APB1LPENR_BITS                ( 0x36FEC9FFU )
 #define MCU_RCC_APB1LPENR_DACLPEN             ( 0x20000000U )
 #define MCU_RCC_APB1LPENR_PWRLPEN             ( 0x10000000U )
@@ -2084,7 +2084,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_APB1LPENR_TIM3LPEN            ( 0x2U )
 #define MCU_RCC_APB1LPENR_TIM2LPEN            ( 0x1U )
 
-// Биты регистра APB2LPENR (APB2  peripheral clock enable in low power mode register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° APB2LPENR (APB2  peripheral clock enable in low power mode register)
 #define MCU_RCC_APB2LPENR_BITS                ( 0x75F33U )
 #define MCU_RCC_APB2LPENR_TIM11LPEN           ( 0x40000U )
 #define MCU_RCC_APB2LPENR_TIM10LPEN           ( 0x20000U )
@@ -2100,7 +2100,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_APB2LPENR_TIM8LPEN            ( 0x2U )
 #define MCU_RCC_APB2LPENR_TIM1LPEN            ( 0x1U )
 
-// Биты регистра MCU_RCC_BDCR (RCC Backup domain control register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° MCU_RCC_BDCR (RCC Backup domain control register)
 #define MCU_RCC_BDCR_BITS                     ( 0x18307U )
 #define MCU_RCC_BDCR_BDRST                    ( 0x10000U )
 #define MCU_RCC_BDCR_RTCEN                    ( 0x8000U )
@@ -2109,7 +2109,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_BDCR_LSERDY                   ( 0x2U )
 #define MCU_RCC_BDCR_LSEON                    ( 0x1U )
 
-// Биты регистра CSR (clock control & status register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CSR (clock control & status register)
 #define MCU_RCC_CSR_BITS                      ( 0xFF000003U )
 #define MCU_RCC_CSR_LPWRRSTF                  ( 0x80000000U )
 #define MCU_RCC_CSR_WWDGRSTF                  ( 0x40000000U )
@@ -2122,14 +2122,14 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_CSR_LSIRDY                    ( 0x2U )
 #define MCU_RCC_CSR_LSION                     ( 0x1U )
 
-// Биты регистра SSCGR (spread spectrum clock generation register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SSCGR (spread spectrum clock generation register)
 #define MCU_RCC_SSCGR_BITS                    ( 0xCFFFFFFFU )
 #define MCU_RCC_SSCGR_SSCGEN                  ( 0x80000000U )
 #define MCU_RCC_SSCGR_SPREADSEL               ( 0x40000000U )
 #define MCU_RCC_SSCGR_INCSTEP                 ( 0xFFFEU )
 #define MCU_RCC_SSCGR_MODPER                  ( 0x1FFFU )
 
-// Биты регистра PLLI2SCFGR (PLLI2S configuration register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PLLI2SCFGR (PLLI2S configuration register)
 #define MCU_RCC_PLLI2SCFGR_BITS               ( 0x70007FC0U )
 #define MCU_RCC_PLLI2SCFGR_PLLI2SR2           ( 0x40000000U )
 #define MCU_RCC_PLLI2SCFGR_PLLI2SR1           ( 0x20000000U )
@@ -2145,7 +2145,7 @@ typedef volatile struct tag_stm32f407_rcc {
 #define MCU_RCC_PLLI2SCFGR_PLLI2SN0           ( 0x40U )
 
 
-/* ----- Контроллер портов ввода/вывода GPIO ----- */
+/* ----- РљРѕРЅС‚СЂРѕР»Р»РµСЂ РїРѕСЂС‚РѕРІ РІРІРѕРґР°/РІС‹РІРѕРґР° GPIO ----- */
 typedef volatile struct tag_stm32f407_gpio {
     uint32_t        moder;    
     uint32_t        otyper;  
@@ -2170,7 +2170,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define STM32F407_GPIOH_PTR                   ( ( stm32f407_gpio_t * ) 0x40021C00U )
 #define STM32F407_GPIOI_PTR                   ( ( stm32f407_gpio_t * ) 0x40022000U )
 
-// Биты регистра MODER (port mode register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° MODER (port mode register)
 #define MCU_GPIO_MODER_BITS                   ( 0xFFFFFFFFU )
 #define MCU_GPIO_MODER_15_MASK                ( 0xC0000000U )
 #define MCU_GPIO_MODER_14_MASK                ( 0x30000000U )
@@ -2189,7 +2189,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_MODER_1_MASK                 ( 0xCU )
 #define MCU_GPIO_MODER_0_MASK                 ( 0x3U )
 
-/* Вывод порта работает в режиме "Аналог" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "РђРЅР°Р»РѕРі" */
 #define MCU_GPIO_MODER_ANALOG                 ( 0x3U )
 #define MCU_GPIO_MODER_0_ANALOG               ( ( uint32_t ) MCU_GPIO_MODER_ANALOG << 0U  )
 #define MCU_GPIO_MODER_1_ANALOG               ( ( uint32_t ) MCU_GPIO_MODER_ANALOG << 2U  )
@@ -2208,7 +2208,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_MODER_14_ANALOG              ( ( uint32_t ) MCU_GPIO_MODER_ANALOG << 28U )
 #define MCU_GPIO_MODER_15_ANALOG              ( ( uint32_t ) MCU_GPIO_MODER_ANALOG << 30U )
 
-/* Вывод порта работает в режиме "альтернативня функция */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅСЏ С„СѓРЅРєС†РёСЏ */
 #define MCU_GPIO_MODER_ALT                    ( 0x2U )
 #define MCU_GPIO_MODER_0_ALT                  ( ( uint32_t ) MCU_GPIO_MODER_ALT << 0U  )
 #define MCU_GPIO_MODER_1_ALT                  ( ( uint32_t ) MCU_GPIO_MODER_ALT << 2U  )
@@ -2227,7 +2227,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_MODER_14_ALT                 ( ( uint32_t ) MCU_GPIO_MODER_ALT << 28U )
 #define MCU_GPIO_MODER_15_ALT                 ( ( uint32_t ) MCU_GPIO_MODER_ALT << 30U )
 
-/* Вывод порта работает в режиме "порт вывода*/
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "РїРѕСЂС‚ РІС‹РІРѕРґР°*/
 #define MCU_GPIO_MODER_OUT                    ( 0x1U )
 #define MCU_GPIO_MODER_0_OUT                  ( ( uint32_t ) MCU_GPIO_MODER_OUT << 0U  )
 #define MCU_GPIO_MODER_1_OUT                  ( ( uint32_t ) MCU_GPIO_MODER_OUT << 2U  )
@@ -2246,7 +2246,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_MODER_14_OUT                 ( ( uint32_t ) MCU_GPIO_MODER_OUT << 28U )
 #define MCU_GPIO_MODER_15_OUT                 ( ( uint32_t ) MCU_GPIO_MODER_OUT << 30U )
 
-/* Вывод порта работает в режиме "порт ввода" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "РїРѕСЂС‚ РІРІРѕРґР°" */
 #define MCU_GPIO_MODER_IN                     ( 0x0U )
 #define MCU_GPIO_MODER_0_IN                   ( ( uint32_t ) MCU_GPIO_MODER_IN << 0U  )
 #define MCU_GPIO_MODER_1_IN                   ( ( uint32_t ) MCU_GPIO_MODER_IN << 2U  )
@@ -2265,7 +2265,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_MODER_14_IN                  ( ( uint32_t ) MCU_GPIO_MODER_IN << 28U )
 #define MCU_GPIO_MODER_15_IN                  ( ( uint32_t ) MCU_GPIO_MODER_IN << 30U )
 
-// Биты регистра OTYPER (port output type register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° OTYPER (port output type register)
 #define MCU_GPIO_OTYPER_BITS                  ( 0xFFFFU )
 #define MCU_GPIO_OTYPER_OT15                  ( 0x8000U )
 #define MCU_GPIO_OTYPER_OT14                  ( 0x4000U )
@@ -2284,7 +2284,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_OTYPER_OT1                   ( 0x2U )
 #define MCU_GPIO_OTYPER_OT0                   ( 0x1U )
 
-/* Вывод порта работает в режиме "open-drain" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "open-drain" */
 #define MCU_GPIO_OTYPER_0_OP_DR               MCU_GPIO_OTYPER_OT0
 #define MCU_GPIO_OTYPER_1_OP_DR               MCU_GPIO_OTYPER_OT1
 #define MCU_GPIO_OTYPER_2_OP_DR               MCU_GPIO_OTYPER_OT2
@@ -2302,7 +2302,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_OTYPER_14_OP_DR              MCU_GPIO_OTYPER_OT14
 #define MCU_GPIO_OTYPER_15_OP_DR              MCU_GPIO_OTYPER_OT15
 
-/* Вывод порта работает в режиме "push-pull" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "push-pull" */
 #define MCU_GPIO_OTYPER_0_PUSH_PULL           ( 0U )
 #define MCU_GPIO_OTYPER_1_PUSH_PULL           ( 0U )
 #define MCU_GPIO_OTYPER_2_PUSH_PULL           ( 0U )
@@ -2320,7 +2320,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_OTYPER_14_PUSH_PULL          ( 0U )
 #define MCU_GPIO_OTYPER_15_PUSH_PULL          ( 0U )
 
-// Биты регистра OSPEEDR (port output speed register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° OSPEEDR (port output speed register)
 #define MCU_GPIO_OSPEEDR_BITS                 ( 0xFFFFFFFFU )
 #define MCU_GPIO_OSPEEDR_15_MASK              ( 0xC0000000U )
 #define MCU_GPIO_OSPEEDR_14_MASK              ( 0x30000000U )
@@ -2339,7 +2339,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_OSPEEDR_1_MASK               ( 0xCU )
 #define MCU_GPIO_OSPEEDR_0_MASK               ( 0x3U )
 
-/* Вывод порта работает в режиме "максимально быстрый фронт" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "РјР°РєСЃРёРјР°Р»СЊРЅРѕ Р±С‹СЃС‚СЂС‹Р№ С„СЂРѕРЅС‚" */
 #define MCU_GPIO_OSPEEDR_MAX                  ( 0x3U )
 #define MCU_GPIO_OSPEEDR_0_MAX                ( ( uint32_t ) MCU_GPIO_OSPEEDR_MAX << 0U  )
 #define MCU_GPIO_OSPEEDR_1_MAX                ( ( uint32_t ) MCU_GPIO_OSPEEDR_MAX << 2U  )
@@ -2358,7 +2358,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_OSPEEDR_14_MAX               ( ( uint32_t ) MCU_GPIO_OSPEEDR_MAX << 28U )
 #define MCU_GPIO_OSPEEDR_15_MAX               ( ( uint32_t ) MCU_GPIO_OSPEEDR_MAX << 30U )
 
-/* Вывод порта работает в режиме "быстрый фронт" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "Р±С‹СЃС‚СЂС‹Р№ С„СЂРѕРЅС‚" */
 #define MCU_GPIO_OSPEEDR_FAST                 ( 0x2U )
 #define MCU_GPIO_OSPEEDR_0_FAST               ( ( uint32_t ) MCU_GPIO_OSPEEDR_FAST << 0U  )
 #define MCU_GPIO_OSPEEDR_1_FAST               ( ( uint32_t ) MCU_GPIO_OSPEEDR_FAST << 2U  )
@@ -2377,7 +2377,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_OSPEEDR_14_FAST              ( ( uint32_t ) MCU_GPIO_OSPEEDR_FAST << 28U )
 #define MCU_GPIO_OSPEEDR_15_FAST              ( ( uint32_t ) MCU_GPIO_OSPEEDR_FAST << 30U )
 
-/* Вывод порта работает в режиме "средний фронт" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "СЃСЂРµРґРЅРёР№ С„СЂРѕРЅС‚" */
 #define MCU_GPIO_OSPEEDR_MEDIUM               ( 0x1U )
 #define MCU_GPIO_OSPEEDR_0_MEDIUM             ( ( uint32_t ) MCU_GPIO_OSPEEDR_MEDIUM << 0U  )
 #define MCU_GPIO_OSPEEDR_1_MEDIUM             ( ( uint32_t ) MCU_GPIO_OSPEEDR_MEDIUM << 2U  )
@@ -2396,7 +2396,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_OSPEEDR_14_MEDIUM            ( ( uint32_t ) MCU_GPIO_OSPEEDR_MEDIUM << 28U )
 #define MCU_GPIO_OSPEEDR_15_MEDIUM            ( ( uint32_t ) MCU_GPIO_OSPEEDR_MEDIUM << 30U )
 
-/* Вывод порта работает в режиме "медленный фронт" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "РјРµРґР»РµРЅРЅС‹Р№ С„СЂРѕРЅС‚" */
 #define MCU_GPIO_OSPEEDR_SLOW                 ( 0x0U )
 #define MCU_GPIO_OSPEEDR_0_SLOW               ( ( uint32_t ) MCU_GPIO_OSPEEDR_SLOW << 0U  )
 #define MCU_GPIO_OSPEEDR_1_SLOW               ( ( uint32_t ) MCU_GPIO_OSPEEDR_SLOW << 2U  )
@@ -2415,7 +2415,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_OSPEEDR_14_SLOW              ( ( uint32_t ) MCU_GPIO_OSPEEDR_SLOW << 28U )
 #define MCU_GPIO_OSPEEDR_15_SLOW              ( ( uint32_t ) MCU_GPIO_OSPEEDR_SLOW << 30U )
 
-// Биты регистра PUPDR (port pull-up/pull-down register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PUPDR (port pull-up/pull-down register)
 #define MCU_GPIO_PUPDR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_GPIO_PUPDR_PUPDR15_MASK           ( 0xC0000000U )
 #define MCU_GPIO_PUPDR_PUPDR14_MASK           ( 0x30000000U )
@@ -2434,7 +2434,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_PUPDR_PUPDR1_MASK            ( 0xCU )
 #define MCU_GPIO_PUPDR_PUPDR0_MASK            ( 0x3U )
 
-/* Вывод порта работает в режиме "pull-down" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "pull-down" */
 #define MCU_GPIO_PUPDR_DOWN                   ( 0x2U )
 #define MCU_GPIO_PUPDR_0_DOWN                 ( ( uint32_t ) MCU_GPIO_PUPDR_DOWN << 0U  )
 #define MCU_GPIO_PUPDR_1_DOWN                 ( ( uint32_t ) MCU_GPIO_PUPDR_DOWN << 2U  )
@@ -2453,7 +2453,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_PUPDR_14_DOWN                ( ( uint32_t ) MCU_GPIO_PUPDR_DOWN << 28U )
 #define MCU_GPIO_PUPDR_15_DOWN                ( ( uint32_t ) MCU_GPIO_PUPDR_DOWN << 30U )
 
-/* Вывод порта работает в режиме "pull-up" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "pull-up" */
 #define MCU_GPIO_PUPDR_UP                     ( 0x1U )
 #define MCU_GPIO_PUPDR_0_UP                   ( ( uint32_t ) MCU_GPIO_PUPDR_UP << 0U  )
 #define MCU_GPIO_PUPDR_1_UP                   ( ( uint32_t ) MCU_GPIO_PUPDR_UP << 2U  )
@@ -2472,7 +2472,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_PUPDR_14_UP                  ( ( uint32_t ) MCU_GPIO_PUPDR_UP << 28U )
 #define MCU_GPIO_PUPDR_15_UP                  ( ( uint32_t ) MCU_GPIO_PUPDR_UP << 30U )
 
-/* Вывод порта работает в режиме "no pull-up, pull-down" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° СЂР°Р±РѕС‚Р°РµС‚ РІ СЂРµР¶РёРјРµ "no pull-up, pull-down" */
 #define MCU_GPIO_PUPDR_NO                     ( 0U )
 #define MCU_GPIO_PUPDR_0_NO                   ( ( uint32_t ) MCU_GPIO_PUPDR_NO << 0U  )
 #define MCU_GPIO_PUPDR_1_NO                   ( ( uint32_t ) MCU_GPIO_PUPDR_NO << 2U  )
@@ -2490,7 +2490,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_PUPDR_13_NO                  ( ( uint32_t ) MCU_GPIO_PUPDR_NO << 28U )
 #define MCU_GPIO_PUPDR_15_NO                  ( ( uint32_t ) MCU_GPIO_PUPDR_NO << 30U )
 
-// Биты регистра IDR (port input data register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° IDR (port input data register)
 #define MCU_GPIO_IDR_BITS                     ( 0x0000FFFFU )
 #define MCU_GPIO_IDR_IDR15                    ( 0x8000U )
 #define MCU_GPIO_IDR_IDR14                    ( 0x4000U )
@@ -2509,7 +2509,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_IDR_IDR1                     ( 0x2U )
 #define MCU_GPIO_IDR_IDR0                     ( 0x1U )
 
-// Биты регистра ODR (port output data register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ODR (port output data register)
 #define MCU_GPIO_ODR_BITS                     ( 0x0000FFFFU )
 #define MCU_GPIO_ODR_ODR15                    ( 0x8000U )
 #define MCU_GPIO_ODR_ODR14                    ( 0x4000U )
@@ -2528,7 +2528,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_ODR_ODR1                     ( 0x2U )
 #define MCU_GPIO_ODR_ODR0                     ( 0x1U )
 
-// Биты регистра BSRR (port bit set/reset register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BSRR (port bit set/reset register)
 #define MCU_GPIO_BSRR_BITS                    ( 0xFFFFFFFFU )
 #define MCU_GPIO_BSRR_RES_15                  ( 0x80000000U )
 #define MCU_GPIO_BSRR_RES_14                  ( 0x40000000U )
@@ -2563,7 +2563,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_BSRR_SET_1                   ( 0x2U )
 #define MCU_GPIO_BSRR_SET_0                   ( 0x1U )
 
-// Биты регистра LCKR (port configuration lock register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° LCKR (port configuration lock register)
 #define MCU_GPIO_LCKR_BITS                    ( 0x1FFFFU )
 #define MCU_GPIO_LCKR_LCKK                    (	0x10000U )
 #define MCU_GPIO_LCKR_LCK15                   (	0x8000U )
@@ -2583,7 +2583,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_LCKR_LCK1                    ( 0x2U )
 #define MCU_GPIO_LCKR_LCK0                    ( 0x1U )
 
-/* Вывод порта "Port configuration locked" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° "Port configuration locked" */
 #define MCU_GPIO_LCKR_0_LOCK                  MCU_GPIO_LCKR_0
 #define MCU_GPIO_LCKR_1_LOCK                  MCU_GPIO_LCKR_1
 #define MCU_GPIO_LCKR_2_LOCK                  MCU_GPIO_LCKR_2
@@ -2601,7 +2601,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_LCKR_14_LOCK                 MCU_GPIO_LCKR_14
 #define MCU_GPIO_LCKR_15_LOCK                 MCU_GPIO_LCKR_15
 
-/* Вывод порта "Port configuration not locked" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° "Port configuration not locked" */
 #define MCU_GPIO_LCKR_0_UNLOCK                ( 0U )
 #define MCU_GPIO_LCKR_1_UNLOCK                ( 0U )
 #define MCU_GPIO_LCKR_2_UNLOCK                ( 0U )
@@ -2619,7 +2619,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_LCKR_14_UNLOCK               ( 0U )
 #define MCU_GPIO_LCKR_15_UNLOCK               ( 0U )
 
-// Биты регистра AFRL (alternate function low register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AFRL (alternate function low register)
 #define MCU_GPIO_AFRL_BITS                    ( 0xFFFFFFFFU )
 #define MCU_GPIO_AFRL_7_MASK                  ( 0xF0000000U )
 #define MCU_GPIO_AFRL_6_MASK                  ( 0xF000000U )
@@ -2630,7 +2630,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_1_MASK                  ( 0xF0U )
 #define MCU_GPIO_AFRL_0_MASK                  ( 0xFU )
 
-/* Вывод порта альтернативная функция "AF15" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF15" */
 #define MCU_GPIO_AFRL_AF15                    ( 0xFU )
 #define MCU_GPIO_AFRL_0_AF15                  ( ( uint32_t ) MCU_GPIO_AFRL_AF15 << 0U  )
 #define MCU_GPIO_AFRL_1_AF15                  ( ( uint32_t ) MCU_GPIO_AFRL_AF15 << 4U  )
@@ -2641,7 +2641,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF15                  ( ( uint32_t ) MCU_GPIO_AFRL_AF15 << 24U )
 #define MCU_GPIO_AFRL_7_AF15                  ( ( uint32_t ) MCU_GPIO_AFRL_AF15 << 28U )
 
-/* Вывод порта альтернативная функция "AF14" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF14" */
 #define MCU_GPIO_AFRL_AF14                    ( 0xEU )
 #define MCU_GPIO_AFRL_0_AF14                  ( ( uint32_t ) MCU_GPIO_AFRL_AF14 << 0U  )
 #define MCU_GPIO_AFRL_1_AF14                  ( ( uint32_t ) MCU_GPIO_AFRL_AF14 << 4U  )
@@ -2652,7 +2652,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF14                  ( ( uint32_t ) MCU_GPIO_AFRL_AF14 << 24U )
 #define MCU_GPIO_AFRL_7_AF14                  ( ( uint32_t ) MCU_GPIO_AFRL_AF14 << 28U )
 
-/* Вывод порта альтернативная функция "AF13" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF13" */
 #define MCU_GPIO_AFRL_AF13                    ( 0xDU )
 #define MCU_GPIO_AFRL_0_AF13                  ( ( uint32_t ) MCU_GPIO_AFRL_AF13 << 0U  )
 #define MCU_GPIO_AFRL_1_AF13                  ( ( uint32_t ) MCU_GPIO_AFRL_AF13 << 4U  )
@@ -2663,7 +2663,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF13                  ( ( uint32_t ) MCU_GPIO_AFRL_AF13 << 24U )
 #define MCU_GPIO_AFRL_7_AF13                  ( ( uint32_t ) MCU_GPIO_AFRL_AF13 << 28U )
 
-/* Вывод порта альтернативная функция "AF12" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF12" */
 #define MCU_GPIO_AFRL_AF12                    ( 0xCU )
 #define MCU_GPIO_AFRL_0_AF12                  ( ( uint32_t ) MCU_GPIO_AFRL_AF12 << 0U  )
 #define MCU_GPIO_AFRL_1_AF12                  ( ( uint32_t ) MCU_GPIO_AFRL_AF12 << 4U  )
@@ -2674,7 +2674,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF12                  ( ( uint32_t ) MCU_GPIO_AFRL_AF12 << 24U )
 #define MCU_GPIO_AFRL_7_AF12                  ( ( uint32_t ) MCU_GPIO_AFRL_AF12 << 28U )
 
-/* Вывод порта альтернативная функция "AF11" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF11" */
 #define MCU_GPIO_AFRL_AF11                    ( 0xBU )
 #define MCU_GPIO_AFRL_0_AF11                  ( ( uint32_t ) MCU_GPIO_AFRL_AF11 << 0U  )
 #define MCU_GPIO_AFRL_1_AF11                  ( ( uint32_t ) MCU_GPIO_AFRL_AF11 << 4U  )
@@ -2685,7 +2685,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF11                  ( ( uint32_t ) MCU_GPIO_AFRL_AF11 << 24U )
 #define MCU_GPIO_AFRL_7_AF11                  ( ( uint32_t ) MCU_GPIO_AFRL_AF11 << 28U )
 
-/* Вывод порта альтернативная функция "AF10" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF10" */
 #define MCU_GPIO_AFRL_AF10                    ( 0xAU )
 #define MCU_GPIO_AFRL_0_AF10                  ( ( uint32_t ) MCU_GPIO_AFRL_AF10 << 0U  )
 #define MCU_GPIO_AFRL_1_AF10                  ( ( uint32_t ) MCU_GPIO_AFRL_AF10 << 4U  )
@@ -2696,7 +2696,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF10                  ( ( uint32_t ) MCU_GPIO_AFRL_AF10 << 24U )
 #define MCU_GPIO_AFRL_7_AF10                  ( ( uint32_t ) MCU_GPIO_AFRL_AF10 << 28U )
 
-/* Вывод порта альтернативная функция "AF9" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF9" */
 #define MCU_GPIO_AFRL_AF9                     ( 0x9U )
 #define MCU_GPIO_AFRL_0_AF9                   ( ( uint32_t ) MCU_GPIO_AFRL_AF9 << 0U  )
 #define MCU_GPIO_AFRL_1_AF9                   ( ( uint32_t ) MCU_GPIO_AFRL_AF9 << 4U  )
@@ -2707,7 +2707,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF9                   ( ( uint32_t ) MCU_GPIO_AFRL_AF9 << 24U )
 #define MCU_GPIO_AFRL_7_AF9                   ( ( uint32_t ) MCU_GPIO_AFRL_AF9 << 28U )
 
-/* Вывод порта альтернативная функция "AF8" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF8" */
 #define MCU_GPIO_AFRL_AF8                     ( 0x8U )
 #define MCU_GPIO_AFRL_0_AF8                   ( ( uint32_t ) MCU_GPIO_AFRL_AF8 << 0U  )
 #define MCU_GPIO_AFRL_1_AF8                   ( ( uint32_t ) MCU_GPIO_AFRL_AF8 << 4U  )
@@ -2718,7 +2718,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF8                   ( ( uint32_t ) MCU_GPIO_AFRL_AF8 << 24U )
 #define MCU_GPIO_AFRL_7_AF8                   ( ( uint32_t ) MCU_GPIO_AFRL_AF8 << 28U )
 
-/* Вывод порта альтернативная функция "AF7" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF7" */
 #define MCU_GPIO_AFRL_AF7                     ( 0x7U )
 #define MCU_GPIO_AFRL_0_AF7                   ( ( uint32_t ) MCU_GPIO_AFRL_AF7 << 0U  )
 #define MCU_GPIO_AFRL_1_AF7                   ( ( uint32_t ) MCU_GPIO_AFRL_AF7 << 4U  )
@@ -2729,7 +2729,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF7                   ( ( uint32_t ) MCU_GPIO_AFRL_AF7 << 24U )
 #define MCU_GPIO_AFRL_7_AF7                   ( ( uint32_t ) MCU_GPIO_AFRL_AF7 << 28U )
 
-/* Вывод порта альтернативная функция "AF6" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF6" */
 #define MCU_GPIO_AFRL_AF6                     ( 0x6U )
 #define MCU_GPIO_AFRL_0_AF6                   ( ( uint32_t ) MCU_GPIO_AFRL_AF6 << 0U  )
 #define MCU_GPIO_AFRL_1_AF6                   ( ( uint32_t ) MCU_GPIO_AFRL_AF6 << 4U  )
@@ -2740,7 +2740,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF6                   ( ( uint32_t ) MCU_GPIO_AFRL_AF6 << 24U )
 #define MCU_GPIO_AFRL_7_AF6                   ( ( uint32_t ) MCU_GPIO_AFRL_AF6 << 28U )
 
-/* Вывод порта альтернативная функция "AF5" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF5" */
 #define MCU_GPIO_AFRL_AF5                     ( 0x5U )
 #define MCU_GPIO_AFRL_0_AF5                   ( ( uint32_t ) MCU_GPIO_AFRL_AF5 << 0U  )
 #define MCU_GPIO_AFRL_1_AF5                   ( ( uint32_t ) MCU_GPIO_AFRL_AF5 << 4U  )
@@ -2751,7 +2751,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF5                   ( ( uint32_t ) MCU_GPIO_AFRL_AF5 << 24U )
 #define MCU_GPIO_AFRL_7_AF5                   ( ( uint32_t ) MCU_GPIO_AFRL_AF5 << 28U )
 
-/* Вывод порта альтернативная функция "AF4" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF4" */
 #define MCU_GPIO_AFRL_AF4                     ( 0x4U )
 #define MCU_GPIO_AFRL_0_AF4                   ( ( uint32_t ) MCU_GPIO_AFRL_AF4 << 0U  )
 #define MCU_GPIO_AFRL_1_AF4                   ( ( uint32_t ) MCU_GPIO_AFRL_AF4 << 4U  )
@@ -2762,7 +2762,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF4                   ( ( uint32_t ) MCU_GPIO_AFRL_AF4 << 24U )
 #define MCU_GPIO_AFRL_7_AF4                   ( ( uint32_t ) MCU_GPIO_AFRL_AF4 << 28U )
 
-/* Вывод порта альтернативная функция "AF3" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF3" */
 #define MCU_GPIO_AFRL_AF3                     ( 0x3U )
 #define MCU_GPIO_AFRL_0_AF3                   ( ( uint32_t ) MCU_GPIO_AFRL_AF3 << 0U  )
 #define MCU_GPIO_AFRL_1_AF3                   ( ( uint32_t ) MCU_GPIO_AFRL_AF3 << 4U  )
@@ -2773,7 +2773,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF3                   ( ( uint32_t ) MCU_GPIO_AFRL_AF3 << 24U )
 #define MCU_GPIO_AFRL_7_AF3                   ( ( uint32_t ) MCU_GPIO_AFRL_AF3 << 28U )
 
-/* Вывод порта альтернативная функция "AF2" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF2" */
 #define MCU_GPIO_AFRL_AF2                     ( 0x2U )
 #define MCU_GPIO_AFRL_0_AF2                   ( ( uint32_t ) MCU_GPIO_AFRL_AF2 << 0U  )
 #define MCU_GPIO_AFRL_1_AF2                   ( ( uint32_t ) MCU_GPIO_AFRL_AF2 << 4U  )
@@ -2784,7 +2784,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF2                   ( ( uint32_t ) MCU_GPIO_AFRL_AF2 << 24U )
 #define MCU_GPIO_AFRL_7_AF2                   ( ( uint32_t ) MCU_GPIO_AFRL_AF2 << 28U )
 
-/* Вывод порта альтернативная функция "AF1" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF1" */
 #define MCU_GPIO_AFRL_AF1                     ( 0x1U )
 #define MCU_GPIO_AFRL_0_AF1                   ( ( uint32_t ) MCU_GPIO_AFRL_AF1 << 0U  )
 #define MCU_GPIO_AFRL_1_AF1                   ( ( uint32_t ) MCU_GPIO_AFRL_AF1 << 4U  )
@@ -2795,7 +2795,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_6_AF1                   ( ( uint32_t ) MCU_GPIO_AFRL_AF1 << 24U )
 #define MCU_GPIO_AFRL_7_AF1                   ( ( uint32_t ) MCU_GPIO_AFRL_AF1 << 28U )
 
-/* Вывод порта альтернативная функция "AF0" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF0" */
 #define MCU_GPIO_AFRL_AF0                     ( 0x0U )
 #define MCU_GPIO_AFRL_0_AF0                   ( ( uint32_t ) MCU_GPIO_AFRL_AF0 << 0U  )
 #define MCU_GPIO_AFRL_1_AF0                   ( ( uint32_t ) MCU_GPIO_AFRL_AF0 << 4U  )
@@ -2807,7 +2807,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRL_7_AF0                   ( ( uint32_t ) MCU_GPIO_AFRL_AF0 << 28U )
 
 
-// Биты регистра AFRH (alternate function high register)
+// Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° AFRH (alternate function high register)
 #define MCU_GPIO_AFRH_BITS                    ( 0xFFFFFFFFU )
 #define MCU_GPIO_AFRH_15_MASK                 ( 0xF0000000U )
 #define MCU_GPIO_AFRH_14_MASK                 ( 0xF000000U )
@@ -2818,7 +2818,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_9_MASK                  ( 0xF0U )
 #define MCU_GPIO_AFRH_8_MASK                  ( 0xFU )
 
-/* Вывод порта альтернативная функция "AF15" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF15" */
 #define MCU_GPIO_AFRH_AF15                    ( 0xFU )
 #define MCU_GPIO_AFRH_8_AF15                  ( ( uint32_t ) MCU_GPIO_AFRH_AF15 << 0U  )
 #define MCU_GPIO_AFRH_9_AF15                  ( ( uint32_t ) MCU_GPIO_AFRH_AF15 << 4U  )
@@ -2829,7 +2829,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF15                 ( ( uint32_t ) MCU_GPIO_AFRH_AF15 << 24U )
 #define MCU_GPIO_AFRH_15_AF15                 ( ( uint32_t ) MCU_GPIO_AFRH_AF15 << 28U )
 
-/* Вывод порта альтернативная функция "AF14" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF14" */
 #define MCU_GPIO_AFRH_AF14                    ( 0xEU )
 #define MCU_GPIO_AFRH_8_AF14                  ( ( uint32_t ) MCU_GPIO_AFRH_AF14 << 0U  )
 #define MCU_GPIO_AFRH_9_AF14                  ( ( uint32_t ) MCU_GPIO_AFRH_AF14 << 4U  )
@@ -2840,7 +2840,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF14                 ( ( uint32_t ) MCU_GPIO_AFRH_AF14 << 24U )
 #define MCU_GPIO_AFRH_15_AF14                 ( ( uint32_t ) MCU_GPIO_AFRH_AF14 << 28U )
 
-/* Вывод порта альтернативная функция "AF13" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF13" */
 #define MCU_GPIO_AFRH_AF13                    ( 0xDU )
 #define MCU_GPIO_AFRH_8_AF13                  ( ( uint32_t ) MCU_GPIO_AFRH_AF13 << 0U  )
 #define MCU_GPIO_AFRH_9_AF13                  ( ( uint32_t ) MCU_GPIO_AFRH_AF13 << 4U  )
@@ -2851,7 +2851,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF13                 ( ( uint32_t ) MCU_GPIO_AFRH_AF13 << 24U )
 #define MCU_GPIO_AFRH_15_AF13                 ( ( uint32_t ) MCU_GPIO_AFRH_AF13 << 28U )
 
-/* Вывод порта альтернативная функция "AF12" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF12" */
 #define MCU_GPIO_AFRH_AF12                    ( 0xCU )
 #define MCU_GPIO_AFRH_8_AF12                  ( ( uint32_t ) MCU_GPIO_AFRH_AF12 << 0U  )
 #define MCU_GPIO_AFRH_9_AF12                  ( ( uint32_t ) MCU_GPIO_AFRH_AF12 << 4U  )
@@ -2862,7 +2862,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF12                 ( ( uint32_t ) MCU_GPIO_AFRH_AF12 << 24U )
 #define MCU_GPIO_AFRH_15_AF12                 ( ( uint32_t ) MCU_GPIO_AFRH_AF12 << 28U )
 
-/* Вывод порта альтернативная функция "AF11" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF11" */
 #define MCU_GPIO_AFRH_AF11                    ( 0xBU )
 #define MCU_GPIO_AFRH_8_AF11                  ( ( uint32_t ) MCU_GPIO_AFRH_AF11 << 0U  )
 #define MCU_GPIO_AFRH_9_AF11                  ( ( uint32_t ) MCU_GPIO_AFRH_AF11 << 4U  )
@@ -2873,7 +2873,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF11                 ( ( uint32_t ) MCU_GPIO_AFRH_AF11 << 24U )
 #define MCU_GPIO_AFRH_15_AF11                 ( ( uint32_t ) MCU_GPIO_AFRH_AF11 << 28U )
 
-/* Вывод порта альтернативная функция "AF10" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF10" */
 #define MCU_GPIO_AFRH_AF10                    ( 0xAU )
 #define MCU_GPIO_AFRH_8_AF10                  ( ( uint32_t ) MCU_GPIO_AFRH_AF10 << 0U  )
 #define MCU_GPIO_AFRH_9_AF10                  ( ( uint32_t ) MCU_GPIO_AFRH_AF10 << 4U  )
@@ -2884,7 +2884,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF10                 ( ( uint32_t ) MCU_GPIO_AFRH_AF10 << 24U )
 #define MCU_GPIO_AFRH_15_AF10                 ( ( uint32_t ) MCU_GPIO_AFRH_AF10 << 28U )
 
-/* Вывод порта альтернативная функция "AF9" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF9" */
 #define MCU_GPIO_AFRH_AF9                     ( 0x9U )
 #define MCU_GPIO_AFRH_8_AF9                   ( ( uint32_t ) MCU_GPIO_AFRH_AF9 << 0U  )
 #define MCU_GPIO_AFRH_9_AF9                   ( ( uint32_t ) MCU_GPIO_AFRH_AF9 << 4U  )
@@ -2895,7 +2895,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF9                  ( ( uint32_t ) MCU_GPIO_AFRH_AF9 << 24U )
 #define MCU_GPIO_AFRH_15_AF9                  ( ( uint32_t ) MCU_GPIO_AFRH_AF9 << 28U )
 
-/* Вывод порта альтернативная функция "AF8" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF8" */
 #define MCU_GPIO_AFRH_AF8                     ( 0x8U )
 #define MCU_GPIO_AFRH_8_AF8                   ( ( uint32_t ) MCU_GPIO_AFRH_AF8 << 0U  )
 #define MCU_GPIO_AFRH_9_AF8                   ( ( uint32_t ) MCU_GPIO_AFRH_AF8 << 4U  )
@@ -2906,7 +2906,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF8                  ( ( uint32_t ) MCU_GPIO_AFRH_AF8 << 24U )
 #define MCU_GPIO_AFRH_15_AF8                  ( ( uint32_t ) MCU_GPIO_AFRH_AF8 << 28U )
 
-/* Вывод порта альтернативная функция "AF7" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF7" */
 #define MCU_GPIO_AFRH_AF7                     ( 0x7U )
 #define MCU_GPIO_AFRH_8_AF7                   ( ( uint32_t ) MCU_GPIO_AFRH_AF7 << 0U  )
 #define MCU_GPIO_AFRH_9_AF7                   ( ( uint32_t ) MCU_GPIO_AFRH_AF7 << 4U  )
@@ -2917,7 +2917,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF7                  ( ( uint32_t ) MCU_GPIO_AFRH_AF7 << 24U )
 #define MCU_GPIO_AFRH_15_AF7                  ( ( uint32_t ) MCU_GPIO_AFRH_AF7 << 28U )
 
-/* Вывод порта альтернативная функция "AF6" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF6" */
 #define MCU_GPIO_AFRH_AF6                     ( 0x6U )
 #define MCU_GPIO_AFRH_8_AF6                   ( ( uint32_t ) MCU_GPIO_AFRH_AF6 << 0U  )
 #define MCU_GPIO_AFRH_9_AF6                   ( ( uint32_t ) MCU_GPIO_AFRH_AF6 << 4U  )
@@ -2928,7 +2928,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF6                  ( ( uint32_t ) MCU_GPIO_AFRH_AF6 << 24U )
 #define MCU_GPIO_AFRH_15_AF6                  ( ( uint32_t ) MCU_GPIO_AFRH_AF6 << 28U )
 
-/* Вывод порта альтернативная функция "AF5" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF5" */
 #define MCU_GPIO_AFRH_AF5                     ( 0x5U )
 #define MCU_GPIO_AFRH_8_AF5                   ( ( uint32_t ) MCU_GPIO_AFRH_AF5 << 0U  )
 #define MCU_GPIO_AFRH_9_AF5                   ( ( uint32_t ) MCU_GPIO_AFRH_AF5 << 4U  )
@@ -2939,7 +2939,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF5                  ( ( uint32_t ) MCU_GPIO_AFRH_AF5 << 24U )
 #define MCU_GPIO_AFRH_15_AF5                  ( ( uint32_t ) MCU_GPIO_AFRH_AF5 << 28U )
 
-/* Вывод порта альтернативная функция "AF4" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF4" */
 #define MCU_GPIO_AFRH_AF4                     ( 0x4U )
 #define MCU_GPIO_AFRH_8_AF4                   ( ( uint32_t ) MCU_GPIO_AFRH_AF4 << 0U  )
 #define MCU_GPIO_AFRH_9_AF4                   ( ( uint32_t ) MCU_GPIO_AFRH_AF4 << 4U  )
@@ -2950,7 +2950,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF4                  ( ( uint32_t ) MCU_GPIO_AFRH_AF4 << 24U )
 #define MCU_GPIO_AFRH_15_AF4                  ( ( uint32_t ) MCU_GPIO_AFRH_AF4 << 28U )
 
-/* Вывод порта альтернативная функция "AF3" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF3" */
 #define MCU_GPIO_AFRH_AF3                     ( 0x3U )
 #define MCU_GPIO_AFRH_8_AF3                   ( ( uint32_t ) MCU_GPIO_AFRH_AF3 << 0U  )
 #define MCU_GPIO_AFRH_9_AF3                   ( ( uint32_t ) MCU_GPIO_AFRH_AF3 << 4U  )
@@ -2961,7 +2961,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF3                  ( ( uint32_t ) MCU_GPIO_AFRH_AF3 << 24U )
 #define MCU_GPIO_AFRH_15_AF3                  ( ( uint32_t ) MCU_GPIO_AFRH_AF3 << 28U )
 
-/* Вывод порта альтернативная функция "AF2" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF2" */
 #define MCU_GPIO_AFRH_AF2                     ( 0x2U )
 #define MCU_GPIO_AFRH_8_AF2                   ( ( uint32_t ) MCU_GPIO_AFRH_AF2 << 0U  )
 #define MCU_GPIO_AFRH_9_AF2                   ( ( uint32_t ) MCU_GPIO_AFRH_AF2 << 4U  )
@@ -2972,7 +2972,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF2                  ( ( uint32_t ) MCU_GPIO_AFRH_AF2 << 24U )
 #define MCU_GPIO_AFRH_15_AF2                  ( ( uint32_t ) MCU_GPIO_AFRH_AF2 << 28U )
 
-/* Вывод порта альтернативная функция "AF1" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF1" */
 #define MCU_GPIO_AFRH_AF1                     ( 0x1U )
 #define MCU_GPIO_AFRH_8_AF1                   ( ( uint32_t ) MCU_GPIO_AFRH_AF1 << 0U  )
 #define MCU_GPIO_AFRH_9_AF1                   ( ( uint32_t ) MCU_GPIO_AFRH_AF1 << 4U  )
@@ -2983,7 +2983,7 @@ typedef volatile struct tag_stm32f407_gpio {
 #define MCU_GPIO_AFRH_14_AF1                  ( ( uint32_t ) MCU_GPIO_AFRH_AF1 << 24U )
 #define MCU_GPIO_AFRH_15_AF1                  ( ( uint32_t ) MCU_GPIO_AFRH_AF1 << 28U )
 
-/* Вывод порта альтернативная функция "AF0" */
+/* Р’С‹РІРѕРґ РїРѕСЂС‚Р° Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ "AF0" */
 #define MCU_GPIO_AFRH_AF0                     ( 0x0U )
 #define MCU_GPIO_AFRH_8_AF0                   ( ( uint32_t ) MCU_GPIO_AFRH_AF0 << 0U  )
 #define MCU_GPIO_AFRH_9_AF0                   ( ( uint32_t ) MCU_GPIO_AFRH_AF0 << 4U  )
@@ -3008,15 +3008,15 @@ typedef volatile struct tag_stm32f407_syscfg {
 
 #define STM32F407_SYSCFG_PTR                  ( ( stm32f407_syscfg_t * ) 0x40013800U )
 
-/* Биты регистра MEMRMP (memory remap register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° MEMRMP (memory remap register) */
 #define MCU_SYSCFG_MEMRMP_BITS                ( 0x3U )
 #define MCU_SYSCFG_MEMRMP_MEM_MODE            ( 0x3U )
 
-/* Биты регистра PMC (peripheral mode configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PMC (peripheral mode configuration register) */
 #define MCU_SYSCFG_PMC_BITS                   ( 0x800000U )
 #define MCU_SYSCFG_PMC_MII_RMII_SEL           ( 0x800000U )
 
-/* Биты регистра EXTICR1 (external interrupt configuration register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTICR1 (external interrupt configuration register 1) */
 #define MCU_SYSCFG_EXTICR1_RESET_BITS         ( 0xFFFFFFFFU )
 #define MCU_SYSCFG_EXTICR1_BITS               ( 0xFFFFU )
 #define MCU_SYSCFG_EXTICR1_EXTI3_MASK         ( 0xF000U )
@@ -3024,28 +3024,28 @@ typedef volatile struct tag_stm32f407_syscfg {
 #define MCU_SYSCFG_EXTICR1_EXTI1_MASK         ( 0xF0U )
 #define MCU_SYSCFG_EXTICR1_EXTI0_MASK         ( 0xFU )
 
-/* Биты регистра EXTICR2 (external interrupt configuration register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTICR2 (external interrupt configuration register 2) */
 #define MCU_SYSCFG_EXTICR2_BITS               ( 0xFFFFU )
 #define MCU_SYSCFG_EXTICR2_EXTI7_MASK         ( 0xF000U )
 #define MCU_SYSCFG_EXTICR2_EXTI6_MASK         ( 0xF00U )
 #define MCU_SYSCFG_EXTICR2_EXTI5_MASK         ( 0xF0U )
 #define MCU_SYSCFG_EXTICR2_EXTI4_MASK         ( 0xFU )
 
-/* Биты регистра EXTICR3 (external interrupt configuration register 3) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTICR3 (external interrupt configuration register 3) */
 #define MCU_SYSCFG_EXTICR3_BITS               ( 0xFFFFU )
 #define MCU_SYSCFG_EXTICR3_EXTI11_MASK        ( 0xF000U )
 #define MCU_SYSCFG_EXTICR3_EXTI10_MASK        ( 0xF00U )
 #define MCU_SYSCFG_EXTICR3_EXTI9_MASK         ( 0xF0U )
 #define MCU_SYSCFG_EXTICR3_EXTI8_MASK         ( 0xFU )
 
-/* Биты регистра EXTICR4 (external interrupt configuration register 4) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTICR4 (external interrupt configuration register 4) */
 #define MCU_SYSCFG_EXTICR4_BITS               ( 0xFFFFU )
 #define MCU_SYSCFG_EXTICR4_EXTI15_MASK        ( 0xF000U )
 #define MCU_SYSCFG_EXTICR4_EXTI14_MASK        ( 0xF00U )
 #define MCU_SYSCFG_EXTICR4_EXTI13_MASK        ( 0xF0U )
 #define MCU_SYSCFG_EXTICR4_EXTI12_MASK        ( 0xFU )
 
-/* Биты регистра CMPCR (compensation cell control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CMPCR (compensation cell control register) */
 #define MCU_SYSCFG_CMPCR_BITS                 ( 0x101U )
 #define MCU_SYSCFG_CMPCR_READY                ( 0x100U )
 #define MCU_SYSCFG_CMPCR_CMP_PD               ( 0x1U )
@@ -3109,7 +3109,7 @@ typedef volatile struct tag_stm32f407_dma1 {
 
 #define STM32F407_DMA1_PTR                    ( ( stm32f407_dma1_t * ) 0x40026000U )
 
-/* Биты регистра LISR (low interrupt status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° LISR (low interrupt status register) */
 #define MCU_DMA1_LISR_BITS                    ( 0xF7D0F7DU )
 #define MCU_DMA1_LISR_TCIF3                   ( 0x8000000U )
 #define MCU_DMA1_LISR_HTIF3                   ( 0x4000000U )
@@ -3132,7 +3132,7 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_LISR_DMEIF0                  ( 0x4U )
 #define MCU_DMA1_LISR_FEIF0                   ( 0x1U )
 
-/* Биты регистра HISR (high interrupt status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° HISR (high interrupt status register) */
 #define MCU_DMA1_HISR_BITS                    ( 0xF7D0F7DU )
 #define MCU_DMA1_HISR_TCIF7                   ( 0x8000000U )
 #define MCU_DMA1_HISR_HTIF7                   ( 0x4000000U )
@@ -3155,7 +3155,7 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_HISR_DMEIF4                  ( 0x4U )
 #define MCU_DMA1_HISR_FEIF4                   ( 0x1U )
 
-/* Биты регистра LIFCR (low interrupt flag clear register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° LIFCR (low interrupt flag clear register) */
 #define MCU_DMA1_LIFCR_BITS                   ( 0xF7D0F7DU )
 #define MCU_DMA1_LIFCR_CTCIF3                 ( 0x8000000U )
 #define MCU_DMA1_LIFCR_CHTIF3                 ( 0x4000000U )
@@ -3178,7 +3178,7 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_LIFCR_CDMEIF0                ( 0x4U )
 #define MCU_DMA1_LIFCR_CFEIF0                 ( 0x1U )
 
-/* Биты регистра HIFCR (high interrupt flag clear register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° HIFCR (high interrupt flag clear register) */
 #define MCU_DMA1_HIFCR_BITS                   ( 0xF7D0F7DU )
 #define MCU_DMA1_HIFCR_CTCIF7                 ( 0x8000000U )
 #define MCU_DMA1_HIFCR_CHTIF7                 ( 0x4000000U )
@@ -3201,7 +3201,7 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_HIFCR_CDMEIF4                ( 0x4U )
 #define MCU_DMA1_HIFCR_CFEIF4                 ( 0x1U )
 
-/* Биты регистра S0CR (stream 0 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0CR (stream 0 configuration register) */
 #define MCU_DMA1_S0CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA1_S0CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA1_S0CR_MBURST_MASK             ( 0x1800000U )
@@ -3223,30 +3223,30 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_S0CR_DMEIE                   ( 0x2U )
 #define MCU_DMA1_S0CR_EN                      ( 0x1U )
 
-/* Биты регистра S0NDTR (stream 0 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0NDTR (stream 0 number of data register) */
 #define MCU_DMA1_S0NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA1_S0NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S0PAR (stream 0 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0PAR (stream 0 peripheral address register) */
 #define MCU_DMA1_S0PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA1_S0PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S0M0AR (stream 0 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0M0AR (stream 0 memory 0 address register) */
 #define MCU_DMA1_S0M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S0M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S0M1AR (tream 0 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0M1AR (tream 0 memory 1 address register) */
 #define MCU_DMA1_S0M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S0M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S0FCR (stream 0 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0FCR (stream 0 FIFO control register) */
 #define MCU_DMA1_S0FCR_BITS                   ( 0xBFU )
 #define MCU_DMA1_S0FCR_FEIE                   ( 0x80U )
 #define MCU_DMA1_S0FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA1_S0FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA1_S0FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S1CR (stream 1 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1CR (stream 1 configuration register) */
 #define MCU_DMA1_S1CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA1_S1CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA1_S1CR_MBURST_MASK             ( 0x1800000U )
@@ -3268,30 +3268,30 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_S1CR_DMEIE                   ( 0x2U )
 #define MCU_DMA1_S1CR_EN                      ( 0x1U )
 
-/* Биты регистра S1NDTR (stream 1 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1NDTR (stream 1 number of data register) */
 #define MCU_DMA1_S1NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA1_S1NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S1PAR (stream 1 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1PAR (stream 1 peripheral address register) */
 #define MCU_DMA1_S1PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA1_S1PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S1M0AR (stream 1 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1M0AR (stream 1 memory 0 address register) */
 #define MCU_DMA1_S1M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S1M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S1M1AR (stream 1 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1M1AR (stream 1 memory 1 address register) */
 #define MCU_DMA1_S1M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S1M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S1FCR (stream 1 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1FCR (stream 1 FIFO control register) */
 #define MCU_DMA1_S1FCR_BITS                   ( 0xBFU )
 #define MCU_DMA1_S1FCR_FEIE                   ( 0x80U )
 #define MCU_DMA1_S1FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA1_S1FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA1_S1FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S2CR (stream 2 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2CR (stream 2 configuration register) */
 #define MCU_DMA1_S2CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA1_S2CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA1_S2CR_MBURST_MASK             ( 0x1800000U )
@@ -3313,30 +3313,30 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_S2CR_DMEIE                   ( 0x2U )
 #define MCU_DMA1_S2CR_EN                      ( 0x1U )
 
-/* Биты регистра S2NDTR (stream 2 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2NDTR (stream 2 number of data register) */
 #define MCU_DMA1_S2NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA1_S2NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S2PAR (stream 2 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2PAR (stream 2 peripheral address register) */
 #define MCU_DMA1_S2PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA1_S2PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S2M0AR (stream 2 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2M0AR (stream 2 memory 0 address register) */
 #define MCU_DMA1_S2M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S2M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S2M1AR (stream 2 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2M1AR (stream 2 memory 1 address register) */
 #define MCU_DMA1_S2M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S2M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S2FCR (stream 2 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2FCR (stream 2 FIFO control register) */
 #define MCU_DMA1_S2FCR_BITS                   ( 0xBFU )
 #define MCU_DMA1_S2FCR_FEIE                   ( 0x80U )
 #define MCU_DMA1_S2FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA1_S2FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA1_S2FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S3CR (stream 3 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3CR (stream 3 configuration register) */
 #define MCU_DMA1_S3CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA1_S3CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA1_S3CR_MBURST_MASK             ( 0x1800000U )
@@ -3358,30 +3358,30 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_S3CR_DMEIE                   ( 0x2U )
 #define MCU_DMA1_S3CR_EN                      ( 0x1U )
 
-/* Биты регистра S3NDTR (stream 3 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3NDTR (stream 3 number of data register) */
 #define MCU_DMA1_S3NDTR_BITS                  ( 0xFFFFU )
 #define MCU_DMA1_S3NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S3PAR (stream 3 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3PAR (stream 3 peripheral address register) */
 #define MCU_DMA1_S3PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA1_S3PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S3M0AR (stream 3 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3M0AR (stream 3 memory 0 address register) */
 #define MCU_DMA1_S3M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S3M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S3M1AR (stream 3 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3M1AR (stream 3 memory 1 address register) */
 #define MCU_DMA1_S3M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S3M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S3FCR (stream 3 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3FCR (stream 3 FIFO control register) */
 #define MCU_DMA1_S3FCR_BITS                   ( 0xBFU )
 #define MCU_DMA1_S3FCR_FEIE                   ( 0x80U )
 #define MCU_DMA1_S3FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA1_S3FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA1_S3FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S4CR (stream 4 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4CR (stream 4 configuration register) */
 #define MCU_DMA1_S4CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA1_S4CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA1_S4CR_MBURST_MASK             ( 0x1800000U )
@@ -3403,30 +3403,30 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_S4CR_DMEIE                   ( 0x2U )
 #define MCU_DMA1_S4CR_EN                      ( 0x1U )
 
-/* Биты регистра S4NDTR (stream 4 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4NDTR (stream 4 number of data register) */
 #define MCU_DMA1_S4NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA1_S4NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S4PAR (stream 4 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4PAR (stream 4 peripheral address register) */
 #define MCU_DMA1_S4PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA1_S4PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S4M0AR (stream 4 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4M0AR (stream 4 memory 0 address register) */
 #define MCU_DMA1_S4M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S4M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S4M1AR (stream 4 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4M1AR (stream 4 memory 1 address register) */
 #define MCU_DMA1_S4M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S4M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S4FCR (stream 4 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4FCR (stream 4 FIFO control register) */
 #define MCU_DMA1_S4FCR_BITS                   ( 0xBFU )
 #define MCU_DMA1_S4FCR_FEIE                   ( 0x80U )
 #define MCU_DMA1_S4FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA1_S4FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA1_S4FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S5CR (stream 5 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5CR (stream 5 configuration register) */
 #define MCU_DMA1_S5CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA1_S5CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA1_S5CR_MBURST_MASK             ( 0x1800000U )
@@ -3448,30 +3448,30 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_S5CR_DMEIE                   ( 0x2U )
 #define MCU_DMA1_S5CR_EN                      ( 0x1U )
 
-/* Биты регистра S5NDTR (stream 5 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5NDTR (stream 5 number of data register) */
 #define MCU_DMA1_S5NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA1_S5NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S5PAR (stream 5 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5PAR (stream 5 peripheral address register) */
 #define MCU_DMA1_S5PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA1_S5PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S5M0AR (stream 5 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5M0AR (stream 5 memory 0 address register) */
 #define MCU_DMA1_S5M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S5M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S5M1AR (stream 5 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5M1AR (stream 5 memory 1 address register) */
 #define MCU_DMA1_S5M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S5M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S5FCR (stream 5 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5FCR (stream 5 FIFO control register) */
 #define MCU_DMA1_S5FCR_BITS                   ( 0xBFU )
 #define MCU_DMA1_S5FCR_FEIE                   ( 0x80U )
 #define MCU_DMA1_S5FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA1_S5FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA1_S5FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S6CR (stream 6 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6CR (stream 6 configuration register) */
 #define MCU_DMA1_S6CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA1_S6CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA1_S6CR_MBURST_MASK             ( 0x1800000U )
@@ -3493,30 +3493,30 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_S6CR_DMEIE                   ( 0x2U )
 #define MCU_DMA1_S6CR_EN                      ( 0x1U )
 
-/* Биты регистра S6NDTR (stream 6 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6NDTR (stream 6 number of data register) */
 #define MCU_DMA1_S6NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA1_S6NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S6PAR (stream 6 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6PAR (stream 6 peripheral address register) */
 #define MCU_DMA1_S6PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA1_S6PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S6M0AR (stream 6 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6M0AR (stream 6 memory 0 address register) */
 #define MCU_DMA1_S6M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S6M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S6M1AR (stream 6 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6M1AR (stream 6 memory 1 address register) */
 #define MCU_DMA1_S6M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S6M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S6FCR (stream 6 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6FCR (stream 6 FIFO control register) */
 #define MCU_DMA1_S6FCR_BITS                   ( 0xBFU )
 #define MCU_DMA1_S6FCR_FEIE                   ( 0x80U )
 #define MCU_DMA1_S6FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA1_S6FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA1_S6FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S7CR (stream 7 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S7CR (stream 7 configuration register) */
 #define MCU_DMA1_S7CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA1_S7CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA1_S7CR_MBURST_MASK             ( 0x1800000U )
@@ -3538,23 +3538,23 @@ typedef volatile struct tag_stm32f407_dma1 {
 #define MCU_DMA1_S7CR_DMEIE                   ( 0x2U )
 #define MCU_DMA1_S7CR_EN                      ( 0x1U )
 
-/* Биты регистра S7NDTR (stream 7 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S7NDTR (stream 7 number of data register) */
 #define MCU_DMA1_S7NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA1_S7NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра SPAR (stream 7 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SPAR (stream 7 peripheral address register) */
 #define MCU_DMA1_S7PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA1_S7PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S7M0AR (stream 7 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S7M0AR (stream 7 memory 0 address register) */
 #define MCU_DMA1_S7M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S7M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S7M1AR (stream 7 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S7M1AR (stream 7 memory 1 address register) */
 #define MCU_DMA1_S7M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA1_S7M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра MCU_DMA1_S7FCR (stream 7 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° MCU_DMA1_S7FCR (stream 7 FIFO control register) */
 #define MCU_DMA1_S7FCR_BITS                   ( 0xBFU )
 #define MCU_DMA1_S7FCR_FEIE                   ( 0x80U )
 #define MCU_DMA1_S7FCR_FS_MASK                ( 0x38U )
@@ -3620,7 +3620,7 @@ typedef volatile struct tag_stm32f407_DMA2 {
 
 #define STM32F407_DMA2_PTR                    ( ( stm32f407_dma2_t * ) 0x40026400U )
 
-/* Биты регистра LISR (low interrupt status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° LISR (low interrupt status register) */
 #define MCU_DMA2_LISR_BITS                    ( 0xF7D0F7DU )
 #define MCU_DMA2_LISR_TCIF3                   ( 0x8000000U )
 #define MCU_DMA2_LISR_HTIF3                   ( 0x4000000U )
@@ -3643,7 +3643,7 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_LISR_DMEIF0                  ( 0x4U )
 #define MCU_DMA2_LISR_FEIF0                   ( 0x1U )
 
-/* Биты регистра HISR (high interrupt status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° HISR (high interrupt status register) */
 #define MCU_DMA2_HISR_BITS                    ( 0xF7D0F7DU )
 #define MCU_DMA2_HISR_TCIF7                   ( 0x8000000U )
 #define MCU_DMA2_HISR_HTIF7                   ( 0x4000000U )
@@ -3666,7 +3666,7 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_HISR_DMEIF4                  ( 0x4U )
 #define MCU_DMA2_HISR_FEIF4                   ( 0x1U )
 
-/* Биты регистра LIFCR (low interrupt flag clear register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° LIFCR (low interrupt flag clear register) */
 #define MCU_DMA2_LIFCR_BITS                   ( 0xF7D0F7DU )
 #define MCU_DMA2_LIFCR_CTCIF3                 ( 0x8000000U )
 #define MCU_DMA2_LIFCR_CHTIF3                 ( 0x4000000U )
@@ -3689,7 +3689,7 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_LIFCR_CDMEIF0                ( 0x4U )
 #define MCU_DMA2_LIFCR_CFEIF0                 ( 0x1U )
 
-/* Биты регистра HIFCR (high interrupt flag clear register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° HIFCR (high interrupt flag clear register) */
 #define MCU_DMA2_HIFCR_BITS                   ( 0xF7D0F7DU )
 #define MCU_DMA2_HIFCR_CTCIF7                 ( 0x8000000U )
 #define MCU_DMA2_HIFCR_CHTIF7                 ( 0x4000000U )
@@ -3712,7 +3712,7 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_HIFCR_CDMEIF4                ( 0x4U )
 #define MCU_DMA2_HIFCR_CFEIF4                 ( 0x1U )
 
-/* Биты регистра S0CR (stream 0 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0CR (stream 0 configuration register) */
 #define MCU_DMA2_S0CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA2_S0CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA2_S0CR_MBURST_MASK             ( 0x1800000U )
@@ -3734,30 +3734,30 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_S0CR_DMEIE                   ( 0x2U )
 #define MCU_DMA2_S0CR_EN                      ( 0x1U )
 
-/* Биты регистра S0NDTR (stream 0 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0NDTR (stream 0 number of data register) */
 #define MCU_DMA2_S0NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA2_S0NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S0PAR (stream 0 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0PAR (stream 0 peripheral address register) */
 #define MCU_DMA2_S0PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA2_S0PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S0M0AR (stream 0 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0M0AR (stream 0 memory 0 address register) */
 #define MCU_DMA2_S0M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S0M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S0M1AR (tream 0 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0M1AR (tream 0 memory 1 address register) */
 #define MCU_DMA2_S0M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S0M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S0FCR (stream 0 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S0FCR (stream 0 FIFO control register) */
 #define MCU_DMA2_S0FCR_BITS                   ( 0xBFU )
 #define MCU_DMA2_S0FCR_FEIE                   ( 0x80U )
 #define MCU_DMA2_S0FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA2_S0FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA2_S0FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S1CR (stream 1 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1CR (stream 1 configuration register) */
 #define MCU_DMA2_S1CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA2_S1CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA2_S1CR_MBURST_MASK             ( 0x1800000U )
@@ -3779,30 +3779,30 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_S1CR_DMEIE                   ( 0x2U )
 #define MCU_DMA2_S1CR_EN                      ( 0x1U )
 
-/* Биты регистра S1NDTR (stream 1 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1NDTR (stream 1 number of data register) */
 #define MCU_DMA2_S1NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA2_S1NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S1PAR (stream 1 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1PAR (stream 1 peripheral address register) */
 #define MCU_DMA2_S1PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA2_S1PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S1M0AR (stream 1 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1M0AR (stream 1 memory 0 address register) */
 #define MCU_DMA2_S1M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S1M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S1M1AR (stream 1 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1M1AR (stream 1 memory 1 address register) */
 #define MCU_DMA2_S1M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S1M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S1FCR (stream 1 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S1FCR (stream 1 FIFO control register) */
 #define MCU_DMA2_S1FCR_BITS                   ( 0xBFU )
 #define MCU_DMA2_S1FCR_FEIE                   ( 0x80U )
 #define MCU_DMA2_S1FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA2_S1FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA2_S1FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S2CR (stream 2 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2CR (stream 2 configuration register) */
 #define MCU_DMA2_S2CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA2_S2CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA2_S2CR_MBURST_MASK             ( 0x1800000U )
@@ -3824,30 +3824,30 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_S2CR_DMEIE                   ( 0x2U )
 #define MCU_DMA2_S2CR_EN                      ( 0x1U )
 
-/* Биты регистра S2NDTR (stream 2 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2NDTR (stream 2 number of data register) */
 #define MCU_DMA2_S2NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA2_S2NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S2PAR (stream 2 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2PAR (stream 2 peripheral address register) */
 #define MCU_DMA2_S2PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA2_S2PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S2M0AR (stream 2 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2M0AR (stream 2 memory 0 address register) */
 #define MCU_DMA2_S2M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S2M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S2M1AR (stream 2 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2M1AR (stream 2 memory 1 address register) */
 #define MCU_DMA2_S2M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S2M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S2FCR (stream 2 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S2FCR (stream 2 FIFO control register) */
 #define MCU_DMA2_S2FCR_BITS                   ( 0xBFU )
 #define MCU_DMA2_S2FCR_FEIE                   ( 0x80U )
 #define MCU_DMA2_S2FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA2_S2FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA2_S2FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S3CR (stream 3 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3CR (stream 3 configuration register) */
 #define MCU_DMA2_S3CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA2_S3CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA2_S3CR_MBURST_MASK             ( 0x1800000U )
@@ -3869,30 +3869,30 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_S3CR_DMEIE                   ( 0x2U )
 #define MCU_DMA2_S3CR_EN                      ( 0x1U )
 
-/* Биты регистра S3NDTR (stream 3 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3NDTR (stream 3 number of data register) */
 #define MCU_DMA2_S3NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA2_S3NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S3PAR (stream 3 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3PAR (stream 3 peripheral address register) */
 #define MCU_DMA2_S3PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA2_S3PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S3M0AR (stream 3 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3M0AR (stream 3 memory 0 address register) */
 #define MCU_DMA2_S3M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S3M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S3M1AR (stream 3 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3M1AR (stream 3 memory 1 address register) */
 #define MCU_DMA2_S3M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S3M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S3FCR (stream 3 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S3FCR (stream 3 FIFO control register) */
 #define MCU_DMA2_S3FCR_BITS                   ( 0xBFU )
 #define MCU_DMA2_S3FCR_FEIE                   ( 0x80U )
 #define MCU_DMA2_S3FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA2_S3FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA2_S3FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S4CR (stream 4 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4CR (stream 4 configuration register) */
 #define MCU_DMA2_S4CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA2_S4CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA2_S4CR_MBURST_MASK             ( 0x1800000U )
@@ -3914,30 +3914,30 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_S4CR_DMEIE                   ( 0x2U )
 #define MCU_DMA2_S4CR_EN                      ( 0x1U )
 
-/* Биты регистра S4NDTR (stream 4 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4NDTR (stream 4 number of data register) */
 #define MCU_DMA2_S4NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA2_S4NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S4PAR (stream 4 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4PAR (stream 4 peripheral address register) */
 #define MCU_DMA2_S4PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA2_S4PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S4M0AR (stream 4 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4M0AR (stream 4 memory 0 address register) */
 #define MCU_DMA2_S4M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S4M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S4M1AR (stream 4 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4M1AR (stream 4 memory 1 address register) */
 #define MCU_DMA2_S4M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S4M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S4FCR (stream 4 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S4FCR (stream 4 FIFO control register) */
 #define MCU_DMA2_S4FCR_BITS                   ( 0xBFU )
 #define MCU_DMA2_S4FCR_FEIE                   ( 0x80U )
 #define MCU_DMA2_S4FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA2_S4FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA2_S4FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S5CR (stream 5 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5CR (stream 5 configuration register) */
 #define MCU_DMA2_S5CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA2_S5CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA2_S5CR_MBURST_MASK             ( 0x1800000U )
@@ -3959,30 +3959,30 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_S5CR_DMEIE                   ( 0x2U )
 #define MCU_DMA2_S5CR_EN                      ( 0x1U )
 
-/* Биты регистра S5NDTR (stream 5 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5NDTR (stream 5 number of data register) */
 #define MCU_DMA2_S5NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA2_S5NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S5PAR (stream 5 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5PAR (stream 5 peripheral address register) */
 #define MCU_DMA2_S5PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA2_S5PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S5M0AR (stream 5 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5M0AR (stream 5 memory 0 address register) */
 #define MCU_DMA2_S5M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S5M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S5M1AR (stream 5 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5M1AR (stream 5 memory 1 address register) */
 #define MCU_DMA2_S5M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S5M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S5FCR (stream 5 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S5FCR (stream 5 FIFO control register) */
 #define MCU_DMA2_S5FCR_BITS                   ( 0xBFU )
 #define MCU_DMA2_S5FCR_FEIE                   ( 0x80U )
 #define MCU_DMA2_S5FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA2_S5FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA2_S5FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S6CR (stream 6 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6CR (stream 6 configuration register) */
 #define MCU_DMA2_S6CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA2_S6CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA2_S6CR_MBURST_MASK             ( 0x1800000U )
@@ -4004,30 +4004,30 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_S6CR_DMEIE                   ( 0x2U )
 #define MCU_DMA2_S6CR_EN                      ( 0x1U )
 
-/* Биты регистра S6NDTR (stream 6 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6NDTR (stream 6 number of data register) */
 #define MCU_DMA2_S6NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA2_S6NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра S6PAR (stream 6 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6PAR (stream 6 peripheral address register) */
 #define MCU_DMA2_S6PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA2_S6PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S6M0AR (stream 6 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6M0AR (stream 6 memory 0 address register) */
 #define MCU_DMA2_S6M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S6M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S6M1AR (stream 6 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6M1AR (stream 6 memory 1 address register) */
 #define MCU_DMA2_S6M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S6M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S6FCR (stream 6 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S6FCR (stream 6 FIFO control register) */
 #define MCU_DMA2_S6FCR_BITS                   ( 0xBFU )
 #define MCU_DMA2_S6FCR_FEIE                   ( 0x80U )
 #define MCU_DMA2_S6FCR_FS_MASK                ( 0x38U )
 #define MCU_DMA2_S6FCR_DMDIS                  ( 0x4U )
 #define MCU_DMA2_S6FCR_FTH_MASK               ( 0x3U )
 
-/* Биты регистра S7CR (stream 7 configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S7CR (stream 7 configuration register) */
 #define MCU_DMA2_S7CR_BITS                    ( 0xFEFFFFFU )
 #define MCU_DMA2_S7CR_CHSEL_MASK              ( 0xE000000U )
 #define MCU_DMA2_S7CR_MBURST_MASK             ( 0x1800000U )
@@ -4049,23 +4049,23 @@ typedef volatile struct tag_stm32f407_DMA2 {
 #define MCU_DMA2_S7CR_DMEIE                   ( 0x2U )
 #define MCU_DMA2_S7CR_EN                      ( 0x1U )
 
-/* Биты регистра S7NDTR (stream 7 number of data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S7NDTR (stream 7 number of data register) */
 #define MCU_DMA2_S7NDTR_BITS                  (	0xFFFFU )
 #define MCU_DMA2_S7NDTR_NDT_MASK              ( 0xFFFFU )
 
-/* Биты регистра SPAR (stream 7 peripheral address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SPAR (stream 7 peripheral address register) */
 #define MCU_DMA2_S7PAR_BITS                   ( 0xFFFFFFFFU )
 #define MCU_DMA2_S7PAR_PAR_MASK               ( 0xFFFFFFFFU )
 
-/* Биты регистра S7M0AR (stream 7 memory 0 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S7M0AR (stream 7 memory 0 address register) */
 #define MCU_DMA2_S7M0AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S7M0AR_M0A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра S7M1AR (stream 7 memory 1 address register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° S7M1AR (stream 7 memory 1 address register) */
 #define MCU_DMA2_S7M1AR_BITS                  ( 0xFFFFFFFFU )
 #define MCU_DMA2_S7M1AR_M1A_MASK              ( 0xFFFFFFFFU )
 
-/* Биты регистра MCU_DMA2_S7FCR (stream 7 FIFO control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° MCU_DMA2_S7FCR (stream 7 FIFO control register) */
 #define MCU_DMA2_S7FCR_BITS                   ( 0xBFU )
 #define MCU_DMA2_S7FCR_FEIE                   ( 0x80U )
 #define MCU_DMA2_S7FCR_FS_MASK                ( 0x38U )
@@ -4085,29 +4085,29 @@ typedef volatile struct tag_stm32f407_exti {
 
 #define STM32F407_EXTI_PTR                    ( ( stm32f407_exti_t * ) 0x40013C00U )
 
-/* Биты регистра EXTI_IMR (interrupt mask register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTI_IMR (interrupt mask register) */
 #define MCU_EXTI_IMR_RESET_BITS               ( 0xFFFFFFFFU )
 #define MCU_EXTI_IMR_BITS                     ( 0x7FFFFFU )
 #define MCU_EXTI_IMR_MR_MASK                  ( 0x7FFFFFU )
 
-/* Биты регистра EXTI_EMR (event mask register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTI_EMR (event mask register) */
 #define MCU_EXTI_EMR_BITS                     ( 0x7FFFFFU )
 #define MCU_EXTI_EMR_MR_MASK                  ( 0x7FFFFFU )
 
-/* Биты регистра EXTI_RTSR (rising trigger selection register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTI_RTSR (rising trigger selection register) */
 #define MCU_EXTI_RTSR_BITS                    ( 0x7FFFFFU )
 #define MCU_EXTI_RTSR_MR_MASK                 ( 0x7FFFFFU )
 
-/* Биты регистра EXTI_FTSR (falling trigger selection register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTI_FTSR (falling trigger selection register) */
 #define MCU_EXTI_FTSR_RESET_BITS              ( 0xFFFFFFFFU )
 #define MCU_EXTI_FTSR_BITS                    ( 0x7FFFFFU )
 #define MCU_EXTI_FTSR_MR_MASK                 ( 0x7FFFFFU )
 
-/* Биты регистра EXTI_SWIER (software interrupt event register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTI_SWIER (software interrupt event register) */
 #define MCU_EXTI_SWIER_BITS                   ( 0x7FFFFFU )
 #define MCU_EXTI_SWIER_MR_MASK                ( 0x7FFFFFU )
 
-/* Биты регистра EXTI_PR (pending register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EXTI_PR (pending register) */
 #define MCU_EXTI_PR_RESET_BITS              ( 0xFFFFFFFFU )
 #define MCU_EXTI_PR_BITS                      ( 0x7FFFFFU )
 #define MCU_EXTI_PR_MR_MASK                   ( 0x7FFFFFU )
@@ -4130,7 +4130,7 @@ typedef volatile struct tag_stm32f407_dcmi {
 
 #define STM32F407_DCMI_PTR                    ( ( stm32f407_dcmi_t * ) 0x50050000U )
 
-/* Биты регистра DCMI_CR (DCMI control register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_CR (DCMI control register 1) */
 #define MCU_DCMI_CR_BITS                      ( 0x4FFFU )
 #define MCU_DCMI_CR_ENABLE                    ( 0x4000U )
 #define MCU_DCMI_CR_EDM                       ( 0xC00U )
@@ -4144,13 +4144,13 @@ typedef volatile struct tag_stm32f407_dcmi {
 #define MCU_DCMI_CR_CM                        ( 0x2U )
 #define MCU_DCMI_CR_CAPTURE                   ( 0x1U )
 
-/* Биты регистра DCMI_SR (DCMI status register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_SR (DCMI status register 1) */
 #define MCU_DCMI_SR_BITS                      ( 0x7U )
 #define MCU_DCMI_SR_FNE                       ( 0x4U )
 #define MCU_DCMI_SR_VSYNC                     ( 0x2U )
 #define MCU_DCMI_SR_HSYNC                     ( 0x1U )
 
-/* Биты регистра DCMI_RIS (DCMI status register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_RIS (DCMI status register 1) */
 #define MCU_DCMI_RIS_BITS                     ( 0x1FU )
 #define MCU_DCMI_RIS_LINE_RIS                 ( 0x10U )
 #define MCU_DCMI_RIS_VSYNC_RIS                ( 0x8U )
@@ -4158,7 +4158,7 @@ typedef volatile struct tag_stm32f407_dcmi {
 #define MCU_DCMI_RIS_OVR_RIS                  ( 0x2U )
 #define MCU_DCMI_RIS_FRAME_RIS                ( 0x1U )
 
-/* Биты регистра DCMI_IER (DCMI interrupt enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_IER (DCMI interrupt enable register) */
 #define MCU_DCMI_IER_BITS                     ( 0x1FU )
 #define MCU_DCMI_IER_LINE_IE                  ( 0x10U )
 #define MCU_DCMI_IER_VSYNC_IE                 ( 0x8U )
@@ -4166,7 +4166,7 @@ typedef volatile struct tag_stm32f407_dcmi {
 #define MCU_DCMI_IER_OVR_IE                   ( 0x2U )
 #define MCU_DCMI_IER_FRAME_IE                 ( 0x1U )
 
-/* Биты регистра DCMI_MIS (DCMI masked interrupt status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_MIS (DCMI masked interrupt status register) */
 #define MCU_DCMI_MIS_BITS                     ( 0x1FU )
 #define MCU_DCMI_MIS_LINE_MIS                 ( 0x10U )
 #define MCU_DCMI_MIS_VSYNC_MIS                ( 0x8U )
@@ -4174,7 +4174,7 @@ typedef volatile struct tag_stm32f407_dcmi {
 #define MCU_DCMI_MIS_OVR_MIS                  ( 0x2U )
 #define MCU_DCMI_MIS_FRAME_MIS                ( 0x1U )
 
-/* Биты регистра DCMI_ICR (DCMI interrupt clear register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_ICR (DCMI interrupt clear register) */
 #define MCU_DCMI_ICR_BITS                     ( 0x1FU )
 #define MCU_DCMI_ICR_LINE_ISC                 ( 0x10U )
 #define MCU_DCMI_ICR_VSYNC_ISC                ( 0x8U )
@@ -4182,31 +4182,31 @@ typedef volatile struct tag_stm32f407_dcmi {
 #define MCU_DCMI_ICR_OVR_ISC                  ( 0x2U )
 #define MCU_DCMI_ICR_FRAME_ISC                ( 0x1U )
 
-/* Биты регистра DCMI_ESCR (DCMI embedded synchronization code register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_ESCR (DCMI embedded synchronization code register) */
 #define MCU_DCMI_ESCR_BITS                    ( 0xFFFFFFFFU )
 #define MCU_DCMI_ESCR_FEC                     ( 0xFF000000U )
 #define MCU_DCMI_ESCR_LEC                     ( 0xFF0000U )
 #define MCU_DCMI_ESCR_LSC                     ( 0xFF00U )
 #define MCU_DCMI_ESCR_FSC                     ( 0xFFU )
 
-/* Биты регистра DCMI_ESUR (DCMI embedded synchronization unmask register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_ESUR (DCMI embedded synchronization unmask register) */
 #define MCU_DCMI_ESUR_BITS                    ( 0xFFFFFFFFU )
 #define MCU_DCMI_ESUR_FEU                     ( 0xFF000000U )
 #define MCU_DCMI_ESUR_LEU                     ( 0xFF0000U )
 #define MCU_DCMI_ESUR_LSU                     ( 0xFF00U )
 #define MCU_DCMI_ESUR_FSU                     ( 0xFFU )
 
-/* Биты регистра DCMI_CWSTRT (DCMI crop window start) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_CWSTRT (DCMI crop window start) */
 #define MCU_DCMI_CWSTRT_BITS                  ( 0x1FFF3FFFU )
 #define MCU_DCMI_CWSTRT_VST                   ( 0x1FFF0000U )
 #define MCU_DCMI_CWSTRT_HOFFCNT               ( 0x3FFFU )
 
-/* Биты регистра DCMI_CWSIZE (DCMI crop window size) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_CWSIZE (DCMI crop window size) */
 #define MCU_DCMI_CWSIZE_BITS                  ( 0x3FFF3FFFU )
 #define MCU_DCMI_CWSIZE_VLINE                 ( 0x3FFF0000U )
 #define MCU_DCMI_CWSIZE_CAPCNT                ( 0x3FFFU )
 
-/* Биты регистра DCMI_DR (DCMI data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCMI_DR (DCMI data register) */
 #define MCU_DCMI_DR_BITS                      ( 0xFFFFFFFFU )
 #define MCU_DCMI_DR_BYTE3                     ( 0xFF000000U )
 #define MCU_DCMI_DR_BYTE2                     ( 0xFF0000U )
@@ -4240,7 +4240,7 @@ typedef volatile struct tag_stm32f407_act {
 #define STM32F407_TIM1_PTR                    ( ( stm32f407_gpt_t * ) 0x40010000U )
 #define STM32F407_TIM8_PTR                    ( ( stm32f407_gpt_t * ) 0x40010400U )
 
-/* Биты регистра CR1 (control register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR1 (control register 1) */
 #define MCU_ACT_CR1_BITS                      ( 0x3FFU )
 #define MCU_ACT_CR1_CKD_RESERVED              ( 0x300U )
 #define MCU_ACT_CR1_CKD_4CK_INT               ( 0x200U )
@@ -4259,7 +4259,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_CR1_UDIS                      ( 0x2U )
 #define MCU_ACT_CR1_CEN                       ( 0x1U )
 
-/* Биты регистра CR2 (control register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR2 (control register 2) */
 #define MCU_ACT_CR2_BITS                      ( 0x7FFDU )
 #define MCU_ACT_CR2_OIS4                      ( 0x4000U )
 #define MCU_ACT_CR2_OIS3N                     ( 0x2000U )
@@ -4282,7 +4282,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_CR2_CCUS                      ( 0x4U )
 #define MCU_ACT_CR2_CCPC                      ( 0x1U )
 
-/* Биты регистра SMCR (slave mode control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SMCR (slave mode control register) */
 #define MCU_ACT_SMCR_BITS                     ( 0xFFF7U )
 #define MCU_ACT_SMCR_ETP                      ( 0x8000U )
 #define MCU_ACT_SMCR_ECE                      ( 0x4000U )
@@ -4328,7 +4328,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_SMCR_SMS_DISABLED             ( 0x0U )
 #define MCU_ACT_SMCR_SMS_MASK                 ( 0x7U )
 
-/* Биты регистра DIER (DMA/interrupt enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DIER (DMA/interrupt enable register) */
 #define MCU_ACT_DIER_BITS                     ( 0x7FFFU )
 #define MCU_ACT_DIER_TDE                      ( 0x4000U )
 #define MCU_ACT_DIER_COMDE                    ( 0x2000U )
@@ -4346,7 +4346,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_DIER_CC1IE                    ( 0x2U )
 #define MCU_ACT_DIER_UIE                      ( 0x1U )
 
-/* Биты регистра SR (status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR (status register) */
 #define MCU_ACT_SR_BITS                       ( 0x1EFFU )
 #define MCU_ACT_SR_CC4OF                      ( 0x1000U )
 #define MCU_ACT_SR_CC3OF                      ( 0x800U )
@@ -4361,7 +4361,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_SR_CC1IF                      ( 0x2U )
 #define MCU_ACT_SR_UIF                        ( 0x1U )
 
-/* Биты регистра EGR (event generation register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EGR (event generation register) */
 #define MCU_ACT_EGR_BITS                      ( 0xFFU )
 #define MCU_ACT_EGR_BG                        ( 0x80U )
 #define MCU_ACT_EGR_TG                        ( 0x40U )
@@ -4372,7 +4372,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_EGR_CC1G                      ( 0x2U )
 #define MCU_ACT_EGR_UG                        ( 0x1U )
 
-/* Биты регистра CCMR1_OCM (output compare mode register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR1_OCM (output compare mode register 1) */
 #define MCU_ACT_CCMR1_OCM_BITS                ( 0xFFFFU )
 #define MCU_ACT_CCMR1_OCM_OC2CE               ( 0x8000U )
 #define MCU_ACT_CCMR1_OCM_OC2M_MASK           ( 0x7000U )
@@ -4401,7 +4401,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_CCMR1_OCM_CC1S_OUTPUT         ( 0x0U )
 #define MCU_ACT_CCMR1_OCM_CC1S_MASK           ( 0x3U )
 
-/* Биты регистра CCMR1_ICM (input capture mode register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR1_ICM (input capture mode register 1) */
 #define MCU_ACT_CCMR1_ICM_BITS                ( 0xFFFFU )
 #define MCU_ACT_CCMR1_ICM_IC2F_MASK           ( 0xF000U )
 #define MCU_ACT_CCMR1_ICM_IC2PSC_MASK         ( 0xC00U )
@@ -4438,7 +4438,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_CCMR1_ICM_CC1S_OUTPUT         ( 0x0U )
 #define MCU_ACT_CCMR1_ICM_CC1S_MASK           ( 0x3U )
 
-/* Биты регистра CCMR2_OCM (output compare mode register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR2_OCM (output compare mode register 2) */
 #define MCU_ACT_CCMR2_OCM_BITS                ( 0xFFFFU )
 #define MCU_ACT_CCMR2_OCM_OC4CE               ( 0x8000U )
 #define MCU_ACT_CCMR2_OCM_OC4M_MASK           ( 0x7000U )
@@ -4459,7 +4459,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_CCMR2_OCM_CC3S_OUTPUT         ( 0x0U )
 #define MCU_ACT_CCMR2_OCM_CC3S_MASK           ( 0x3U )
 
-/* Биты регистра CCMR2_ICM (input capture mode register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR2_ICM (input capture mode register 2) */
 #define MCU_ACT_CCMR2_ICM_BITS                ( 0xFFFFU )
 #define MCU_ACT_CCMR2_ICM_IC4F_MASK           ( 0xF000U )
 #define MCU_ACT_CCMR2_ICM_IC4PSC_MASK         ( 0xC00U )
@@ -4476,7 +4476,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_CCMR2_ICM_CC3S_OUTPUT         ( 0x0U )
 #define MCU_ACT_CCMR2_ICM_CC3S_MASK           ( 0x3U )
 
-/* Биты регистра CCER (capture/compare enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCER (capture/compare enable register) */
 #define MCU_ACT_CCER_BITS                     ( 0xBFFFU )
 #define MCU_ACT_CCER_CC4NP                    ( 0x8000U )
 #define MCU_ACT_CCER_CC4P                     ( 0x2000U )
@@ -4494,27 +4494,27 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_CCER_CC1P                     ( 0x2U )
 #define MCU_ACT_CCER_CC1E                     ( 0x1U )
 
-/* Биты регистра CNT (counter) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CNT (counter) */
 #define MCU_ACT_CNT_BITS                      ( 0xFFFFU )
 #define MCU_ACT_CNT_CNT_MASK                  ( 0xFFFFU )
 
-/* Биты регистра PSC (prescaler) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PSC (prescaler) */
 #define MCU_ACT_PSC_BITS                      ( 0xFFFFU )
 #define MCU_ACT_PSC_PSC_MASK                  ( 0xFFFFU )
 
-/* Биты регистра ARR (auto-reload register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ARR (auto-reload register) */
 #define MCU_ACT_ARR_BITS                      ( 0xFFFFU )
 #define MCU_ACT_ARR_ARR_MASK                  ( 0xFFFFU )
 
-/* Биты регистра RCR (repetition counter register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RCR (repetition counter register) */
 #define MCU_ACT_RCR_BITS                      ( 0xFFU )
 #define MCU_ACT_RCR_REP_MASK                  ( 0xFFU )
 
-/* Биты регистра CCRX (capture/compare register 1-4) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCRX (capture/compare register 1-4) */
 #define MCU_ACT_CCRX_BITS                     ( 0xFFFFU )
 #define MCU_ACT_CCRX_CCRX_MASK                ( 0xFFFFU )
 
-/* Биты регистра BDTR (break and dead-time register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BDTR (break and dead-time register) */
 #define MCU_ACT_BDTR_BITS                     ( 0xFFFFU )
 #define MCU_ACT_BDTR_MOE                      ( 0x8000U )
 #define MCU_ACT_BDTR_AOE                      ( 0x4000U )
@@ -4529,7 +4529,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_BDTR_LOCK_MASK                ( 0x300U )
 #define MCU_ACT_BDTR_DTG_MASK                 ( 0xFFU )
 
-/* Биты регистра DCR (DMA control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCR (DMA control register) */
 #define MCU_ACT_DCR_BITS                      ( 0x1F1FU )
 #define MCU_ACT_DCR_DBL_18                    ( 0x1100U )
 #define MCU_ACT_DCR_DBL_17                    ( 0x1000U )
@@ -4574,7 +4574,7 @@ typedef volatile struct tag_stm32f407_act {
 #define MCU_ACT_DCR_DBA_TIMX_CR1              ( 0x0U )
 #define MCU_ACT_DCR_DBA_MASK                  ( 0x1FU )
 
-/* Биты регистра DMAR (DMA address for full transfer) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DMAR (DMA address for full transfer) */
 #define MCU_ACT_DMAR_BITS                     ( 0xFFFFFFFFU )
 #define MCU_ACT_DMAR_DMAB_MASK                ( 0xFFFFFFFFU )
 
@@ -4610,7 +4610,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define STM32F407_TIM4_PTR                    ( ( stm32f407_gpt_t * ) 0x40000800U )
 #define STM32F407_TIM5_PTR                    ( ( stm32f407_gpt_t * ) 0x40000C00U )
 
-/* Биты регистра CR1 (control register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR1 (control register 1) */
 #define MCU_GPT_CR1_BITS                      ( 0x3FFU )
 #define MCU_GPT_CR1_CKD_MASK                  ( 0x300U )
 #define MCU_GPT_CR1_ARPE                      ( 0x80U )
@@ -4621,13 +4621,13 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_CR1_UDIS                      ( 0x2U )
 #define MCU_GPT_CR1_CEN                       (	0x1U )
 
-/* Биты регистра CR2 (control register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR2 (control register 2) */
 #define MCU_GPT_CR2_BITS                      ( 0xF8U )
 #define MCU_GPT_CR2_TI1S                      ( 0x80U )
 #define MCU_GPT_CR2_MMS_MASK                  ( 0x70U )
 #define MCU_GPT_CR2_CCDS                      ( 0x8U )
 
-/* Биты регистра SMCR (slave mode control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SMCR (slave mode control register) */
 #define MCU_GPT_SMCR_BITS                     ( 0xFFF7U )
 #define MCU_GPT_SMCR_ETP                      ( 0x8000U )
 #define MCU_GPT_SMCR_ECE                      ( 0x4000U )
@@ -4637,7 +4637,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_SMCR_TS_MASK                  ( 0x70U )
 #define MCU_GPT_SMCR_SMS_MASK                 ( 0x7U )
 
-/* Биты регистра DIER (DMA/interrupt enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DIER (DMA/interrupt enable register) */
 #define MCU_GPT_DIER_BITS                     ( 0x7F5FU )
 #define MCU_GPT_DIER_TDE                      ( 0x4000U )
 #define MCU_GPT_DIER_COMDE                    ( 0x2000U )
@@ -4653,7 +4653,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_DIER_CC1IE                    ( 0x2U )
 #define MCU_GPT_DIER_UIE                      ( 0x1U )
 
-/* Биты регистра SR (status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR (status register) */
 #define MCU_GPT_SR_BITS                       ( 0x1E5FU )
 #define MCU_GPT_SR_CC4OF                      ( 0x1000U )
 #define MCU_GPT_SR_CC3OF                      ( 0x800U )
@@ -4666,7 +4666,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_SR_CC1IF                      ( 0x2U )
 #define MCU_GPT_SR_UIF                        ( 0x1U )
 
-/* Биты регистра EGR (event generation register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EGR (event generation register) */
 #define MCU_GPT_EGR_BITS                      ( 0xFFU )
 #define MCU_GPT_EGR_TG                        ( 0x40U )
 #define MCU_GPT_EGR_CC4G                      ( 0x10U )
@@ -4675,7 +4675,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_EGR_CC1G                      ( 0x2U )
 #define MCU_GPT_EGR_UG                        ( 0x1U )
 
-/* Биты регистра CCMR1_OCM (output compare mode register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR1_OCM (output compare mode register 1) */
 #define MCU_GPT_CCMR1_OCM_BITS                ( 0xFFFFU )
 #define MCU_GPT_CCMR1_OCM_OC2CE               ( 0x8000U )
 #define MCU_GPT_CCMR1_OCM_OC2M_MASK           ( 0x7000U )
@@ -4689,7 +4689,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_CCMR1_OCM_OC1FE               ( 0x4U )
 #define MCU_GPT_CCMR1_OCM_CC1S_MASK           ( 0x3U )
 
-/* Биты регистра CCMR1_ICM (input capture mode register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR1_ICM (input capture mode register 1) */
 #define MCU_GPT_CCMR1_ICM_BITS                ( 0xFFFFU )
 #define MCU_GPT_CCMR1_ICM_IC2F_MASK           ( 0xF000U )
 #define MCU_GPT_CCMR1_ICM_IC2PSC_MASK         ( 0xC00U )
@@ -4698,7 +4698,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_CCMR1_ICM_IC1PSC_MASK         ( 0xCU )
 #define MCU_GPT_CCMR1_ICM_CC1S_MASK           ( 0x3U )
 
-/* Биты регистра CCMR2_OCM (output compare mode register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR2_OCM (output compare mode register 2) */
 #define MCU_GPT_CCMR2_OCM_BITS                ( 0xFFFFU )
 #define MCU_GPT_CCMR2_OCM_OC4CE               ( 0x8000U )
 #define MCU_GPT_CCMR2_OCM_OC4M_MASK           ( 0x7000U )
@@ -4712,7 +4712,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_CCMR2_OCM_OC3FE               ( 0xCU )
 #define MCU_GPT_CCMR2_OCM_CC3S_MASK           ( 0x3U )
 
-/* Биты регистра CCMR2_ICM (input capture mode register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR2_ICM (input capture mode register 2) */
 #define MCU_GPT_CCMR2_ICM_BITS                ( 0xFFFFU )
 #define MCU_GPT_CCMR2_ICM_IC4F_MASK           ( 0xF000U )
 #define MCU_GPT_CCMR2_ICM_IC4PSC_MASK         ( 0xC00U )
@@ -4721,7 +4721,7 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_CCMR2_ICM_IC3PSC_MASK         ( 0xCU )
 #define MCU_GPT_CCMR2_ICM_CC3S_MASK           ( 0x3U )
 
-/* Биты регистра CCER (capture/compare enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCER (capture/compare enable register) */
 #define MCU_GPT_CCER_BITS                     ( 0xBBBBU )
 #define MCU_GPT_CCER_CC4NP                    ( 0x8000U )
 #define MCU_GPT_CCER_CC4P                     ( 0x2000U )
@@ -4736,48 +4736,48 @@ typedef volatile struct tag_stm32f407_gpt {
 #define MCU_GPT_CCER_CC1P                     ( 0x2U )
 #define MCU_GPT_CCER_CC1E                     ( 0x1U )
 
-/* Биты регистра CNT (counter) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CNT (counter) */
 #define MCU_GPT_CNT_BITS                      ( 0xFFFFU )
 #define MCU_GPT_CNT_CNT_MASK                  ( 0xFFFFU )
 
-/* Биты регистра PSC (prescaler) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PSC (prescaler) */
 #define MCU_GPT_PSC_BITS                      ( 0xFFFFU )
 #define MCU_GPT_PSC_PSC_MASK                  ( 0xFFFFU )
 
-/* Биты регистра ARR (auto-reload register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ARR (auto-reload register) */
 #define MCU_GPT_ARR_BITS                      ( 0xFFFFFFFFU )
 #define MCU_GPT_ARR_ARR_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра CCR1 (capture/compare register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCR1 (capture/compare register 1) */
 #define MCU_GPT_CCR1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_GPT_CCR1_CCR1_MASK                ( 0xFFFFFFFFU )
 
-/* Биты регистра CCR2 (capture/compare register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCR2 (capture/compare register 2) */
 #define MCU_GPT_CCR2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_GPT_CCR2_CCR2_MASK                ( 0xFFFFFFFFU )
 
-/* Биты регистра CCR3 (capture/compare register 3) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCR3 (capture/compare register 3) */
 #define MCU_GPT_CCR3_BITS                     ( 0xFFFFFFFFU )
 #define MCU_GPT_CCR3_CCR3_MASK                ( 0xFFFFFFFFU )
 
-/* Биты регистра CCR4 (capture/compare register 4) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCR4 (capture/compare register 4) */
 #define MCU_GPT_CCR4_BITS                     ( 0xFFFFFFFFU )
 #define MCU_GPT_CCR4_CCR4_MASK                ( 0xFFFFFFFFU )
 
-/* Биты регистра DCR (DMA control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DCR (DMA control register) */
 #define MCU_GPT_DCR_BITS                      ( 0x1F1FU )
 #define MCU_GPT_DCR_DBL_MASK                  ( 0x1F00U )
 #define MCU_GPT_DCR_DBA_MASK                  ( 0x1FU )
 
-/* Биты регистра DMAR (DMA address for full transfer) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DMAR (DMA address for full transfer) */
 #define MCU_GPT_DMAR_BITS                     ( 0xFFFFU )
 #define MCU_GPT_DMAR_DMAB_MASK                ( 0xFFFFU )
 
-/* Биты регистра TIM2_OR (TIM2 option register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TIM2_OR (TIM2 option register) */
 #define MCU_GPT_TIM_2_OR_BITS                 ( 0xC000U )
 #define MCU_GPT_TIM_2_OR_ITR1_RMP             ( 0xC000U )
 
-/* Биты регистра TIM5_OR (TIM5 option register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TIM5_OR (TIM5 option register) */
 #define MCU_GPT_TIM_5_OR_BITS                 ( 0xC0U )
 #define MCU_GPT_TIM_5_OR_TI4_RMP              ( 0xC0U )
 
@@ -4804,7 +4804,7 @@ typedef volatile struct tag_stm32f407_tim9_12 {
 
 #define STM32F407_TIM9_12_PTR                 ( ( stm32f407_tim9_12_t * ) 0x40014000U )
 
-/* Биты регистра CR1 (control register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR1 (control register 1) */
 #define MCU_TIM9_12_CR1_BITS                  ( 0x3FFU )
 #define MCU_TIM9_12_CR1_CKD_MASK              ( 0x300U )
 #define MCU_TIM9_12_CR1_ARPE                  ( 0x80U )
@@ -4813,20 +4813,20 @@ typedef volatile struct tag_stm32f407_tim9_12 {
 #define MCU_TIM9_12_CR1_UDIS                  ( 0x2U )
 #define MCU_TIM9_12_CR1_CEN                   ( 0x1U )
 
-/* Биты регистра SMCR (slave mode control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SMCR (slave mode control register) */
 #define MCU_TIM9_12_SMCR_BITS                 ( 0xF7U )
 #define MCU_TIM9_12_SMCR_MSM                  ( 0x80U )
 #define MCU_TIM9_12_SMCR_TS_MASK              ( 0x70U )
 #define MCU_TIM9_12_SMCR_SMS_MASK             ( 0x7U )
 
-/* Биты регистра DIER (DMA/interrupt enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DIER (DMA/interrupt enable register) */
 #define MCU_TIM9_12_DIER_BITS                 ( 0x47U )
 #define MCU_TIM9_12_DIER_TIE                  (	0x40U )
 #define MCU_TIM9_12_DIER_CC2IE                ( 0x4U )
 #define MCU_TIM9_12_DIER_CC1IE                ( 0x2U )
 #define MCU_TIM9_12_DIER_UIE                  ( 0x1U )
 
-/* Биты регистра SR (status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR (status register) */
 #define MCU_TIM9_12_SR_BITS                   ( 0x647U )
 #define MCU_TIM9_12_SR_CC2OF                  ( 0x400U )
 #define MCU_TIM9_12_SR_CC1OF                  ( 0x200U )
@@ -4835,14 +4835,14 @@ typedef volatile struct tag_stm32f407_tim9_12 {
 #define MCU_TIM9_12_SR_CC1IF                  ( 0x2U )
 #define MCU_TIM9_12_SR_UIF                    ( 0x1U )
 
-/* Биты регистра EGR (event generation register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EGR (event generation register) */
 #define MCU_TIM9_12_EGR_BITS                  ( 0x47U )
 #define MCU_TIM9_12_EGR_TG                    ( 0x40U )
 #define MCU_TIM9_12_EGR_CC2G                  ( 0x4U )
 #define MCU_TIM9_12_EGR_CC1G                  ( 0x2U )
 #define MCU_TIM9_12_EGR_UG                    ( 0x1U )
 
-/* Биты регистра CCMR1_OCM (output compare mode register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR1_OCM (output compare mode register) */
 #define MCU_TIM9_12_CCMR1_OCM_BITS            ( 0x7F7FU )
 #define MCU_TIM9_12_CCMR1_OCM_OC2M_MASK       ( 0x7000U )
 #define MCU_TIM9_12_CCMR1_OCM_OC2PE           ( 0x800U )
@@ -4853,7 +4853,7 @@ typedef volatile struct tag_stm32f407_tim9_12 {
 #define MCU_TIM9_12_CCMR1_OCM_OC1FE           ( 0x4U )
 #define MCU_TIM9_12_CCMR1_OCM_CC1S_MASK       ( 0x3U )
 
-/* Биты регистра CCMR1_ICM (input capture mode register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR1_ICM (input capture mode register) */
 #define MCU_TIM9_12_CCMR1_ICM_BITS            ( 0xFFFFU )
 #define MCU_TIM9_12_CCMR1_ICM_IC2F_MASK       ( 0xF000U )
 #define MCU_TIM9_12_CCMR1_ICM_IC2PSC_MASK     ( 0xC00U )
@@ -4862,7 +4862,7 @@ typedef volatile struct tag_stm32f407_tim9_12 {
 #define MCU_TIM9_12_CCMR1_ICM_IC1PSC_MASK     ( 0xCU )
 #define MCU_TIM9_12_CCMR1_ICM_CC1S_MASK       ( 0x3U )
 
-/* Биты регистра CCER (capture/compare enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCER (capture/compare enable register) */
 #define MCU_TIM9_12_CCER_BITS                 ( 0xBBU )
 #define MCU_TIM9_12_CCER_CC2NP                ( 0x80U )
 #define MCU_TIM9_12_CCER_CC2P                 ( 0x20U )
@@ -4871,23 +4871,23 @@ typedef volatile struct tag_stm32f407_tim9_12 {
 #define MCU_TIM9_12_CCER_CC1P                 ( 0x2U )
 #define MCU_TIM9_12_CCER_CC1E                 ( 0x1U )
 
-/* Биты регистра CNT (counter) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CNT (counter) */
 #define MCU_TIM9_12_CNT_BITS                  ( 0xFFFFU )
 #define MCU_TIM9_12_CNT_CNT_MASK              ( 0xFFFFU )
 
-/* Биты регистра PSC (prescaler) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PSC (prescaler) */
 #define MCU_TIM9_12_PSC_BITS                  ( 0xFFFFU )
 #define MCU_TIM9_12_PSC_PSC_MASK              ( 0xFFFFU )
 
-/* Биты регистра ARR (auto-reload register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ARR (auto-reload register) */
 #define MCU_TIM9_12_ARR_BITS                  ( 0xFFFFU )
 #define MCU_TIM9_12_ARR_ARR_MASK              ( 0xFFFFU )
 
-/* Биты регистра CCR1 (capture/compare register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCR1 (capture/compare register 1) */
 #define MCU_TIM9_12_CCR1_BITS                 ( 0xFFFFU )
 #define MCU_TIM9_12_CCR1_CCR1_MASK            ( 0xFFFFU )
 
-/* Биты регистра CCR2 (capture/compare register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCR2 (capture/compare register 2) */
 #define MCU_TIM9_12_CCR2_BITS                 ( 0xFFFFU )
 #define MCU_TIM9_12_CCR2_CCR2_MASK            ( 0xFFFFU )
 
@@ -4914,7 +4914,7 @@ typedef volatile struct tag_stm32f407_tim10_14 {
 
 #define STM32F407_TIM10_14_PTR                ( ( stm32f407_tim10_14_t * ) 0x40014400U )
 
-//* Биты регистра CR1 (control register 1) */
+//* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR1 (control register 1) */
 #define MCU_TIM10_14_CR1_BITS                 ( 0x38FU )
 #define MCU_TIM10_14_CR1_CKD_MASK             ( 0x300U )
 #define MCU_TIM10_14_CR1_ARPE                 ( 0x80U )
@@ -4923,58 +4923,58 @@ typedef volatile struct tag_stm32f407_tim10_14 {
 #define MCU_TIM10_14_CR1_UDIS                 ( 0x2U )
 #define MCU_TIM10_14_CR1_CEN                  ( 0x1U )
 
-/* Биты регистра DIER (DMA/interrupt enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DIER (DMA/interrupt enable register) */
 #define MCU_TIM10_14_DIER_BITS                ( 0x3U )
 #define MCU_TIM10_14_DIER_CC1IE               ( 0x2U )
 #define MCU_TIM10_14_DIER_UIE                 ( 0x1U )
 
-/* Биты регистра SR (status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR (status register) */
 #define MCU_TIM10_14_SR_BITS                  ( 0x203U )
 #define MCU_TIM10_14_SR_CC1OF                 ( 0x200U )
 #define MCU_TIM10_14_SR_CC1IF                 ( 0x2U )
 #define MCU_TIM10_14_SR_UIF                   ( 0x1U )
 
-/* Биты регистра EGR (event generation register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° EGR (event generation register) */
 #define MCU_TIM10_14_EGR_BITS                 ( 0x3U )
 #define MCU_TIM10_14_EGR_CC1G                 ( 0x2U )
 #define MCU_TIM10_14_EGR_UG                   ( 0x1U )
 
-/* Биты регистра CCMR1_OCM (output compare mode register  1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR1_OCM (output compare mode register  1) */
 #define MCU_TIM10_14_CCMR1_OCM_BITS           ( 0x7FU )
 #define MCU_TIM10_14_CCMR1_OCM_OC1M_MASK      ( 0x70U )
 #define MCU_TIM10_14_CCMR1_OCM_OC1PE          ( 0x8U )
 #define MCU_TIM10_14_CCMR1_OCM_OC1FE          ( 0x4U )
 #define MCU_TIM10_14_CCMR1_OCM_CC1S_MASK      ( 0x3U )
 
-/* Биты регистра CCMR1_ICM (input capture mode register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCMR1_ICM (input capture mode register 1) */
 #define MCU_TIM10_14_CCMR1_ICM_BITS           ( 0xFFU )
 #define MCU_TIM10_14_CCMR1_ICM_IC1F_MASK      ( 0xF0U )
 #define MCU_TIM10_14_CCMR1_ICM_IC1PSC_MASK    ( 0xCU )
 #define MCU_TIM10_14_CCMR1_ICM_CC1S_MASK      ( 0x3U )
 
-/* Биты регистра CCER (capture/compare enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCER (capture/compare enable register) */
 #define MCU_TIM10_14_CCER_BITS                ( 0xBU )
 #define MCU_TIM10_14_CCER_CC1NP               ( 0x8U )
 #define MCU_TIM10_14_CCER_CC1P                ( 0x2U )
 #define MCU_TIM10_14_CCER_CC1E                ( 0x1U )
 
-/* Биты регистра CNT (counter) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CNT (counter) */
 #define MCU_TIM10_14_CNT_BITS                 ( 0xFFFFU )
 #define MCU_TIM10_14_CNT_CNT_MASK             ( 0xFFFFU )
 
-/* Биты регистра PSC (prescaler) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PSC (prescaler) */
 #define MCU_TIM10_14_PSC_BITS                 ( 0xFFFFU )
 #define MCU_TIM10_14_PSC_PSC_MASK             ( 0xFFFFU )
 
-/* Биты регистра ARR (auto-reload register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ARR (auto-reload register) */
 #define MCU_TIM10_14_ARR_BITS                 ( 0xFFFFFFFFU )
 #define MCU_TIM10_14_ARR_ARR_MASK             ( 0xFFFFFFFFU )
 
-/* Биты регистра CCR1 (capture/compare register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CCR1 (capture/compare register 1) */
 #define MCU_TIM10_14_CCR1_BITS                ( 0xFFFFU )
 #define MCU_TIM10_14_CCR1_CCR1_MASK           ( 0xFFFFU )
 
-/* Биты регистра TIM11_OR (option register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TIM11_OR (option register 1) */
 #define MCU_TIM10_14_TIM11_OR_BITS            ( 0x3U )
 #define MCU_TIM10_14_TIM11_OR_TI1_RMP         ( 0x3U )
 
@@ -4995,7 +4995,7 @@ typedef volatile struct tag_stm32f407_bt {
 
 #define STM32F407_BT_PTR                      ( ( stm32f407_bt_t * ) 0x40001000U )
 
-/* Биты регистра BT_CR1 (TIM6 and TIM7 control register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BT_CR1 (TIM6 and TIM7 control register 1) */
 #define MCU_BT_CR1_BITS                       ( 0x8FU )
 #define MCU_BT_CR1_ARPE                       ( 0x80U )
 #define MCU_BT_CR1_OPM                        ( 0x8U )
@@ -5003,32 +5003,32 @@ typedef volatile struct tag_stm32f407_bt {
 #define MCU_BT_CR1_UDIS                       ( 0x2U )
 #define MCU_BT_CR1_CEN                        ( 0x1U )
 
-/* Биты регистра BT_CR2 (TIM6 and TIM7 control register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BT_CR2 (TIM6 and TIM7 control register 2) */
 #define MCU_BT_CR2_BITS                       ( 0x70U )
 #define MCU_BT_CR2_MMS_MASK                   ( 0x70U )
 
-/* Биты регистра BT_DIER (TIM6 and TIM7 DMA/interrupt enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BT_DIER (TIM6 and TIM7 DMA/interrupt enable register) */
 #define MCU_BT_DIER_BITS                      ( 0x101U )
 #define MCU_BT_DIER_UDE                       ( 0x100U )
 #define MCU_BT_DIER_UIE                       ( 0x1U )
 
-/* Биты регистра BT_SR (TIM6 and TIM7 status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BT_SR (TIM6 and TIM7 status register) */
 #define MCU_BT_SR_BITS                        ( 0x1U )
 #define MCU_BT_SR_UIF                         ( 0x1U )
 
-/* Биты регистра BT_EGR (TIM6 and TIM7 event generation register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BT_EGR (TIM6 and TIM7 event generation register) */
 #define MCU_BT_EGR_BITS                       ( 0x1U )
 #define MCU_BT_EGR_UG                         ( 0x1U )
 
-/* Биты регистра BT_CNT (TIM6 and TIM7 counter) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BT_CNT (TIM6 and TIM7 counter) */
 #define MCU_BT_CNT_BITS                       ( 0xFFFFU )
 #define MCU_BT_CNT_CNT_MASK                   ( 0xFFFFU )
 
-/* Биты регистра BT_PSC (TIM6 and TIM7 prescaler) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BT_PSC (TIM6 and TIM7 prescaler) */
 #define MCU_BT_PSC_BITS                       ( 0xFFFFU )
 #define MCU_BT_PSC_PSC_MASK                   ( 0xFFFFU )
 
-/* Биты регистра BT_ARR (TIM6 and TIM7 auto-reload register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BT_ARR (TIM6 and TIM7 auto-reload register) */
 #define MCU_BT_ARR_BITS                       ( 0xFFFFU )
 #define MCU_BT_ARR_ARR_MASK                   ( 0xFFFFU )
 
@@ -5043,13 +5043,13 @@ typedef volatile struct tag_stm32f407_iwdg {
 
 #define STM32F407_IWDG_PTR                    ( ( stm32f407_iwdg_t * ) 0x40003000U )
 
-/* Биты регистра KR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° KR */
 #define MCU_IWDG_KR_BITS                      ( 0xFFFFU )
 #define MCU_IWDG_KR_KEY_RESET                 ( 0xAAAAU )
 #define MCU_IWDG_KR_KEY_WRITE                 ( 0x5555U )
 #define MCU_IWDG_KR_KEY_ENABLE                ( 0xCCCCU )
 
-/* Биты регистра PR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° PR */
 #define MCU_IWDG_PR_BITS                      ( 0x7U )
 #define MCU_IWDG_PR_MASK                      ( 0x7U )
 #define MCU_IWDG_PR_DIV4                      ( 0x0U )
@@ -5060,11 +5060,11 @@ typedef volatile struct tag_stm32f407_iwdg {
 #define MCU_IWDG_PR_DIV128                    ( 0x5U )
 #define MCU_IWDG_PR_DIV256                    ( 0x6U )
 
-/* Биты регистра RLR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RLR */
 #define MCU_IWDG_RLR_BITS                     ( 0xFFFU )
 #define MCU_IWDG_RLR_RL_MASK                  ( 0xFFFU )
 
-/* Биты регистра SR */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR */
 #define MCU_IWDG_SR_BITS                      ( 0x3U )
 #define MCU_IWDG_SR_RVU                       ( 0x2U )
 #define MCU_IWDG_SR_PVU                       ( 0x1U )
@@ -5079,12 +5079,12 @@ typedef volatile struct tag_stm32f407_rng {
 
 #define STM32F407_RNG_PTR                     ( ( stm32f407_rng_t * ) 0x50060800U )
 
-/* Биты регистра CR (control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR (control register) */
 #define MCU_RNG_CR_BITS                       ( 0x6U )
 #define MCU_RNG_CR_IE                         ( 0x4U )
 #define MCU_RNG_CR_RNGEN                      ( 0x2U )
 
-/* Биты регистра SR (status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR (status register) */
 #define MCU_RNG_SR_BITS                       ( 0x67U )
 #define MCU_RNG_SR_SEIS                       ( 0x40U )
 #define MCU_RNG_SR_CEIS                       ( 0x20U )
@@ -5092,7 +5092,7 @@ typedef volatile struct tag_stm32f407_rng {
 #define MCU_RNG_SR_CECS                       ( 0x2U )
 #define MCU_RNG_SR_DRDY                       ( 0x1U )
 
-/* Биты регистра DR (data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DR (data register) */
 #define MCU_RNG_DR_BITS                       ( 0xFFFFFFFFU )
 #define MCU_RNG_DR_RNDATA                     ( 0xFFFFFFFFU )
 
@@ -5114,7 +5114,7 @@ typedef volatile struct tag_stm32f407_spi {
 #define STM32F407_SPI2_PTR                     ( ( stm32f407_spi_t * ) 0x40003800U )
 #define STM32F407_SPI3_PTR                     ( ( stm32f407_spi_t * ) 0x40003C00U )
 
-/* Биты регистра CR1 (control register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR1 (control register 1) */
 #define MCU_SPI_CR1_BITS                      ( 0xFFFFU )
 #define MCU_SPI_CR1_BIDIMODE                  ( 0x8000U )
 #define MCU_SPI_CR1_BIDIOE                    ( 0x4000U )
@@ -5131,7 +5131,7 @@ typedef volatile struct tag_stm32f407_spi {
 #define MCU_SPI_CR1_CPOL                      ( 0x2U )
 #define MCU_SPI_CR1_CPHA                      ( 0x1U )
 
-/* Биты регистра CR2 (control register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR2 (control register 2) */
 #define MCU_SPI_CR2_BITS                      ( 0xF7U )
 #define MCU_SPI_CR2_TXEIE                     ( 0x80U )
 #define MCU_SPI_CR2_RXNEIE                    ( 0x40U )
@@ -5141,7 +5141,7 @@ typedef volatile struct tag_stm32f407_spi {
 #define MCU_SPI_CR2_TXDMAEN                   ( 0x2U )
 #define MCU_SPI_CR2_RXDMAEN                   ( 0x1U )
 
-/* Биты регистра SR (status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR (status register) */
 #define MCU_SPI_SR_BITS                       ( 0x1FFU )
 #define MCU_SPI_SR_FRE                        ( 0x100U )
 #define MCU_SPI_SR_BSY                        ( 0x80U )
@@ -5153,23 +5153,23 @@ typedef volatile struct tag_stm32f407_spi {
 #define MCU_SPI_SR_TXE                        ( 0x2U )
 #define MCU_SPI_SR_RXNE                       ( 0x1U )
 
-/* Биты регистра DR (data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DR (data register) */
 #define MCU_SPI_DR_BITS                       ( 0xFFFFU )
 #define MCU_SPI_DR_DR_MASK                    ( 0xFFFFU )
 
-/* Биты регистра CRCPR (CRC polynomial register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CRCPR (CRC polynomial register) */
 #define MCU_SPI_CRCPR_BITS                    ( 0xFFFFU )
 #define MCU_SPI_CRCPR_CRCPOLY_MASK            ( 0xFFFFU )
 
-/* Биты регистра RXCRCR (RX CRC register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RXCRCR (RX CRC register) */
 #define MCU_SPI_RXCRCR_BITS                   ( 0xFFFFU )
 #define MCU_SPI_RXCRCR_RXCRC_MASK             ( 0xFFFFU )
 
-/* Биты регистра TXCRCR (TX CRC register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TXCRCR (TX CRC register) */
 #define MCU_SPI_TXCRCR_BITS                   ( 0xFFFFU )
 #define MCU_SPI_TXCRCR_TXCRC_MASK             ( 0xFFFFU )
 
-/* Биты регистра I2SCFGR (I2S configuration register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° I2SCFGR (I2S configuration register) */
 #define MCU_SPI_I2SCFGR_BITS                  ( 0xFBFU )
 #define MCU_SPI_I2SCFGR_I2SMOD                ( 0x800U )
 #define MCU_SPI_I2SCFGR_I2SE                  ( 0x400U )
@@ -5180,7 +5180,7 @@ typedef volatile struct tag_stm32f407_spi {
 #define MCU_SPI_I2SCFGR_DATLEN                ( 0x6U )
 #define MCU_SPI_I2SCFGR_CHLEN                 ( 0x1U )
 
-/* Биты регистра I2SPR (I2S prescaler register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° I2SPR (I2S prescaler register) */
 #define MCU_SPI_I2SPR_BITS                    ( 0x3FFU )
 #define MCU_SPI_I2SPR_MCKOE                   ( 0x200U )
 #define MCU_SPI_I2SPR_ODD                     ( 0x100U )
@@ -5204,10 +5204,10 @@ typedef volatile struct tag_stm32f407_usart {
 #define STM32F407_UART4_PTR                   ( ( stm32f407_usart_t * ) 0x40004C00U )
 #define STM32F407_UART5_PTR                   ( ( stm32f407_usart_t * ) 0x40005000U )
 #define STM32F407_USART6_PTR                  ( ( stm32f407_usart_t * ) 0x40011400U )
-#define STM32F407_USART7_PTR                  ( ( stm32f407_usart_t * ) 0x40007800U )  //Не совсем понятно в reference manual указано что это uart
-#define STM32F407_USART8_PTR                  ( ( stm32f407_usart_t * ) 0x40007C00U )  //Не совсем понятно в reference manual указано что это uart
+#define STM32F407_USART7_PTR                  ( ( stm32f407_usart_t * ) 0x40007800U )  //РќРµ СЃРѕРІСЃРµРј РїРѕРЅСЏС‚РЅРѕ РІ reference manual СѓРєР°Р·Р°РЅРѕ С‡С‚Рѕ СЌС‚Рѕ uart
+#define STM32F407_USART8_PTR                  ( ( stm32f407_usart_t * ) 0x40007C00U )  //РќРµ СЃРѕРІСЃРµРј РїРѕРЅСЏС‚РЅРѕ РІ reference manual СѓРєР°Р·Р°РЅРѕ С‡С‚Рѕ СЌС‚Рѕ uart
 
-/* Биты регистра SR (status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SR (status register) */
 #define MCU_USART_SR_BITS                     ( 0x3FFU )
 #define MCU_USART_SR_CTS                      ( 0x200U )
 #define MCU_USART_SR_LBD                      ( 0x100U )
@@ -5220,16 +5220,16 @@ typedef volatile struct tag_stm32f407_usart {
 #define MCU_USART_SR_FE                       ( 0x2U )
 #define MCU_USART_SR_PE                       ( 0x1U )
 
-/* Биты регистра DR (data register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° DR (data register) */
 #define MCU_USART_DR_BITS                     ( 0x1FFU )
 #define MCU_USART_DR_DR_MASK                  ( 0x1FFU )
 
-/* Биты регистра BRR (baud rate register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BRR (baud rate register) */
 #define MCU_USART_BRR_BITS                    ( 0xFFFFU )
 #define MCU_USART_BRR_DIV_Mantissa_MASK       ( 0xFFF0U )
 #define MCU_USART_BRR_DIV_Fraction_MASK       ( 0xFU )
 
-/* Биты регистра CR1 (control register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR1 (control register 1) */
 #define MCU_USART_CR1_BITS                    ( 0xBFFFU )
 #define MCU_USART_CR1_OVER8                   ( 0x8000U )
 #define MCU_USART_CR1_UE                      ( 0x2000U )
@@ -5247,7 +5247,7 @@ typedef volatile struct tag_stm32f407_usart {
 #define MCU_USART_CR1_RWU                     ( 0x2U )
 #define MCU_USART_CR1_SBK                     ( 0x1U )
 
-/* Биты регистра CR2 (control register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR2 (control register 2) */
 #define MCU_USART_CR2_BITS                    ( 0x7F6FU )
 #define MCU_USART_CR2_LINEN                   ( 0x4000U )
 #define MCU_USART_CR2_STOP_MASK               ( 0x3000U )
@@ -5261,7 +5261,7 @@ typedef volatile struct tag_stm32f407_usart {
 #define MCU_USART_CR2_LBDL                    ( 0x20U )
 #define MCU_USART_CR2_ADD_MASK                ( 0xFU )
 
-/* Биты регистра CR3 (control register 3) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° CR3 (control register 3) */
 #define MCU_USART_CR3_BITS                    ( 0xFFFU )
 #define MCU_USART_CR3_ONEBIT                  ( 0x800U )
 #define MCU_USART_CR3_CTSIE                   ( 0x400U )
@@ -5276,7 +5276,7 @@ typedef volatile struct tag_stm32f407_usart {
 #define MCU_USART_CR3_IREN                    ( 0x2U )
 #define MCU_USART_CR3_EIE                     ( 0x1U )
 
-/* Биты регистра GTPR (guard time and prescaler register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° GTPR (guard time and prescaler register) */
 #define MCU_USART_GTPR_BITS                   ( 0xFFFFU )
 #define MCU_USART_GTPR_GT_MASK                ( 0xFF00U )
 #define MCU_USART_GTPR_PSC_MASK               ( 0xFFU )
@@ -5306,11 +5306,11 @@ typedef volatile struct tag_stm32f407_sdio {
 
 #define STM32F407_SDIO_PTR                    ( ( stm32f407_sdio_t * ) 0x40012C00U )
 
-/* Биты регистра SDIO_POWER (SDIO power control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_POWER (SDIO power control register) */
 #define MCU_SDIO_POWER_BITS                   ( 0x3U )
 #define MCU_SDIO_POWER_PWRCTRL                ( 0x3U )
 
-/* Биты регистра SDIO_CLKCR (SDIO clock control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_CLKCR (SDIO clock control register) */
 #define MCU_SDIO_CLKCR_BITS                   ( 0x7FFFU )
 #define MCU_SDIO_CLKCR_HWFC_EN                ( 0x4000U )
 #define MCU_SDIO_CLKCR_NEGEDGE                ( 0x2000U )
@@ -5320,11 +5320,11 @@ typedef volatile struct tag_stm32f407_sdio {
 #define MCU_SDIO_CLKCR_CLKEN                  ( 0x100U )
 #define MCU_SDIO_CLKCR_CLKDIV                 ( 0xFFU )
 
-/* Биты регистра SDIO_ARG (SDIO argument register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_ARG (SDIO argument register) */
 #define MCU_SDIO_ARG_BITS                     ( 0xFFFFFFFFU )
 #define MCU_SDIO_ARG_CMDARG                   ( 0xFFFFFFFFU )
 
-/* Биты регистра SDIO_CMD (SDIO command register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_CMD (SDIO command register) */
 #define MCU_SDIO_CMD_BITS                     ( 0x7FFFU )
 #define MCU_SDIO_CMD_CEATACMD                 ( 0x4000U )
 #define MCU_SDIO_CMD_nIEN                     ( 0x2000U )
@@ -5336,35 +5336,35 @@ typedef volatile struct tag_stm32f407_sdio {
 #define MCU_SDIO_CMD_WAITRESP                 ( 0xC0U )
 #define MCU_SDIO_CMD_CMDINDEX                 ( 0x3FU )
 
-/* Биты регистра SDIO_RESPCMD (SDIO command responce register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_RESPCMD (SDIO command responce register) */
 #define MCU_SDIO_RESPCMD_BITS                 ( 0x3FU )
 #define MCU_SDIO_RESPCMD_RESPCMD              ( 0x3FU )
 
-/* Биты регистра SDIO_RESP1 (SDIO responce 1 register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_RESP1 (SDIO responce 1 register) */
 #define MCU_SDIO_RESP1_BITS                   ( 0xFFFFFFFFU )
 #define MCU_SDIO_RESP1_CARDSTATUS1            ( 0xFFFFFFFFU )
 
-/* Биты регистра SDIO_RESP2 (SDIO responce 2 register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_RESP2 (SDIO responce 2 register) */
 #define MCU_SDIO_RESP2_BITS                   ( 0xFFFFFFFFU )
 #define MCU_SDIO_RESP2_CARDSTATUS2            ( 0xFFFFFFFFU )
 
-/* Биты регистра SDIO_RESP3 (SDIO responce 3 register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_RESP3 (SDIO responce 3 register) */
 #define MCU_SDIO_RESP3_BITS                   ( 0xFFFFFFFFU )
 #define MCU_SDIO_RESP3_CARDSTATUS3            ( 0xFFFFFFFFU )
 
-/* Биты регистра SDIO_RESP4 (SDIO responce 4 register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_RESP4 (SDIO responce 4 register) */
 #define MCU_SDIO_RESP4_BITS                   ( 0xFFFFFFFFU )
 #define MCU_SDIO_RESP4_CARDSTATUS4            ( 0xFFFFFFFFU )
 
-/* Биты регистра SDIO_DTIMER (SDIO data timer register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_DTIMER (SDIO data timer register) */
 #define MCU_SDIO_DTIMER_BITS                  ( 0xFFFFFFFFU )
 #define MCU_SDIO_DTIMER_DATATIME              ( 0xFFFFFFFFU )
 
-/* Биты регистра SDIO_DLEN (SDIO data lengt register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_DLEN (SDIO data lengt register) */
 #define MCU_SDIO_DLEN_BITS                    ( 0x1FFFFFFU )
 #define MCU_SDIO_DLEN_DATALENGTH              ( 0x1FFFFFFU )
 
-/* Биты регистра SDIO_DCTRL (SDIO data control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_DCTRL (SDIO data control register) */
 #define MCU_SDIO_DCTRL_BITS                   ( 0xFFFU )
 #define MCU_SDIO_DCTRL_SDIOEN                 ( 0x800U )
 #define MCU_SDIO_DCTRL_RWMOD                  ( 0x400U )
@@ -5376,11 +5376,11 @@ typedef volatile struct tag_stm32f407_sdio {
 #define MCU_SDIO_DCTRL_DTDIR                  ( 0x2U )
 #define MCU_SDIO_DCTRL_DTEN                   ( 0x1U )
 
-/* Биты регистра SDIO_DCOUNT (SDIO data counter register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_DCOUNT (SDIO data counter register) */
 #define MCU_SDIO_DCOUNT_BITS                  ( 0x1FFFFFFU )
 #define MCU_SDIO_DCOUNT_DATACOUNT             ( 0x1FFFFFFU )
 
-/* Биты регистра SDIO_STA (SDIO status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_STA (SDIO status register) */
 #define MCU_SDIO_STA_BITS                     ( 0xFFFFFFU )
 #define MCU_SDIO_STA_CEATAEND                 ( 0x800000U )
 #define MCU_SDIO_STA_SDIOIT                   ( 0x400000U )
@@ -5407,7 +5407,7 @@ typedef volatile struct tag_stm32f407_sdio {
 #define MCU_SDIO_STA_DCRCFAIL                 ( 0x2U )
 #define MCU_SDIO_STA_CCRCFAIL                 ( 0x1U )
 
-/* Биты регистра SDIO_ICR (SDIO interrupt clear register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_ICR (SDIO interrupt clear register) */
 #define MCU_SDIO_ICR_BITS                     ( 0xC007FFU )
 #define MCU_SDIO_ICR_CEATAENDC                ( 0x800000U )
 #define MCU_SDIO_ICR_SDIOITC                  ( 0x400000U )
@@ -5423,7 +5423,7 @@ typedef volatile struct tag_stm32f407_sdio {
 #define MCU_SDIO_ICR_DCRCFAILC                ( 0x2U )
 #define MCU_SDIO_ICR_CCRCFAILC                ( 0x1U )
 
-/* Биты регистра SDIO_MASK (SDIO mask register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_MASK (SDIO mask register) */
 #define MCU_SDIO_MASK_BITS                    ( 0xFFFFFFU )
 #define MCU_SDIO_MASK_CEATAENDIE              ( 0x800000U )
 #define MCU_SDIO_MASK_SDIOITIE                ( 0x400000U )
@@ -5450,11 +5450,11 @@ typedef volatile struct tag_stm32f407_sdio {
 #define MCU_SDIO_MASK_DCRCFAILIE              ( 0x2U )
 #define MCU_SDIO_MASK_CCRCFAILIE              ( 0x1U )
 
-/* Биты регистра SDIO_FIFOCNT (SDIO FIFO counter register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_FIFOCNT (SDIO FIFO counter register) */
 #define MCU_SDIO_FIFOCNT_BITS                 ( 0xFFFFFFU )
 #define MCU_SDIO_FIFOCNT_FIFOCOUNT            ( 0xFFFFFFU )
 
-/* Биты регистра SDIO_FIFO (SDIO data FIFO register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° SDIO_FIFO (SDIO data FIFO register) */
 #define MCU_SDIO_FIFO_BITS                    ( 0xFFFFFFFFU )
 #define MCU_SDIO_FIFO_FIFOData                ( 0xFFFFFFFFU )
 
@@ -5561,7 +5561,7 @@ typedef volatile struct tag_stm32f407_can {
 
 #define STM32F407_CAN_PTR                     ( ( stm32f407_can_t * ) 0x40006400U )
 
-/* Биты регистра MCR (master control register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° MCR (master control register) */
 #define MCU_CAN_MCR_BITS                      ( 0x180FFU )
 #define MCU_CAN_MCR_DBF                       ( 0x10000U )
 #define MCU_CAN_MCR_RESET                     ( 0x8000U ) 
@@ -5574,7 +5574,7 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_MCR_SLEEP                     ( 0x2U ) 
 #define MCU_CAN_MCR_INRQ                      ( 0x1U ) 
 
-/* Биты регистра MSR (master status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° MSR (master status register) */
 #define MCU_CAN_MSR_BITS                      ( 0xF1FU )
 #define MCU_CAN_MSR_RX                        ( 0x800U )
 #define MCU_CAN_MSR_SAMP                      ( 0x400U )
@@ -5586,7 +5586,7 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_MSR_SLAK                      ( 0x2U )
 #define MCU_CAN_MSR_INAK                      ( 0x1U )
 
-/* Биты регистра TSR (transmit status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TSR (transmit status register) */
 #define MCU_CAN_TSR_BITS                      ( 0xFF8F8F8FU )
 #define MCU_CAN_TSR_LOW2                      ( 0x80000000U )
 #define MCU_CAN_TSR_LOW1                      ( 0x40000000U )
@@ -5611,21 +5611,21 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_TSR_TXOK0                     ( 0x2U )
 #define MCU_CAN_TSR_RQCP0                     ( 0x1U )
 
-/* Биты регистра RF0R (receive FIFO 0 register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RF0R (receive FIFO 0 register) */
 #define MCU_CAN_RF0R_BITS                     ( 0x3BU )
 #define MCU_CAN_RF0R_RFOM0                    ( 0x20U )
 #define MCU_CAN_RF0R_FOVR0                    ( 0x10U )
 #define MCU_CAN_RF0R_FULL0                    ( 0x8U )
 #define MCU_CAN_RF0R_FMP0_MASK                ( 0x3U )
 
-/* Биты регистра RF1R (receive FIFO 1 register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RF1R (receive FIFO 1 register) */
 #define MCU_CAN_RF1R_BITS                     ( 0x3BU )
 #define MCU_CAN_RF1R_RFOM1                    ( 0x20U )
 #define MCU_CAN_RF1R_FOVR1                    ( 0x10U )
 #define MCU_CAN_RF1R_FULL1                    ( 0x8U )
 #define MCU_CAN_RF1R_FMP1_MASK                ( 0x3U )
 
-/* Биты регистра IER (interrupt enable register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° IER (interrupt enable register) */
 #define MCU_CAN_IER_BITS                      ( 0x38F7FU )
 #define MCU_CAN_IER_SLKIE                     ( 0x20000U )
 #define MCU_CAN_IER_WKUIE                     ( 0x10000U )
@@ -5642,7 +5642,7 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_IER_FMPIE0                    ( 0x2U )
 #define MCU_CAN_IER_TMEIE                     ( 0x1U )
 
-/* Биты регистра ESR (error status register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° ESR (error status register) */
 #define MCU_CAN_ESR_BITS                      ( 0xFFFF0077U )
 #define MCU_CAN_ESR_REC_MASK                  ( 0xFF000000U )
 #define MCU_CAN_ESR_TEC_MASK                  ( 0xFF0000U )
@@ -5651,7 +5651,7 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_ESR_EPVF                      ( 0x2U )
 #define MCU_CAN_ESR_EWGF                      ( 0x1U )
 
-/* Биты регистра BTR (bit timing register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° BTR (bit timing register) */
 #define MCU_CAN_BTR_BITS                      ( 0xC37F03FFU )
 #define MCU_CAN_BTR_SILM                      ( 0x80000000U )
 #define MCU_CAN_BTR_LBKM                      ( 0x40000000U )
@@ -5660,7 +5660,7 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_BTR_TS1_MASK                  ( 0xF0000U )
 #define MCU_CAN_BTR_BRP_MASK                  ( 0x3FFU )
 
-/* Биты регистра TI0R (TX mailbox identifier register 0) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TI0R (TX mailbox identifier register 0) */
 #define MCU_CAN_TI0R_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_TI0R_STID_EXID_MASK           ( 0xFFE00000U )
 #define MCU_CAN_TI0R_EXID_MASK                ( 0x1FFFF8U )
@@ -5668,27 +5668,27 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_TI0R_RTR                      ( 0x2U )
 #define MCU_CAN_TI0R_TXRQ                     ( 0x1U )
 
-/* Биты регистра TDT0R (mailbox data length control and time stamp register 0) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDT0R (mailbox data length control and time stamp register 0) */
 #define MCU_CAN_TDT0R_BITS                    ( 0xFFFF010FU )
 #define MCU_CAN_TDT0R_TIME_MASK               ( 0xFFFF0000U )
 #define MCU_CAN_TDT0R_TGT                     ( 0x100U )
 #define MCU_CAN_TDT0R_DLC_MASK                ( 0xFU )
 
-/* Биты регистра TDL0R (mailbox data low register 0) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDL0R (mailbox data low register 0) */
 #define MCU_CAN_TDL0R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_TDL0R_DATA3_MASK              ( 0xFF000000U )
 #define MCU_CAN_TDL0R_DATA2_MASK              ( 0xFF0000U )
 #define MCU_CAN_TDL0R_DATA1_MASK              ( 0xFF00U )
 #define MCU_CAN_TDL0R_DATA0_MASK              ( 0xFFU )
 
-/* Биты регистра TDH0R (mailbox data high register 0) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDH0R (mailbox data high register 0) */
 #define MCU_CAN_TDH0R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_TDH0R_DATA7_MASK              ( 0xFF000000U )
 #define MCU_CAN_TDH0R_DATA6_MASK              ( 0xFF0000U )
 #define MCU_CAN_TDH0R_DATA5_MASK              ( 0xFF00U )
 #define MCU_CAN_TDH0R_DATA4_MASK              ( 0xFFU )
 
-/* Биты регистра TI1R (TX mailbox identifier register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TI1R (TX mailbox identifier register 1) */
 #define MCU_CAN_TI1R_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_TI1R_STID_EXID_MASK           ( 0xFFE00000U )
 #define MCU_CAN_TI1R_EXID_MASK                ( 0x1FFFF8U )
@@ -5696,27 +5696,27 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_TI1R_RTR                      ( 0x2U )
 #define MCU_CAN_TI1R_TXRQ                     ( 0x1U )
 
-/* Биты регистра TDT1R (mailbox data length control and time stamp register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDT1R (mailbox data length control and time stamp register 1) */
 #define MCU_CAN_TDT1R_BITS                    ( 0xFFFF010FU )
 #define MCU_CAN_TDT1R_TIME_MASK               ( 0xFFFF0000U )
 #define MCU_CAN_TDT1R_TGT                     ( 0x100U )
 #define MCU_CAN_TDT1R_DLC_MASK                ( 0xFU )
 
-/* Биты регистра TDL1R (mailbox data low register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDL1R (mailbox data low register 1) */
 #define MCU_CAN_TDL1R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_TDL1R_DATA3_MASK              ( 0xFF000000U )
 #define MCU_CAN_TDL1R_DATA2_MASK              ( 0xFF0000U )
 #define MCU_CAN_TDL1R_DATA1_MASK              ( 0xFF00U )
 #define MCU_CAN_TDL1R_DATA0_MASK              ( 0xFFU )
 
-/* Биты регистра TDH1R (mailbox data high register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDH1R (mailbox data high register 1) */
 #define MCU_CAN_TDH1R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_TDH1R_DATA7_MASK              ( 0xFF000000U )
 #define MCU_CAN_TDH1R_DATA6_MASK              ( 0xFF0000U )
 #define MCU_CAN_TDH1R_DATA5_MASK              ( 0xFF00U )
 #define MCU_CAN_TDH1R_DATA4_MASK              ( 0xFFU )
 
-/* Биты регистра TI2R (TX mailbox identifier register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TI2R (TX mailbox identifier register 2) */
 #define MCU_CAN_TI2R_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_TI2R_STID_EXID_MASK           ( 0xFFE00000U )
 #define MCU_CAN_TI2R_EXID_MASK                ( 0x1FFFF8U )
@@ -5724,86 +5724,86 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_TI2R_RTR                      ( 0x2U )
 #define MCU_CAN_TI2R_TXRQ                     ( 0x1U )
 
-/* Биты регистра TDT2R (mailbox data length control and time stamp register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDT2R (mailbox data length control and time stamp register 2) */
 #define MCU_CAN_TDT2R_BITS                    ( 0xFFFF010FU )
 #define MCU_CAN_TDT2R_TIME_MASK               ( 0xFFFF0000U )
 #define MCU_CAN_TDT2R_TGT                     ( 0x100U )
 #define MCU_CAN_TDT2R_DLC_MASK                ( 0xFU )
 
-/* Биты регистра TDL2R (mailbox data low register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDL2R (mailbox data low register 2) */
 #define MCU_CAN_TDL2R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_TDL2R_DATA3_MASK              ( 0xFF000000U )
 #define MCU_CAN_TDL2R_DATA2_MASK              ( 0xFF0000U )
 #define MCU_CAN_TDL2R_DATA1_MASK              ( 0xFF00U )
 #define MCU_CAN_TDL2R_DATA0_MASK              ( 0xFFU )
 
-/* Биты регистра TDH2R (mailbox data high register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° TDH2R (mailbox data high register 2) */
 #define MCU_CAN_TDH2R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_TDH2R_DATA7_MASK              ( 0xFF000000U )
 #define MCU_CAN_TDH2R_DATA6_MASK              ( 0xFF0000U )
 #define MCU_CAN_TDH2R_DATA5_MASK              ( 0xFF00U )
 #define MCU_CAN_TDH2R_DATA4_MASK              ( 0xFFU )
 
-/* Биты регистра RI0R (receive FIFO mailbox identifier register 0) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RI0R (receive FIFO mailbox identifier register 0) */
 #define MCU_CAN_RI0R_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_RI0R_STID_EXID_MASK           ( 0xFFE00000U )
 #define MCU_CAN_RI0R_EXID_MASK                ( 0x1FFFF8U )
 #define MCU_CAN_RI0R_IDE                      ( 0x4U )
 #define MCU_CAN_RI0R_RTR                      ( 0x2U )
 
-/* Биты регистра RDT0R (receive FIFO mailbox data length control and time stamp register 0) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RDT0R (receive FIFO mailbox data length control and time stamp register 0) */
 #define MCU_CAN_RDT0R_BITS                    ( 0xFFFFFF0FU )
 #define MCU_CAN_RDT0R_TIME_MASK               ( 0xFFFF0000U )
 #define MCU_CAN_RDT0R_FMI_MASK                ( 0xFF00U )
 #define MCU_CAN_RDT0R_DLC_MASK                ( 0xFU )
 
-/* Биты регистра RDL0R (receive FIFO mailbox data low register 0) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RDL0R (receive FIFO mailbox data low register 0) */
 #define MCU_CAN_RDL0R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_RDL0R_DATA3_MASK              ( 0xFF000000U )
 #define MCU_CAN_RDL0R_DATA2_MASK              ( 0xFF0000U )
 #define MCU_CAN_RDL0R_DATA1_MASK              ( 0xFF00U )
 #define MCU_CAN_RDL0R_DATA0_MASK              ( 0xFFU )
 
-/* Биты регистра RDH0R (receive FIFO mailbox data high register 0) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RDH0R (receive FIFO mailbox data high register 0) */
 #define MCU_CAN_RDH0R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_RDH0R_DATA7_MASK              ( 0xFF000000U )
 #define MCU_CAN_RDH0R_DATA6_MASK              ( 0xFF0000U )
 #define MCU_CAN_RDH0R_DATA5_MASK              ( 0xFF00U )
 #define MCU_CAN_RDH0R_DATA4_MASK              ( 0xFFU )
 
-/* Биты регистра RI1R (receive FIFO mailbox identifier register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RI1R (receive FIFO mailbox identifier register 1) */
 #define MCU_CAN_RI1R_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_RI1R_STID_EXID_MASK           ( 0xFFE00000U )
 #define MCU_CAN_RI1R_EXID_MASK                ( 0x1FFFF8U )
 #define MCU_CAN_RI1R_IDE                      ( 0x4U )
 #define MCU_CAN_RI1R_RTR                      ( 0x2U )
 
-/* Биты регистра RDT1R (receive FIFO mailbox data length control and time stamp register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RDT1R (receive FIFO mailbox data length control and time stamp register 1) */
 #define MCU_CAN_RDT1R_BITS                    ( 0xFFFFFF0FU )
 #define MCU_CAN_RDT1R_TIME_MASK               ( 0xFFFF0000U )
 #define MCU_CAN_RDT1R_FMI_MASK                ( 0xFF00U )
 #define MCU_CAN_RDT1R_DLC_MASK                ( 0xFU )
 
-/* Биты регистра RDL1R (receive FIFO mailbox data low register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RDL1R (receive FIFO mailbox data low register 1) */
 #define MCU_CAN_RDL1R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_RDL1R_DATA3_MASK              ( 0xFF000000U )
 #define MCU_CAN_RDL1R_DATA2_MASK              ( 0xFF0000U )
 #define MCU_CAN_RDL1R_DATA1_MASK              ( 0xFF00U )
 #define MCU_CAN_RDL1R_DATA0_MASK              ( 0xFFU )
 
-/* Биты регистра RDH1R (receive FIFO mailbox data high register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° RDH1R (receive FIFO mailbox data high register 1) */
 #define MCU_CAN_RDH1R_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_RDH1R_DATA7_MASK              ( 0xFF000000U )
 #define MCU_CAN_RDH1R_DATA6_MASK              ( 0xFF0000U )
 #define MCU_CAN_RDH1R_DATA5_MASK              ( 0xFF00U )
 #define MCU_CAN_RDH1R_DATA4_MASK              ( 0xFFU )
 
-/* Биты регистра FMR (filter master register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° FMR (filter master register) */
 #define MCU_CAN_FMR_BITS                      ( 0x3F01U )
 #define MCU_CAN_FMR_CAN2SB_MASK               ( 0x3F00U )
 #define MCU_CAN_FMR_FINIT                     ( 0x1U )
 
-/* Биты регистра FM1R (filter mode register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° FM1R (filter mode register) */
 #define MCU_CAN_FM1R_BITS                     ( 0xFFFFFFFU )
 #define MCU_CAN_FM1R_FBM27                    ( 0x8000000U )
 #define MCU_CAN_FM1R_FBM26                    ( 0x4000000U )
@@ -5834,7 +5834,7 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_FM1R_FBM1                     ( 0x2U )
 #define MCU_CAN_FM1R_FBM0                     ( 0x1U )
 
-/* Биты регистра FS1R (filter scale register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° FS1R (filter scale register) */
 #define MCU_CAN_FS1R_BITS                     ( 0xFFFFFFFU )
 #define MCU_CAN_FS1R_FSC27                    ( 0x8000000U )
 #define MCU_CAN_FS1R_FSC26                    ( 0x4000000U )
@@ -5865,7 +5865,7 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_FS1R_FSC1                     ( 0x2U )
 #define MCU_CAN_FS1R_FSC0                     ( 0x1U )
 
-/* Биты регистра FFA1R (filter FIFO assignment register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° FFA1R (filter FIFO assignment register) */
 #define MCU_CAN_FFA1R_BITS                    ( 0xFFFFFFFU )
 #define MCU_CAN_FFA1R_FFA27                   ( 0x8000000U )
 #define MCU_CAN_FFA1R_FFA26                   ( 0x4000000U )
@@ -5896,7 +5896,7 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_FFA1R_FFA1                    ( 0x2U )
 #define MCU_CAN_FFA1R_FFA0                    ( 0x1U )
 
-/* Биты регистра FA1R (filter MCU_ACTivation register) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° FA1R (filter MCU_ACTivation register) */
 #define MCU_CAN_FA1R_BITS                     ( 0xFFFFFFFU )
 #define MCU_CAN_FA1R_FMCU_ACT27               ( 0x8000000U )
 #define MCU_CAN_FA1R_FMCU_ACT26               ( 0x4000000U )
@@ -5927,227 +5927,227 @@ typedef volatile struct tag_stm32f407_can {
 #define MCU_CAN_FA1R_FMCU_ACT1                ( 0x2U )
 #define MCU_CAN_FA1R_FMCU_ACT0                ( 0x1U )
 
-/* Биты регистра F0R1 (Filter bank 0 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F0R1 (Filter bank 0 register 1) */
 #define MCU_CAN_F0R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F0R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F0R2 (Filter bank 0 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F0R2 (Filter bank 0 register 2) */
 #define MCU_CAN_F0R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F0R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F1R1 (Filter bank 1 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F1R1 (Filter bank 1 register 1) */
 #define MCU_CAN_F1R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F1R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F1R2 (Filter bank 1 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F1R2 (Filter bank 1 register 2) */
 #define MCU_CAN_F1R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F1R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F2R1 (Filter bank 2 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F2R1 (Filter bank 2 register 1) */
 #define MCU_CAN_F2R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F2R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F2R2 (Filter bank 2 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F2R2 (Filter bank 2 register 2) */
 #define MCU_CAN_F2R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F2R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F3R1 (Filter bank 3 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F3R1 (Filter bank 3 register 1) */
 #define MCU_CAN_F3R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F3R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F3R2 (Filter bank 3 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F3R2 (Filter bank 3 register 2) */
 #define MCU_CAN_F3R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F3R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F4R1 (Filter bank 4 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F4R1 (Filter bank 4 register 1) */
 #define MCU_CAN_F4R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F4R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F4R2 (Filter bank 4 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F4R2 (Filter bank 4 register 2) */
 #define MCU_CAN_F4R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F4R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F5R1 (Filter bank 5 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F5R1 (Filter bank 5 register 1) */
 #define MCU_CAN_F5R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F5R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F5R2 (Filter bank 5 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F5R2 (Filter bank 5 register 2) */
 #define MCU_CAN_F5R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F5R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F6R1 (Filter bank 6 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F6R1 (Filter bank 6 register 1) */
 #define MCU_CAN_F6R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F6R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F6R2 (Filter bank 6 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F6R2 (Filter bank 6 register 2) */
 #define MCU_CAN_F6R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F6R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F7R1 (Filter bank 7 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F7R1 (Filter bank 7 register 1) */
 #define MCU_CAN_F7R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F7R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F7R2 (Filter bank 7 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F7R2 (Filter bank 7 register 2) */
 #define MCU_CAN_F7R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F7R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F8R1 (Filter bank 8 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F8R1 (Filter bank 8 register 1) */
 #define MCU_CAN_F8R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F8R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F8R2 (Filter bank 8 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F8R2 (Filter bank 8 register 2) */
 #define MCU_CAN_F8R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F8R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F9R1 (Filter bank 9 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F9R1 (Filter bank 9 register 1) */
 #define MCU_CAN_F9R1_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F9R1_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F9R2 (Filter bank 9 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F9R2 (Filter bank 9 register 2) */
 #define MCU_CAN_F9R2_BITS                     ( 0xFFFFFFFFU )
 #define MCU_CAN_F9R2_FB_MASK                  ( 0xFFFFFFFFU )
 
-/* Биты регистра F10R1 (Filter bank 10 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F10R1 (Filter bank 10 register 1) */
 #define MCU_CAN_F10R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F10R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F10R2 (Filter bank 10 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F10R2 (Filter bank 10 register 2) */
 #define MCU_CAN_F10R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F10R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F11R1 (Filter bank 11 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F11R1 (Filter bank 11 register 1) */
 #define MCU_CAN_F11R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F11R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F11R2 (Filter bank 11 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F11R2 (Filter bank 11 register 2) */
 #define MCU_CAN_F11R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F11R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F12R1 (Filter bank 12 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F12R1 (Filter bank 12 register 1) */
 #define MCU_CAN_F12R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F12R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F12R2 (Filter bank 12 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F12R2 (Filter bank 12 register 2) */
 #define MCU_CAN_F12R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F12R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F13R1 (Filter bank 13 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F13R1 (Filter bank 13 register 1) */
 #define MCU_CAN_F13R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F13R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F13R2 (Filter bank 13 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F13R2 (Filter bank 13 register 2) */
 #define MCU_CAN_F13R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F13R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F14R1 (Filter bank 14 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F14R1 (Filter bank 14 register 1) */
 #define MCU_CAN_F14R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F14R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F14R2 (Filter bank 14 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F14R2 (Filter bank 14 register 2) */
 #define MCU_CAN_F14R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F14R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F15R1 (Filter bank 15 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F15R1 (Filter bank 15 register 1) */
 #define MCU_CAN_F15R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F15R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F15R2 (Filter bank 15 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F15R2 (Filter bank 15 register 2) */
 #define MCU_CAN_F15R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F15R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F16R1 (Filter bank 16 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F16R1 (Filter bank 16 register 1) */
 #define MCU_CAN_F16R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F16R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F16R2 (Filter bank 16 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F16R2 (Filter bank 16 register 2) */
 #define MCU_CAN_F16R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F16R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F17R1 (Filter bank 17 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F17R1 (Filter bank 17 register 1) */
 #define MCU_CAN_F17R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F17R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F17R2 (Filter bank 17 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F17R2 (Filter bank 17 register 2) */
 #define MCU_CAN_F17R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F17R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F18R1 (Filter bank 18 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F18R1 (Filter bank 18 register 1) */
 #define MCU_CAN_F18R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F18R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F18R2 (Filter bank 18 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F18R2 (Filter bank 18 register 2) */
 #define MCU_CAN_F18R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F18R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F19R1 (Filter bank 19 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F19R1 (Filter bank 19 register 1) */
 #define MCU_CAN_F19R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F19R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F19R2 (Filter bank 19 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F19R2 (Filter bank 19 register 2) */
 #define MCU_CAN_F19R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F19R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F20R1 (Filter bank 20 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F20R1 (Filter bank 20 register 1) */
 #define MCU_CAN_F20R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F20R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F20R2 (Filter bank 20 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F20R2 (Filter bank 20 register 2) */
 #define MCU_CAN_F20R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F20R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F21R1 (Filter bank 21 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F21R1 (Filter bank 21 register 1) */
 #define MCU_CAN_F21R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F21R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F21R2 (Filter bank 21 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F21R2 (Filter bank 21 register 2) */
 #define MCU_CAN_F21R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F21R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F21R2 (Filter bank 22 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F21R2 (Filter bank 22 register 1) */
 #define MCU_CAN_F22R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F22R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F22R2 (Filter bank 22 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F22R2 (Filter bank 22 register 2) */
 #define MCU_CAN_F22R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F22R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F23R1 (Filter bank 23 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F23R1 (Filter bank 23 register 1) */
 #define MCU_CAN_F23R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F23R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F23R2 (Filter bank 23 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F23R2 (Filter bank 23 register 2) */
 #define MCU_CAN_F23R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F23R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F24R1 (Filter bank 24 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F24R1 (Filter bank 24 register 1) */
 #define MCU_CAN_F24R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F24R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F24R2 (Filter bank 24 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F24R2 (Filter bank 24 register 2) */
 #define MCU_CAN_F24R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F24R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F25R1 (Filter bank 25 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F25R1 (Filter bank 25 register 1) */
 #define MCU_CAN_F25R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F25R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F25R2 (Filter bank 25 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F25R2 (Filter bank 25 register 2) */
 #define MCU_CAN_F25R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F25R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F26R1 (Filter bank 26 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F26R1 (Filter bank 26 register 1) */
 #define MCU_CAN_F26R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F26R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F26R2 (Filter bank 26 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F26R2 (Filter bank 26 register 2) */
 #define MCU_CAN_F26R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F26R2_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F27R1 (Filter bank 27 register 1) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F27R1 (Filter bank 27 register 1) */
 #define MCU_CAN_F27R1_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F27R1_FB_MASK                 ( 0xFFFFFFFFU )
 
-/* Биты регистра F27R2 (Filter bank 27 register 2) */
+/* Р‘РёС‚С‹ СЂРµРіРёСЃС‚СЂР° F27R2 (Filter bank 27 register 2) */
 #define MCU_CAN_F27R2_BITS                    ( 0xFFFFFFFFU )
 #define MCU_CAN_F27R2_FB_MASK                 ( 0xFFFFFFFFU )
 
