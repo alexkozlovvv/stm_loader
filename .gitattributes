@@ -1,0 +1,4 @@
+*.sct filter=win1251-to-utf8
+*.h filter=win1251-to-utf8
+*.c filter=win1251-to-utf8
+*.asm filter=win1251-to-utf8
