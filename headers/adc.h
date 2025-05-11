@@ -9,10 +9,10 @@
 extern "C" {
 #endif
 
- /*Инициализация модуля АЦП*/
+ /* РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РјРѕРґСѓР»СЏ РђР¦Рџ */
 extern LOADER_FUNC error_t adc_init(void);
 	
- /*Подпрограмма чтения данных с ацп*/
+ /* РџРѕРґРїСЂРѕРіСЂР°РјРјР° С‡С‚РµРЅРёСЏ РґР°РЅРЅС‹С… СЃ Р°С†Рї */
 extern LOADER_FUNC error_t adc_read(volatile uint32_t *adc1,volatile uint32_t *adc2);
     
 extern LOADER_FUNC error_t wait_eocs ( void ); 	

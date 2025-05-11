@@ -5,13 +5,13 @@
 
 #include "base_types.h"
 
-#define MAX_CMD_LEN      ( 10U ) /* максимальный размер входной команды */
+#define MAX_CMD_LEN      ( 10U ) /* РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ РІС…РѕРґРЅРѕР№ РєРѕРјР°РЅРґС‹ */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/* Подпрограмма технологического монитора */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° С‚РµС…РЅРѕР»РѕРіРёС‡РµСЃРєРѕРіРѕ РјРѕРЅРёС‚РѕСЂР° */
 extern LOADER_FUNC error_t tech_monitor( void );
     
 extern LOADER_FUNC int32_t find_index_of_command(const char_t cmd_array[][ MAX_CMD_LEN ], uint_t size, 

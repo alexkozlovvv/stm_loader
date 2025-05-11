@@ -4,24 +4,24 @@
 #include "base_types.h"
 #include "sections_bsp.h"
 
-/* Подпрограмма контроля ОЗУ */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ РћР—РЈ */
 LOADER_FUNC void test_start_ram(
     uint_t mode );
 
-/* Подпрограмма контроля ПЗУ */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ РџР—РЈ */
 LOADER_FUNC void test_start_rom(
     uint_t mode );
 
-/* Подпрограмма контроля ЦПУ */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ Р¦РџРЈ */
 LOADER_FUNC void test_start_cpu(
     uint_t mode );
 
-/* Подпрограмма контроля сторожевого таймера */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РєРѕРЅС‚СЂРѕР»СЏ СЃС‚РѕСЂРѕР¶РµРІРѕРіРѕ С‚Р°Р№РјРµСЂР° */
 LOADER_FUNC error_t test_start_wdt(
     uint_t mode );
 LOADER_FUNC void test_start_wdt_end( void );
 
-/* Подпрограмма тестирования области ОЗУ */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РѕР±Р»Р°СЃС‚Рё РћР—РЈ */
 LOADER_FUNC error_t test_ram(
     uint32_t beg_address, uint32_t end_address );
 LOADER_FUNC static error_t test_ram_forward_pass(
@@ -35,11 +35,11 @@ LOADER_FUNC static error_t test_ram_back_pass(
 LOADER_FUNC static error_t test_ram_pass(
     uint32_t beg_address, uint32_t end_address );
 
-/* Подпрограмма тестирования процессора */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРѕС†РµСЃСЃРѕСЂР° */
 LOADER_FUNC error_t test_cpu( void );
 LOADER_FUNC static error_t test_cpu_pass( void );
 
-/* Подпрограмма тестирования области ПЗУ */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РѕР±Р»Р°СЃС‚Рё РџР—РЈ */
 LOADER_FUNC error_t test_rom ( 
     uint32_t mem_arr );
 LOADER_FUNC error_t test_rom_pass(

@@ -4,17 +4,17 @@
 #include "base_types.h"
 #include "sections_bsp.h"
 
-/* Подпрограмма технологического монитора */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° С‚РµС…РЅРѕР»РѕРіРёС‡РµСЃРєРѕРіРѕ РјРѕРЅРёС‚РѕСЂР° */
 LOADER_FUNC error_t tech_monitor( void );
 
-/* Подпрограмма останова */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РѕСЃС‚Р°РЅРѕРІР° */
 static LOADER_FUNC void tech_stop( void );
 
-/* Подпрограмма выдачи строки */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РІС‹РґР°С‡Рё СЃС‚СЂРѕРєРё */
 static LOADER_FUNC error_t tech_str_out(
     const char_t str[], uint_t len );
 
-/* Подпрограмма выдачи числа */
+/* РџРѕРґРїСЂРѕРіСЂР°РјРјР° РІС‹РґР°С‡Рё С‡РёСЃР»Р° */
 static LOADER_FUNC error_t tech_num_out(
     uint32_t num, uint_t base );
 

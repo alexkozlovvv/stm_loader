@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-//слова для переключения мультиплексора
+/* СЃР»РѕРІР° РґР»СЏ РїРµСЂРµРєР»СЋС‡РµРЅРёСЏ РјСѓР»СЊС‚РёРїР»РµРєСЃРѕСЂР° */
 #define MULTIPLEXER_STATE_1      0
 #define MULTIPLEXER_STATE_2      1
 #define MULTIPLEXER_STATE_3      2
@@ -43,10 +43,10 @@ extern "C" {
 #define MULTIPLEXER_STATE_32     31
 	
 	
- /*Инициализация модуля АЦП*/
+ /*РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РјРѕРґСѓР»СЏ РђР¦Рџ*/
  extern LOADER_FUNC error_t multiplexer_init(void);
 	
- /*Подпрограмма чтения данных с ацп*/
+ /*РџРѕРґРїСЂРѕРіСЂР°РјРјР° С‡С‚РµРЅРёСЏ РґР°РЅРЅС‹С… СЃ Р°С†Рї*/
  extern LOADER_FUNC error_t multiplexer_set(uint32_t pos);	
 
 #ifdef __cplusplus

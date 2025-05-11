@@ -27,16 +27,16 @@
 
 #else
 
-/* Заголовки описаний подпрограмм и данных базового ПО разных уровней */
+/* Р—Р°РіРѕР»РѕРІРєРё РѕРїРёСЃР°РЅРёР№ РїРѕРґРїСЂРѕРіСЂР°РјРј Рё РґР°РЅРЅС‹С… Р±Р°Р·РѕРІРѕРіРѕ РџРћ СЂР°Р·РЅС‹С… СѓСЂРѕРІРЅРµР№ */
 
-/* ПО уровня 0 */
+/* РџРћ СѓСЂРѕРІРЅСЏ 0 */
 #define LVL0_FUNC   __attribute__((section(".lvl0_text"  )))
 #define LVL0_CONST  __attribute__((section(".lvl0_rodata")))
 #define LVL0_BSS_   __attribute__((section(".lvl0_bss"   ))) __attribute__((zero_init))
 #define LVL0_DATA_  __attribute__((section(".lvl0_data"  )))
 #define LVL0_DATA   LVL0_BSS_
 
-/* ПО уровня 1 */
+/* РџРћ СѓСЂРѕРІРЅСЏ 1 */
 #define LVL1_FUNC   __attribute__((section(".lvl1_text"  )))
 #define LVL1_CONST  __attribute__((section(".lvl1_rodata")))
 #define LVL1_BSS_   __attribute__((section(".lvl1_bss"   ))) __attribute__((zero_init))
@@ -44,18 +44,18 @@
 #define LVL1_DATA   LVL1_BSS_
 #define LVL1_DMABUF __attribute__((section(".lvl1_dmabuf"))) __attribute__((zero_init))
 
-/* ПО уровня 2 */
+/* РџРћ СѓСЂРѕРІРЅСЏ 2 */
 #define LVL2_FUNC   __attribute__((section(".lvl2_text"  )))
 #define LVL2_CONST  __attribute__((section(".lvl2_rodata")))
 
-/* ПО первоначального загрузчика */
+/* РџРћ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРіРѕ Р·Р°РіСЂСѓР·С‡РёРєР° */
 #define LOADER_FUNC  __attribute__((section(".loader_text"   )))
 #define LOADER_CONST __attribute__((section(".loader_rodata" )))
 #define LOADER_BSS_  __attribute__((section(".loader_bss"    ))) __attribute__((zero_init))
 #define LOADER_DATA_ __attribute__((section(".loader_data"   )))
 #define LOADER_DATA  LOADER_BSS_
 
-/* ПО уровня 3. Процесс базового ПО */
+/* РџРћ СѓСЂРѕРІРЅСЏ 3. РџСЂРѕС†РµСЃСЃ Р±Р°Р·РѕРІРѕРіРѕ РџРћ */
 #define PROCESS_BSP_FUNC  __attribute__((section(".process_bsp_text"   )))
 #define PROCESS_BSP_CONST __attribute__((section(".process_bsp_rodata" )))
 #define PROCESS_BSP_BSS_  __attribute__((section(".process_bsp_bss"    ))) __attribute__((zero_init))
